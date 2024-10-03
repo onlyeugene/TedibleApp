@@ -8,14 +8,13 @@ interface HomePageLayoutProps {
   children: ReactNode;
 }
 
-const HomePageLayout: React.FC<HomePageLayoutProps> = ({ children }) => {
+const HomePageLayout: React.FC<HomePageLayoutProps> = () => {
   return (
     <div>
       <Section />
       <SpecialMenu />
       <Features />
       <Slider />
-      {children}
     </div>
   );
 };
