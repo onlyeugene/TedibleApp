@@ -4,11 +4,9 @@ import SpecialMenu from './specialMenu';
 import Slider from '@/components/ui/slider';
 import Features from './features';
 
-interface HomePageLayoutProps {
-  children: ReactNode;
-}
 
-const HomePageLayout: React.FC<HomePageLayoutProps> = () => {
+
+const HomePageLayout = () => {
   return (
     <div>
       <Section />
