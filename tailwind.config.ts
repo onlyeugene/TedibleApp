@@ -12,6 +12,28 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      textColor: {
+        primary: "#FEFEFF",
+      },
+      backgroundColor: {
+        primary: "# FEFEFF",
+        secondary: "#073126",
+        secondaryLight: "#0C513F",
+      },
+      keyframes: {
+        fadeInLeft: {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        fadeOutRight: {
+          '0%': { transform: 'translateX(0%)', opacity: '1' },
+          '100%': { transform: 'translateX(-100%)', opacity: '0' },
+        },
+      },
+      animation: {
+        fadeInLeft: 'fadeInLeft 0.5s ease-out',
+        fadeOutRight: 'fadeOutRight 0.5s ease-out',
+      },
     },
   },
   plugins: [],

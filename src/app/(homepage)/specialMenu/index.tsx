@@ -38,19 +38,19 @@ const SpecialMenu: React.FC = () => {
 
   return (
     <div>
-      <div className="specialmenu">
-        <div className="specialmenuinner">
-          <h1 className="text-[50px] font-medium">Special Menu</h1>
-          <small className="text-lg text-center">
-            Discover our specially curated menu, designed to delight your taste
-            buds <br /> with unique and seasonal dishes
-          </small>
+      <div className="w-full py-4">
+        <div className="text-center">
+          <h1 className="sm:text-[50px] text-[29px] text text-center font-medium">Special Menu</h1>
+          <p className="sm:text-lg text-center text-sm">
+            Discover our specially curated menu, designed to <br className="sm:hidden block"/> delight your taste
+            buds <br className="sm:block hidden"/> with unique and seasonal <br className="sm:hidden block"/> dishes
+          </p>
         </div>
         <div className="categoryproducts">
           {displayedProducts.map((product) => (
             <div key={product.id}>
               <div className="firstproduct">
-                <img
+                <Image
                   className="productsimg"
                   src={product.itemImage}
                   alt={product.itemName}

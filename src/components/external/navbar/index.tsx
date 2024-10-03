@@ -1,33 +1,62 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import logo from "@/assets/navbar/logo.svg";
+import MenuToggle from "./menu-toggle";
+import MobileMenu from "./mobile-menu";
+import DesktopMenu from "./desktop-menu";
 
-const Navbar = () => {
+
+const Navbar: React.FC = () => {
+  const [dropdown, setDropdown] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const path = usePathname();
+
+  
+  function toggleDropdown() {
+    if (dropdown) {
+      // Start closing animation
+      setClosing(true);
+      // Wait for animation to complete before setting dropdown to false
+      setTimeout(() => {
+        setDropdown(false);
+        setClosing(false);
+        document.body.classList.remove("overflow-hidden"); // Remove body scroll lock
+      }, 500); // Match the duration of the fadeOutRight animation
+    } else {
+      setDropdown(true);
+      document.body.classList.add("overflow-hidden"); // Lock body scroll
+    }
+  }
+
+  useEffect(() => {
+    // Clean up the body class on component unmount or when dropdown closes unexpectedly
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
+
   return (
-    <div className="flex items-center justify-between mx-auto py-3 w-full container">
-      <div>Logo</div>
+    <div id="top" className="flex items-center justify-between sm:px-10 px-5 py-3 w-full relative">
+      <Link href={"/"}>
+        <Image
+          src={logo}
+          alt="Logo"
+          width={120}
+          height={100}
+          className={path === "/" ? "border-red" : ""}
+        />
+      </Link>
 
-      <ul className="flex items-center gap-5">
-        <li>
-          <Link href={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link href={"/categories"}>Categories</Link>
-        </li>
-        <li>
-          <Link href={"/restaurants"}>Restaurants</Link>
-        </li>
-        <li>
-          <Link href={"/contact"}>Contact Us</Link>
-        </li>
-        <li>
-          <Link href={"/about"}>About Us</Link>
-        </li>
-      </ul>
-
-      <div className="flex items-center gap-5">
-        <button>Login</button>
-        <button>Register</button>
+      <DesktopMenu path={path} />
+      <div onClick={toggleDropdown} className="sm:hidden block">
+        <MenuToggle />
       </div>
+
+      {dropdown && <MobileMenu toggleDropdown={toggleDropdown} path={path} closing={closing} />}
     </div>
   );
 };
