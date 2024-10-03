@@ -1,16 +1,16 @@
 'use client'
 
 
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 // import axiosInstance from "../../../utils/axiosInstance";
-import Image from "next/image";
 
-interface Product {
-  id: number;
-  itemName: string;
-  itemImage: string;
-  price: number;
-}
+
+// interface Product {
+//   id: number;
+//   itemName: string;
+//   itemImage: string;
+//   price: number;
+// }
 
 const SpecialMenu: React.FC = () => {
   // const [products, setProducts] = useState<Product[]>([]);
