@@ -15,38 +15,38 @@ html{
   scroll-behavior: smooth;
 }
 
-.aboutHero{
-  background-image: url(../assets/backgroundImages/aboutHero.png);
+.aboutHero {
+  background-image: url('../assets/backgroundImages/aboutHero.png');
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .privacy-bg{
-  background-image: url(../assets/backgroundImages/aboutHero.png);
+  background-image: url('../assets/backgroundImages/aboutHero.png');
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .categoryHero{
-  background-image: url(../assets/backgroundImages/contactHero.png);
+  background-image: url('../assets/backgroundImages/contactHero.png');
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .faqBg{
-  background-image: url(../assets/backgroundImages/faq.png);
+  background-image: url('../assets/backgroundImages/faq.png');
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .notFound {
-  background-image: url(../assets/notfounds/Web\ 404\ page\ bg.jpg);
+  background-image: url('../assets/notfounds/Web\ 404\ page\ bg.jpg');
   background-repeat: no-repeat;
 }
 
 .signUp{
-  background-image: url(../assets/home/register/signupBg.jpg);
+  background-image: url('../assets/home/register/signupBg.jpg');
 }
 /* globals.css */
 
