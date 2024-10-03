@@ -1,7 +1,7 @@
 "use client";
 
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
-import React, { useState } from "react";
+import React from "react";
 
 interface UserTypeSelectorProps {
   userType: string;

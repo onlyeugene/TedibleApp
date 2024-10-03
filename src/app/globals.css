@@ -63,4 +63,3 @@ html{
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
-@import "leaflet/dist/leaflet.css";

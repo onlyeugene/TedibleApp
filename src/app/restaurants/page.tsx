@@ -5,7 +5,7 @@ import kfc from "@/assets/home/sliderImages/kfc.svg";
 import chicken from "@/assets/home/sliderImages/chicken.svg";
 import awoof from "@/assets/home/sliderImages/awoof.svg";
 import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
-import RestaurantHero from "@/components/external/hero/restaurant";
+import RestaurantHero from "@/components/external/hero/categoryHero";
 
 
 

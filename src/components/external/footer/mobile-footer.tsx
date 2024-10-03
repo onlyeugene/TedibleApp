@@ -16,7 +16,7 @@ interface MobileFooterProps {
   answer: React.ReactNode;
 }
 
-const MobileFooter: React.FC<MobileFooterProps> = ({ title, answer }) => {
+const MobileFooter: React.FC<MobileFooterProps> = () => {
   return (
     <section className="bg-secondary py-5 px-10 text-primary sm:hidden block">
       <Image src={logo} alt="Logo" width={100} height={100} />

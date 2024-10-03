@@ -1,11 +1,9 @@
-import HomePage from "./(homepage)/layout";
+import HomePageLayout from "./(homepage)/layout";
 
-
-
-export default function Home({children}: { children: React.ReactNode }) {
+export default function Home({ children }: { children: React.ReactNode }) {
   return (
-   <>
-   <HomePage />
-   </>
+    <>
+      <HomePageLayout>{children}</HomePageLayout>
+    </>
   );
 }
