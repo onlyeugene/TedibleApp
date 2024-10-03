@@ -9,7 +9,6 @@ import locate from "@/assets/home/contact/locate.svg";
 import map from "@/assets/home/contact/map.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { MapContainer } from "react-leaflet";
 
 const Contact: React.FC = () => {
   return (
@@ -89,7 +88,6 @@ const Contact: React.FC = () => {
           />
         </div>
       </div>
-      <MapContainer />
     </div>
   );
 };
