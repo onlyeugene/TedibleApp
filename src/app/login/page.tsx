@@ -3,17 +3,34 @@
 import Link from "next/link";
 import Google from "@/assets/home/register/google.svg";
 import TechStudio from "@/assets/home/register/techstudio.svg";
-
 import Image from "next/image";
 import Input from "@/components/input";
 import Button from "@/components/buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
-// import Map from "@/components/ui/map";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation"; // Import useRouter for redirection
+
 const Login: React.FC = () => {
+  const { data: session } = useSession();
+  const router = useRouter(); // Initialize useRouter
+
+  // Redirect to home if the user is already logged in
+  useEffect(() => {
+    if (session) {
+      const timer = setTimeout(() => {
+        router.push('/'); // Redirect to home
+      }, 5000);
+
+      // Cleanup timeout on unmount
+      return () => clearTimeout(timer);
+    }
+  }, [session, router]);
+
   const [userType, setUserType] = useState("");
+
   return (
-    <div className="signUp text-white bg-cover w-full bg-center h-screen flex  flex-col justify-center items-center">
+    <div className="signUp text-white bg-cover w-full bg-center h-screen flex flex-col justify-center items-center">
       <div className="items-center flex flex-col ">
         <h1 className="text-[32px] font-medium pb-10">Log In</h1>
         <div className="">
@@ -63,13 +80,16 @@ const Login: React.FC = () => {
                 </p>
                 <hr />
                 <p className="pt-5">or Log In with</p>
-                <div className="flex gap-5 justify-center pt-2">
-                  <Image
-                    src={Google}
-                    alt="Google Icon"
-                    width={26}
-                    height={26}
-                  />
+                <div className="flex gap-5 justify-center pt-2 border-none">
+                  <button type="button" onClick={() => signIn("google")}>
+                    <Image
+                      src={Google}
+                      alt="Google Icon"
+                      width={26}
+                      height={26}
+                    />
+                  </button>
+
                   <Image
                     src={TechStudio}
                     alt="TechStudio Icon"
