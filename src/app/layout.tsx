@@ -6,7 +6,8 @@ import Footer from "@/components/external/footer";
 // import SessionProvider from '@/utils/SessionProvider'
 
 import { getServerSession } from "next-auth";
-import { NextAuthProvider } from "@/utils/SessionProvider";
+import { NextAuthProvider } from "@/utils/NextAuthProvider";
+
 
 
 
