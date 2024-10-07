@@ -3,9 +3,10 @@ import Navbar from "@/components/external/navbar";
 import Footer from "@/components/external/footer";
 // import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter for server components
 
-import SessionProvider from '@/utils/SessionProvider'
+// import SessionProvider from '@/utils/SessionProvider'
 
 import { getServerSession } from "next-auth";
+import { NextAuthProvider } from "@/utils/SessionProvider";
 
 
 
@@ -22,13 +23,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={session}>
+        <NextAuthProvider session={session}>
         <Navbar />
         {children}
         {/* {showFooter && */}
         <Footer />
         {/* // } Conditionally render the footer */}
-        </SessionProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
