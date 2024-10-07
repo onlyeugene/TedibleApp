@@ -105,7 +105,7 @@ const AboutHero = () => {
               specifically for tech enthusiasts and students at Tech Studio
               Academy. We are a team of passionate food lovers and tech
               enthusiasts committed to providing seamless, convenient, and
-              delicious dining options to fuel the minds of future innovator.
+              delicious dining options to fuel the minds of future innovators.
             </p>
             <br />
             <p className="md:text-[24px] text-[14px] font-normal">
