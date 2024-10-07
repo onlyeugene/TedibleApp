@@ -101,7 +101,7 @@ const AboutHero = () => {
           <div className="w-full flex flex-col justify-center">
             <h1 className="md:text-[50px] text-[28.75px] font-medium">About Us</h1>
             <p className="md:text-[24px] text-[14px] font-normal">
-              Welcome to Tedible, the ultimate food ordering app designed
+              Welcome to Tedible, the ultimate food ordering app design
               specifically for tech enthusiasts and students at Tech Studio
               Academy. We are a team of passionate food lovers and tech
               enthusiasts committed to providing seamless, convenient, and
