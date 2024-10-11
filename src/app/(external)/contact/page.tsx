@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Button from "@/components/buttons";
 import Input from "@/components/input";
@@ -9,6 +7,11 @@ import locate from "@/assets/home/contact/locate.svg";
 import map from "@/assets/home/contact/map.svg";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata ={
+  title: "Contact Us",
+  description: "Have any complaints or suggestions or something else? You can contact us to let us know about them",
+}
 
 const Contact: React.FC = () => {
   return (

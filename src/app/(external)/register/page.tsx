@@ -7,40 +7,97 @@ import Image from "next/image";
 import Button from "@/components/buttons";
 import Input from "@/components/input";
 import { signIn } from "next-auth/react";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { useRegister } from "@/hooks/register";
+import { validateForm } from "@/utils/auth";
+
 
 const Register: React.FC = () => {
+  const {
+    name, setName,
+    email, setEmail,
+    password, setPassword,
+    username, setUsername,
+    phone, setPhone,
+    loading, error,
+    handleCreateUser,
+  } = useRegister(); // Use custom hook
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formErrors = validateForm({ name, email, password, phone });
+
+    if (Object.keys(formErrors).length > 0) {
+      // Show errors in the UI
+      Object.values(formErrors).forEach(error => {
+        // Assuming you have toast notifications for errors
+        toast.error(error, { position: "top-right", autoClose: 3000 });
+      });
+      return;
+    }
+
+    // If validation passes, proceed with user creation
+    handleCreateUser(e);
+  };
+
   return (
     <div className="signUp bg-center bg-cover w-full h-screen text-white flex flex-col justify-center">
+      <ToastContainer /> {/* Toast notification container */}
       <div className="flex flex-col items-center justify-center">
         <h1 className="pb-5 text-3xl font-medium">User Sign Up</h1>
 
-        <div className="text-sm ">
-          <form
-          >
+        <div className="text-sm">
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-3 w-full">
               <div className="flex gap-5">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="fullname">Full Name</label>
-                  <Input className="sm:w-60" type="text" />
+                  <Input
+                    className="sm:w-60 py-2 px-2 rounded-md"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="tsa-id">TSA ID (Optional)</label>
-                  <Input className="sm:w-60" type="text" />
+                  <Input
+                    className="sm:w-60 py-2 px-2 rounded-md"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="flex gap-5 w-full">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email">Email</label>
-                  <Input className="sm:w-60" type="email" />
+                  <Input
+                    className="sm:w-60 py-2 px-2 rounded-md"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="phone-number">Phone Number</label>
-                  <Input className="sm:w-60" type="text" />
+                  <Input
+                    className="sm:w-60 py-2 px-2 rounded-md"
+                    type="text"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="password">Create Password</label>
-                <Input className="sm:w-60" type="password" />
+                <Input
+                  className="sm:w-60 py-2 px-2 rounded-md"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
             </div>
 
@@ -51,11 +108,10 @@ const Register: React.FC = () => {
                   I agree to all the terms and privacy policy
                 </label>
               </div>
-              <Button className="w-full py-2 mt-4 rounded-md">
-                Sign Up
-                {/* {loading ? 'Signing Up...' : 'Sign Up'} */}
+              <Button className={`w-full py-2 mt-4 rounded-md ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}`} disabled={loading}>
+                {loading ? 'Signing Up...' : 'Sign Up'}
               </Button>
-              {/* {error && <p className="text-red-500 text-xs pt-2">{error}</p>} Display error message */}
+              {error && <p className="text-red-500 text-xs pt-2">{error}</p>}
 
               <div className="text-center pt-4 flex flex-col gap-2">
                 <p className="text-xs flex justify-center gap-1">
@@ -67,7 +123,7 @@ const Register: React.FC = () => {
                 <hr />
                 <p className="text-xs">or Sign up with</p>
                 <div className="flex justify-center gap-4">
-                  <button type='button' onClick={() => signIn("google")}>
+                  <button type="button" onClick={() => signIn("google")}>
                     <Image
                       src={Google}
                       alt="Google Icon"
@@ -92,52 +148,3 @@ const Register: React.FC = () => {
 };
 
 export default Register;
-
-// use redirect instead
-// import React, { useState } from "react";
-
-// import { redirect } from "next/navigation";
-// import axios from 'axios';
-
-// const [fullname, setFullName] = useState('');
-// const [tsaId, setTsaId] = useState('');
-// const [email, setEmail] = useState('');
-// const [phone, setPhone] = useState('');
-// const [password, setPassword] = useState('');
-// const [loading, setLoading] = useState(false);
-// const [error, setError] = useState<string | null>(null);
-// const router = useRouter();
-
-// const handleCreateUser = async (e: React.FormEvent<HTMLFormElement>) => {
-//   e.preventDefault();
-//   setLoading(true);
-//   setError(null); // Reset any previous errors
-
-//   const url = 'http://localhost:3001/createuser';
-//   try {
-//     if (!fullname || !email || !password) {
-//       setError('Please fill in all required fields');
-//       return;
-//     }
-
-//     const response = await axios.post(url, {
-//       fullname,
-//       tsaId,
-//       email,
-//       phone,
-//       password,
-//     });
-
-//     if (!response.data.success) {
-//       throw new Error('Failed to create user');
-//     }
-
-//     console.log(response.data);
-//     router.push('/login');
-//   } catch (error) {
-//     setError((error as Error).message); // Capture error message
-//     console.error(error);
-//   } finally {
-//     setLoading(false); // Reset loading state
-//   }
-// };

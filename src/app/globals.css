@@ -21,6 +21,12 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
 }
+.forgot {
+  background-image: url('../assets/home/register/password.png');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .privacy-bg{
   background-image: url('../assets/backgroundImages/aboutHero.png');
   width: 100%;

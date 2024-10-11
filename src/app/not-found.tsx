@@ -2,12 +2,16 @@ import Image from "next/image";
 import React from "react";
 import error from "@/assets/notfounds/404.png";
 import Button from "@/components/buttons";
+import Navbar from "@/components/external/navbar";
+import Footer from "@/components/external/footer";
 
 // TypeScript definition for ButtonProps if you need it
 
 const NotFound: React.FC = () => {
   return (
-    <div className=" notFound flex flex-col justify-center items-center w-full py-20 h-screen bg-cover bg-center">
+   <>
+   <Navbar />
+   <div className=" notFound flex flex-col justify-center items-center w-full py-20 h-screen bg-cover bg-center">
       <div className="flex items-center justify-center">
         <Image src={error} alt="Error 404" />
       </div>
@@ -20,6 +24,8 @@ const NotFound: React.FC = () => {
         </Button>
       </div>
     </div>
+    <Footer />
+   </>
   );
 };
 

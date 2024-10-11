@@ -12,7 +12,11 @@ interface MobileMenuProps {
   closing: boolean;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ toggleDropdown, path, closing }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({
+  toggleDropdown,
+  path,
+  closing,
+}) => {
   const { data: session } = useSession(); // Correct placement of useSession
 
   return (
@@ -34,55 +38,92 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ toggleDropdown, path, closing }
           className="border rounded-md bg-[#FF7834] border-[#FF7834] w-6 h-6 absolute top-10 right-10 cursor-pointer"
           onClick={toggleDropdown}
         />
-        
+
         {/* Conditional rendering based on session */}
         {session ? (
           <>
             <li>
-              <Link href={"/"} className={path === "/" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/"}
+                className={path === "/" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href={"/restaurants"} className={path === "/restaurants" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/restaurants"}
+                className={path === "/restaurants" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Restaurants
               </Link>
             </li>
             <li>
-              <Link href={"/contact"} className={path === "/contact" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/contact"}
+                className={path === "/contact" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Contact Us
               </Link>
             </li>
             <li>
-              <Link href={"/about"} className={path === "/about" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/about"}
+                className={path === "/about" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 About Us
               </Link>
             </li>
 
             <div className="flex flex-col gap-4 items-center">
               <p>{session.user?.name} </p>
-              <Button className="py-2 px-4 w-full rounded-md" onClick={() => signOut()}>Sign Out</Button>
+              <Button
+                className="py-2 px-4 w-full rounded-md"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </Button>
             </div>
           </>
         ) : (
           <>
             <li>
-              <Link href={"/"} className={path === "/" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/"}
+                className={path === "/" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href={"/restaurants"} className={path === "/restaurants" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/restaurants"}
+                className={path === "/restaurants" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Restaurants
               </Link>
             </li>
             <li>
-              <Link href={"/contact"} className={path === "/contact" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/contact"}
+                className={path === "/contact" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 Contact Us
               </Link>
             </li>
             <li>
-              <Link href={"/about"} className={path === "/about" ? "text-[#FF7834]" : ""} onClick={toggleDropdown}>
+              <Link
+                href={"/about"}
+                className={path === "/about" ? "text-[#FF7834]" : ""}
+                onClick={toggleDropdown}
+              >
                 About Us
               </Link>
             </li>

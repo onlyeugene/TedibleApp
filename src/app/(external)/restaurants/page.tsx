@@ -7,6 +7,11 @@ import awoof from "@/assets/home/sliderImages/awoof.svg";
 import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
 import RestaurantHero from "@/components/external/hero/categoryHero";
 
+export const metadata ={
+  title: "Restaurants",
+  description: "View all restaurants here and select to a restuatrant to make your order",
+}
+
 
 
 const Vendors = [

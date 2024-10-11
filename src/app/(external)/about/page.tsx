@@ -14,6 +14,11 @@ import community from "@/assets/home/about/community.svg";
 import { StaticImageData } from "next/image";
 import AboutUs from "@/components/external/about";
 
+export const metadata ={
+  title: "About Us",
+  description: "You can get to know more about Tedible on this page.",
+}
+
 
 // Type Definitions for Props
 interface InfoSection {
