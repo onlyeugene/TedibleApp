@@ -3,12 +3,26 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
 
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import notification from '@/assets/internal/header/notification.svg'
+import cart from '@/assets/internal/header/cart.svg'
+
 import prompt from "@/assets/internal/dashboard/prompt.svg";
+import Input from "@/components/input";
+import Link from "next/link";
+import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
   const { data: session } = useSession();
 
+  const user = session?.user;
+
   const [modal, setModal] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+
+  function handleDropdown() {
+    setDropdown(!dropdown);
+  }
 
   function handleOpenModal() {
     setModal(!modal);
@@ -16,13 +30,52 @@ const Header = () => {
 
   if (session) {
     return (
-      <div className="py-2 flex justify-end px-3">
-        <Button
-          className="border-none hover:border hover:rounded-sm hover:text-primary hover:bg-tertiary hover:py-1 hover:px-5 py-1 px-5 place-items-end"
-          onClick={handleOpenModal}
-        >
-          Log Out
-        </Button>
+      <div className="py-2 flex justify-between items-center px-3 w-full">
+        <div className="w-full relative">
+          <FiSearch  style={{color: 'gray'}} className="absolute top-1.5 left-2"/>
+          <Input placeholder="Search" className="py-1 w-full rounded-md px-7 text-sm" />
+        </div>
+        <div className="flex items-center gap-2 w-1/2 justify-end">
+          <Image src={notification} alt="notification icon" priority className="rounded-full border w-9 py-2 px-2"/>
+          <Image src={cart} alt="cart icon" priority className="rounded-full border w-9 py-2 px-2"/>
+          {/* <Image
+            src={user?.image as string}
+            alt="user image"
+            width={30}
+            height={30}
+            className="rounded-full"
+            priority
+          /> */}
+          <h2 className="text-sm">
+            {user?.name &&
+              user.name.split(" ")[0].charAt(0).toUpperCase() +
+                user.name.split(" ")[0].slice(1).toLowerCase()}
+          </h2>
+          <MdOutlineKeyboardArrowDown
+            size={22}
+            style={{ color: "gray" }}
+            onClick={handleDropdown}
+          />
+        </div>
+
+        {dropdown && (
+          <ul className="absolute border bg-white w-[8rem] right-4 top-11 shadow-md py-2 rounded-md text-center text-xs">
+            <li className="pb-1" onClick={handleDropdown}><Link href="/internal/settings">Settings</Link></li>
+            <hr />
+            <li className="py-2" onClick={handleDropdown}>
+              <Link href="/">Go to Website</Link>
+            </li>
+            <hr />
+            <li className="pt-1" onClick={handleDropdown}>
+              <Button
+                className="border-none hover:border hover:rounded-sm hover:text-primary hover:bg-tertiary hover:py-[1pxpx] hover:px-6 py-[.5px] px-6 place-items-end text-xs"
+                onClick={handleOpenModal}
+              >
+                Log Out
+              </Button>
+            </li>
+          </ul>
+        )}
 
         {modal && (
           <div
@@ -33,7 +86,7 @@ const Header = () => {
               className="bg-primary py-10 px-20 rounded-lg flex flex-col justify-center items-center gap-3"
               onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
             >
-              <Image src={prompt} alt="prompt icon" width={100} height={100}/>
+              <Image src={prompt} alt="prompt icon" width={100} height={100} />
               <h1 className="text-[22px]">Are you leaving?</h1>
               <p className="text-sm font-light">
                 Are you sure you want to log out?

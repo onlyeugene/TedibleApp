@@ -2,13 +2,16 @@ import React from "react";
 import Link from "next/link";
 import Button from "@/components/buttons";
 import { signOut, useSession } from "next-auth/react";
+// import { getServerSession } from "next-auth";
 
 interface DesktopMenuProps {
   path: string;
 }
 
-const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
+const DesktopMenu: React.FC<DesktopMenuProps> =  ({ path }) => {
   const { data: session } = useSession();
+
+  const user = session?.user
 
   // Render nothing if the user is authenticated
   if (session) {
@@ -37,9 +40,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
         </li>
       </ul>
         <div className="sm:flex gap-4 items-center hidden">
-        <p className="lowercase">{session?.user?.name}</p>
+        <p className="lowercase">{user?.username || user?.name}</p>
         {/* <Image src={session?.user?.image} alt=''  width={20} height={20}/> */}
-        <Button className="py-2 px-4" onClick={() => signOut()}>SignOut</Button>
+        <Button className="py-2 px-4 hover:bg-tertiary hover:border-tertiary hover:text-primary rounded-md" onClick={() => signOut()}>Sign Out</Button>
         </div>
       </>
     )

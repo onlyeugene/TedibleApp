@@ -1,10 +1,8 @@
 "use client";
 
-
 import Navbar from "@/components/external/navbar";
 import Footer from "@/components/external/footer";
 import { usePathname } from "next/navigation";
-
 
 export default function ExternalLayout({
   children,
@@ -15,12 +13,10 @@ export default function ExternalLayout({
   const showFooter = !["/login", "/register", "/forgot-password"].includes(pathname); // Exclude footer on certain pages
 
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        {showFooter && <Footer />}
-      </body>
-    </html>
+    <>
+      <Navbar />
+      {children}
+      {showFooter && <Footer />}
+    </>
   );
 }

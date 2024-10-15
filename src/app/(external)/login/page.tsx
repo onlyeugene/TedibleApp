@@ -6,100 +6,69 @@ import TechStudio from "@/assets/home/register/techstudio.svg";
 import Image from "next/image";
 import Input from "@/components/input";
 import Button from "@/components/buttons";
-import { useState, useEffect } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation"; 
-import axios from "axios";
+import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLogin } from "@/hooks/login";
+import { validateLoginForm } from "@/utils/validate";
 
 const Login: React.FC = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    userType,
+    setUserType,
+    loading,
+    error,
+    handleLogin,
+  } = useLogin();
 
-  // Redirect to home if the user is already logged in
-  useEffect(() => {
-    if (session) {
-      const timer = setTimeout(() => {
-        router.push('/internal/dashboard');
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [session, router]);
-
-  // Handle login request
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    const validationError = validateLoginForm(username, password);
 
-    const url = "https://tedible-backend.onrender.com/api/auth/SignIn";
-
-    try {
-      const response = await axios.post(url, { email, password });
-
-      if (response.status === 200) {
-        toast.success("Login successful!", {
-          position: "top-right",
-          autoClose: 3000,
-        });
-
-        setTimeout(() => {
-          router.push("/internal/dashboard");
-        }, 3500);
-      }
-    } catch (error) {
-      toast.error("Invalid credentials. Please try again.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
-      setError("Login failed. Please check your credentials.");
-    } finally {
-      setLoading(false);
+    if (validationError) {
+      toast.error(validationError, { position: "top-right", autoClose: 3000 });
+      return;
     }
+
+    handleLogin(e);
   };
 
   return (
     <div className="signUp text-white bg-cover w-full bg-center h-screen flex flex-col justify-center items-center">
-      <ToastContainer /> {/* Toast notification container */}
+      <ToastContainer />
       <div className="items-center flex flex-col">
         <h1 className="text-[32px] font-medium pb-10">Log In</h1>
         <div className="">
           <div className="flex justify-between text-sm gap-20">
             <div
               className="flex items-center gap-1"
-              onClick={() => {
-                setUserType("student");
-              }}
+              onClick={() => setUserType("student")}
             >
               {userType === "student" ? <FaCheckCircle /> : <FaRegCircle />}
               <p>Log in as a student</p>
             </div>
             <div
               className="flex items-center gap-1"
-              onClick={() => {
-                setUserType("vendor");
-              }}
+              onClick={() => setUserType("vendor")}
             >
               {userType === "vendor" ? <FaCheckCircle /> : <FaRegCircle />}
               <p>Log in as a vendor</p>
             </div>
           </div>
-          <form className="flex flex-col gap-4 text-sm" onSubmit={handleLogin}>
+          <form className="flex flex-col gap-4 text-sm" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
               <div className="flex flex-col pt-5 gap-2">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email or Username</label>
                 <Input
                   className="py-2 px-2 rounded-md"
                   type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="flex flex-col pt-5 gap-2">
@@ -109,7 +78,6 @@ const Login: React.FC = () => {
                   className="py-2 px-2 rounded-md"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
                 <Link href="/forgot-password">
                   <p className="pt-2 text-[#FF7834]">
@@ -121,7 +89,7 @@ const Login: React.FC = () => {
 
             <div className="flex flex-col justify-center">
               <Button
-                className="w-full rounded-md py-2"
+                className={`w-full rounded-md py-2 ${loading ? 'cursor-not-allowed bg-gray-300 border-gray-300' : 'bg-tertiary border-tertiary'}`}
                 disabled={loading}
               >
                 {loading ? "Logging In..." : "Log In"}

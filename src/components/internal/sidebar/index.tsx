@@ -24,7 +24,7 @@ const Sidebar = () => {
                 : 'hover:bg-[#e9e9e967] hover:text-primary'
             }`}
           >
-            <Image src={item.icon} alt={item.title} width={24} height={24} />
+            <Image src={item.icon} alt={item.title} width={24} height={24} priority />
             <span className='text-sm'>{item.title}</span>
           </Link>
         ))}

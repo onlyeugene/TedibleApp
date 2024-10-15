@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useRegister } from "@/hooks/register";
-import { validateForm } from "@/utils/auth";
+import { validateForm } from "@/utils/validate";
 
 
 const Register: React.FC = () => {
@@ -108,7 +108,7 @@ const Register: React.FC = () => {
                   I agree to all the terms and privacy policy
                 </label>
               </div>
-              <Button className={`w-full py-2 mt-4 rounded-md ${loading ? 'cursor-not-allowed' : 'cursor-pointer'}`} disabled={loading}>
+              <Button className={`w-full py-2 mt-4 rounded-md ${loading ? ' cursor-not-allowed bg-gray-300 border-gray-300' : 'bg-tertiary border-tertiary'}`} disabled={loading}>
                 {loading ? 'Signing Up...' : 'Sign Up'}
               </Button>
               {error && <p className="text-red-500 text-xs pt-2">{error}</p>}

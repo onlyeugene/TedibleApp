@@ -86,12 +86,10 @@ const benefits: Benefit[] = [
 const AboutHero = () => {
   return (
     <section className="w-full">
-      <header className="aboutHero text-center text-[#ffffff] py-[4rem]">
+      <header className="aboutHero bg-center text-center text-[#ffffff] py-[4rem]">
         <h1 className="text-[50px]">About Us</h1>
         <p className="text-[24px]">
-          Explore a menu brimming with premium cuts and tantalizing <br />
-          flavors, expertly crafted to delight even the most discerning <br />
-          palates.
+          Your gateway to Seamless Ordering and Delivery
         </p>
       </header>
 

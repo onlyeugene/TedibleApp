@@ -34,3 +34,16 @@ export const validateForm = ({
     return errors;
   };
   
+
+  export const validateLoginForm = (username: string, password: string): string | null => {
+    if (!username || !password) {
+      return "Both username and password are required";
+    }
+  
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+  
+    return null;
+  };
+  

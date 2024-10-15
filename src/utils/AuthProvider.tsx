@@ -13,3 +13,4 @@ const AuthProvider = ({ children, session }: PropsType) => {
 };
 
 export default AuthProvider;
+ 

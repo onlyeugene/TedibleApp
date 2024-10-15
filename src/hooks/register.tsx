@@ -19,7 +19,7 @@ export const useRegister = () => {
       setError(''); // Clear any previous error
   
       const payload = { name, email, password, username, phone };
-      const url = "https://tedible-backend.onrender.com/api/auth/register";
+      const url = "api/register";
   
       try {
         const response = await axios.post(url, payload, {
