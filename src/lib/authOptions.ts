@@ -75,7 +75,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // Connect to MongoDB
-          await connectMongoDb();
+          await connectMongoDb()
 
           // Check if user exists
           const userExists = await User.findOne({ email });
