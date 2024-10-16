@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import Sidebar from '@/components/internal/sidebar';
 import Header from '@/components/internal/header';
 import { useRouter } from 'next/navigation';
+import CartPreview from '@/components/internal/cart';
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: session, status } = useSession();
@@ -33,10 +34,10 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
         <div className='w-full h-full'>
           <Header />
-          <div className="bg-gray-200  p-4 h-[calc(100vh-53px)] flex justify-between"> 
+          <div className="bg-gray-200 py-7 h-[calc(100vh-53px)] flex justify-between"> 
             {/* formerly 64px  */}
             {children}
-            <h2>Cart</h2>
+            <CartPreview />
           </div>
         </div> 
       </div>
