@@ -4,17 +4,17 @@ import { connectMongoDb } from '../../../lib/mongodb';
 import User from '../../../models/user';
 
 interface UserRequest {
-  name: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
   phone: number;
-  username: string;
 }
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
     // Parse the incoming request JSON body
-    const { name, email, password, phone, username }: UserRequest = await req.json();
+    const { firstname, lastname, email, password, phone}: UserRequest = await req.json();
 
     // Hash the user's password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -23,7 +23,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     await connectMongoDb();
 
     // Create the new user in the database
-    await User.create({ name, email, password: hashedPassword, phone, username });
+    await User.create({ firstname,lastname, email, password: hashedPassword, phone });
 
     // Return a success response
     return NextResponse.json(

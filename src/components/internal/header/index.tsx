@@ -62,9 +62,7 @@ const Header = () => {
               <RxAvatar size={25} style={{ color: 'gray' }} />
             )}
             <h2 className="text-sm">
-              {user?.name &&
-                user.name.split(" ")[0].charAt(0).toUpperCase() +
-                user.name.split(" ")[0].slice(1).toLowerCase()}
+              {user?.firstname}
             </h2>
           </Link>
           <MdOutlineKeyboardArrowDown

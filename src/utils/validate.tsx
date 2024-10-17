@@ -1,20 +1,25 @@
 // auth.tsx
 
 export const validateForm = ({
-    name,
+    firstname,
+    lastname,
     email,
     password,
     phone,
   }: {
-    name: string;
+    firstname: string,
+    lastname: string,
     email: string;
     password: string;
     phone: string;
   }) => {
   const errors: { [key: string]: string } = {};
   
-    if (!name) {
-      errors.name = "Full name is required";
+    if (!firstname) {
+      errors.name = "First name is required";
+    }
+    if(!lastname){
+      errors.lastname = "Last name is required"
     }
   
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -35,9 +40,9 @@ export const validateForm = ({
   };
   
 
-  export const validateLoginForm = (username: string, password: string): string | null => {
-    if (!username || !password) {
-      return "Both username and password are required";
+  export const validateLoginForm = (email: string, password: string): string | null => {
+    if (!email || !password) {
+      return "Both Email and password are required";
     }
   
     if (password.length < 6) {

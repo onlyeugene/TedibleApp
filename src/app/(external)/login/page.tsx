@@ -15,8 +15,8 @@ import { validateLoginForm } from "@/utils/validate";
 
 const Login: React.FC = () => {
   const {
-    username,
-    setUsername,
+    email,
+    setEmail,
     password,
     setPassword,
     userType,
@@ -28,7 +28,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const validationError = validateLoginForm(username, password);
+    const validationError = validateLoginForm(email, password);
 
     if (validationError) {
       toast.error(validationError, { position: "top-right", autoClose: 3000 });
@@ -63,12 +63,12 @@ const Login: React.FC = () => {
           <form className="flex flex-col gap-4 text-sm" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
               <div className="flex flex-col pt-5 gap-2">
-                <label htmlFor="email">Email or Username</label>
+                <label htmlFor="email">Email</label>
                 <Input
                   className="py-2 px-2 rounded-md"
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="flex flex-col pt-5 gap-2">

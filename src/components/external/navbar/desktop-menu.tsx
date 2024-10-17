@@ -50,11 +50,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
             <RxAvatar size={25} style={{ color: "gray" }} />
           )}
           <p className="text-sm">
-            {user?.username
-              ? user.name.split(" ")[0].charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()
-              : user?.name &&
-                user.name.split(" ")[0].charAt(0).toUpperCase() +
-                  user.name.split(" ")[0].slice(1).toLowerCase()}
+            {user?.firstname}
           </p>
           <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} onClick={handleDropdown} />
         </div>

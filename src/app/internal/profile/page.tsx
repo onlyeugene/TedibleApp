@@ -17,8 +17,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <p>Welcome {session?.user?.name}</p>
-      <p>Username: {session?.user?.username}</p>
+      <p>Welcome {session?.user?.firstname}</p>
+      {/* <p>Username: {session?.user?.username}</p> */}
       <p>Email: {session?.user?.email}</p>
       <button onClick={()=> signOut()} className='border'>Sign out</button>
     </div>

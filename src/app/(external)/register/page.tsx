@@ -15,10 +15,10 @@ import { validateForm } from "@/utils/validate";
 
 const Register: React.FC = () => {
   const {
-    name, setName,
+    firstname, setFirstName,
+    lastname, setLastname,
     email, setEmail,
     password, setPassword,
-    username, setUsername,
     phone, setPhone,
     loading, error,
     handleCreateUser,
@@ -26,7 +26,7 @@ const Register: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formErrors = validateForm({ name, email, password, phone });
+    const formErrors = validateForm({ firstname, lastname, email, password, phone });
 
     if (Object.keys(formErrors).length > 0) {
       // Show errors in the UI
@@ -56,17 +56,17 @@ const Register: React.FC = () => {
                   <Input
                     className="sm:w-60 py-2 px-2 rounded-md"
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={firstname}
+                    onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="tsa-id">TSA ID (Optional)</label>
+                  <label htmlFor="tsa-id">Last Name</label>
                   <Input
                     className="sm:w-60 py-2 px-2 rounded-md"
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
                   />
                 </div>
               </div>
