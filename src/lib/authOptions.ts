@@ -12,13 +12,23 @@ declare module 'next-auth' {
       id: string;
       name: string;
       email: string;
-      username: string;
+      username: string; // Include username here
       image: string;
     };
   }
 
   interface User {
-    username?: string;
+    username?: string; // Optional username
+  }
+
+  interface JWT {
+    user: {
+      id: string;
+      name: string;
+      email: string;
+      username: string; // Include username here
+      image: string;
+    };
   }
 }
 
@@ -55,7 +65,7 @@ export const authOptions: NextAuthOptions = {
 
           // Return user object for NextAuth
           return {
-            id: user._id,
+            id: user._id.toString(), // Ensure ID is a string
             name: user.name,
             email: user.email,
             username: user.username,
@@ -75,7 +85,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // Connect to MongoDB
-          await connectMongoDb()
+          await connectMongoDb();
 
           // Check if user exists
           const userExists = await User.findOne({ email });
@@ -102,11 +112,23 @@ export const authOptions: NextAuthOptions = {
 
       return true;
     },
-    async session({ session, token }) {
-      // Attach the username to the session object
-      const user = await User.findById(token.id); // Retrieve user by ID
+    async jwt({ token, user }) {
       if (user) {
-        session.user.username = user.username; // Attach username to session
+        // Ensure that user is defined
+        token.user = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          username: user.username,
+          image: user.image,
+        }; // Define the structure of token.user
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Attach the user data to the session object
+      if (token) {
+        session.user.username = token.user as string; // Attach token.user to session.user
       }
       return session;
     },
