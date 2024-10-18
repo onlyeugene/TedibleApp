@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 export const useRegister = () => {
-    const [name, setName] = useState('');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState(''); // Optional TSA ID
     const [phone, setPhone] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -18,7 +18,7 @@ export const useRegister = () => {
       setLoading(true);
       setError(''); // Clear any previous error
   
-      const payload = { name, email, password, username, phone };
+      const payload = { firstname, lastname, email, password, phone };
       const url = "api/register";
   
       try {
@@ -35,10 +35,10 @@ export const useRegister = () => {
           });
 
           // Optionally clear the form fields
-          setName('');
+          setFirstName('');
+          setLastname('');
           setEmail('');
           setPassword('');
-          setUsername('');
           setPhone('');
 
           setTimeout(() => {
@@ -56,14 +56,14 @@ export const useRegister = () => {
     };
   
     return {
-      name,
-      setName,
+      firstname,
+      setFirstName,
+      lastname,
+      setLastname,
       email,
       setEmail,
       password,
       setPassword,
-      username,
-      setUsername,
       phone,
       setPhone,
       loading,

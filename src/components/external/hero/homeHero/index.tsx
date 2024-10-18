@@ -41,8 +41,8 @@ const Hero: React.FC = () => {
   return (
     <div className="w-full bg-[#073126] text-white sm:flex sm:flex-row flex flex-col-reverse justify-center items-center sm:px-10 px-[3rem] py-[2rem] gap-[1rem]">
       {/* Left Section - Heading and Button */}
-      <div className="flex flex-col gap-[1rem] sm:justify-start justify-center sm:items-start items-center sm:leading-[2rem] leading-[1.5rem] w-full">
-        <h1 className="sm:text-[60px] text-[40px] font-bold text-center ">MEAL TIME</h1>
+      <div className="flex flex-col gap-[1.5rem] sm:justify-start justify-center sm:items-start items-center sm:leading-[2rem] leading-[1.5rem] w-full">
+        <h1 className="sm:text-[60px] text-[40px] font-bold">MEAL TIME</h1>
         <h2 className="sm:text-[35px] text-[20px] font-semibold sm:font-light sm:text-start text-center">
           FUEL YOUR <br className='sm:hidden block'/> STUDY
         </h2>
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Middle Section - Display Image */}
-      <div className="sm:w-[82rem] border bg-white rounded-full px-[1rem] sm:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
+      <div className="2xl:w-[62rem] xl:w-[68rem] sm:w-[82rem] border bg-white rounded-full px-[1rem] sm:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
         <Image
           src={hoveredItem || defaultImage.src}
           alt="Default"

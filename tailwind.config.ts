@@ -14,10 +14,16 @@ const config: Config = {
       },
       textColor: {
         primary: "#FEFEFF",
+        inActive: '#ff783457',
+        secondary: "#073126",
+        secondaryLight: "#0C513F",
+        tertiary: "#FF7834",
+        dark: "#000"
       },
       backgroundColor: {
         primary: "#FEFEFF",
         secondary: "#073126",
+        inActive: '#ff783457',
         secondaryLight: "#0C513F",
         tertiary: "#FF7834",
         dark: "#000"
@@ -25,6 +31,7 @@ const config: Config = {
       borderColor: {
         primary: "#FEFEFF",
         secondary: "#073126",
+        inActive: '#ff783457',
         secondaryLight: "#0C513F",
         tertiary: "#FF7834",
       },

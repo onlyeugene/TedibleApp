@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 export const useLogin = () => {
   const { data: session } = useSession();
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ export const useLogin = () => {
     try {
       const response = await signIn("credentials", {
         redirect: false,
-        username,
+        email,
         password,
       });
 
@@ -58,8 +58,8 @@ export const useLogin = () => {
   };
 
   return {
-    username,
-    setUsername,
+    email,
+    setEmail,
     password,
     setPassword,
     userType,
