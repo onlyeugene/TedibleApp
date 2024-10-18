@@ -80,7 +80,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </li>
 
             <div className="flex flex-col gap-4 items-center">
-              <p>{session.user?.name} </p>
+              <p>{session.user?.firstname} </p>
               <Button
                 className="py-2 px-4 w-full rounded-md"
                 onClick={() => signOut()}
