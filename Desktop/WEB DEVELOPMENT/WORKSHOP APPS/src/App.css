@@ -1,0 +1,210 @@
+#root {
+  text-align: center;
+}
+.title-color {
+  color: #7d7474;
+}
+
+.title-color2 {
+  color: #dccfcf;
+}
+.dark-bgcolor {
+  background-color: #292d32;
+}
+
+
+
+
+.bg-elements {
+  background-color: whitesmoke;
+  z-index: 2;
+  left: -800%;
+  top: 75%;
+padding-left: 100px;
+padding-right: 100px;
+padding-top: 40px;
+padding-bottom: 40px;
+opacity: 0.9;
+  
+}
+
+li {
+  list-style: none;
+}
+li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+@media (width > 768px) {
+  ul {
+    right: 0;
+    left: unset;
+    width: fit-content;
+    
+  }
+}
+.btn2{
+  right: 0;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.space-all {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+.fact {
+  font-size: 32px;
+}
+.fact-icon {
+  color: #cdcdcd;
+  font-size: 70px;
+}
+.fact-content {
+  font-size: 24px;
+  color: #4d4d4d;
+}
+
+.h1-hero {
+  font-size: 64px;
+}
+.p-hero {
+  font-size: 24px;
+}
+
+.portfolio-text {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.img3-pos {
+  position: absolute;
+  top: 150px;
+  left: 320px;
+}
+
+.img-tex-pos {
+  position: absolute;
+  top: -150px;
+  left: 300px;
+}
+
+.quote-text {
+  quotes: "" " " "";
+  position: relative;
+  padding: 0 40px;
+
+  &::before {
+    content: open-quote;
+    position: absolute;
+    font-weight: bold;
+    font-size: 4em;
+    color: #292d32;
+    top: -50px;
+    left: -20px;
+    font-family: serif;
+  }
+  &::after {
+    content: close-quote;
+    position: absolute;
+    font-weight: bold;
+    font-size: 4em;
+    color: #292d32;
+    bottom: -100px;
+    right: 200px;
+    font-family: serif;
+  }
+}
+
+.image-container {
+  position: relative;
+}
+.top-image {
+  position: absolute;
+
+  transition: 0.5 ease-out;
+}
+.top-image:hover {
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .foot-res {
+    display: flex;
+    flex-direction: column;
+    gap: 10;
+  }
+  .img3-pos {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  .about-imgtex-res {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-tex-res {
+    width: 500px;
+    margin-left: -280px;
+    
+    
+    padding-right: 60px;
+  }
+  .fact-ress {
+    display: flex;
+    flex-direction: column;
+  }
+  .team-img-res {
+    display: flex;
+    flex-direction: column;
+  }
+  .team-text-res {
+    width: 296px;
+    margin: auto;
+  }
+
+  .about-top-res {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-hero-img {
+    width: 350px;
+    padding-right: 50px;
+  }
+}
+
+
