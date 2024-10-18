@@ -38,6 +38,15 @@ const Login: React.FC = () => {
     handleLogin(e);
   };
 
+  const handleGoogleSignIn = async () => {
+    const result = await signIn('google', { redirect: false });
+    if (result?.error) {
+      toast.error('Failed to sign in!');
+    } else {
+      toast.success('Successfully signed in with Google!');
+    }
+  };
+
   return (
     <div className="signUp text-white bg-cover w-full bg-center h-screen flex flex-col justify-center items-center">
       <ToastContainer />
@@ -106,7 +115,7 @@ const Login: React.FC = () => {
                 <hr />
                 <p className="pt-5">or Log In with</p>
                 <div className="flex gap-5 justify-center pt-2 border-none">
-                  <button type="button" onClick={() => signIn("google")}>
+                  <button type="button" onClick={handleGoogleSignIn}>
                     <Image
                       src={Google}
                       alt="Google Icon"

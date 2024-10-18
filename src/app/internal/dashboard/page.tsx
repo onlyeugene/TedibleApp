@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-full  text-[#073126] flex">
-      <div className="w-full px-10">
+      <div className="w-full sm:px-10 px-3">
         <div className="sm:relative">
           <Image
             src={banners[currentBannerIndex]}

@@ -103,14 +103,6 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    // async signIn({profile}){
-    //   console.log(profile);
-    //   try {
-    //     await connectMongoDb()
-    //   } catch (error) {
-
-    //   }
-    // }
   },
 };
 

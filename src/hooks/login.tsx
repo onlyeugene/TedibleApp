@@ -17,7 +17,7 @@ export const useLogin = () => {
     if (session) {
       const timer = setTimeout(() => {
         router.push('/internal/dashboard');
-      }, 3000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [session, router]);
