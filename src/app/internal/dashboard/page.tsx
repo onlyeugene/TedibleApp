@@ -22,7 +22,7 @@ const Dashboard = () => {
   }, [banners.length]);
 
   return (
-    <div className="w-full text-[#073126] flex">
+    <div className="w-full  text-[#073126] flex">
       <div className="w-full px-10">
         <div className="sm:relative">
           <Image

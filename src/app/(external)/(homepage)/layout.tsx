@@ -13,22 +13,11 @@ const HomePageLayout: React.FC = () => {
 
   return (
     <>
-      {session ? (
-        <>
-          <Section />
-          <SpecialMenu />
-          <Slider />
-          <Features />
-        </>
-      ) : (
-        <>
-        <Section />
-          <SpecialMenu />
-          <Slider />
-          <Features />
-          <InfoPage />
-        </>
-      )}
+      <Section />
+      <SpecialMenu />
+      <Slider />
+      <Features />
+      {!session && <InfoPage />}
     </>
   );
 };

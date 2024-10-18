@@ -34,7 +34,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
         <div className='w-full h-full'>
           <Header />
-          <div className="bg-gray-200 py-7 h-[calc(100vh-53px)] flex justify-between"> 
+          <div className="sm:bg-[#EDF5FA] bg-white py-7 h-[calc(100vh-53px)] flex justify-between"> 
             {/* formerly 64px  */}
             {children}
             <CartPreview />

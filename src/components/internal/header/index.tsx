@@ -1,5 +1,4 @@
 import Button from "@/components/buttons";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -15,12 +14,17 @@ import { RxAvatar } from "react-icons/rx";
 import { useModal } from "@/hooks/useModal";
 import { useDropdownInternal } from "@/hooks/useDropdown";
 
+// Session Handlers
+import { signOut } from "next-auth/react";
+import { useUserSession } from "@/session/useUserSession";
+
 const Header = () => {
-  const { data: session } = useSession();
-  const user = session?.user;
+  const { session, user } = useUserSession();
+
 
   const { modal, handleOpenModal } = useModal();
-  const { dropdown, handleDropdown, dropdownRef } = useDropdownInternal();
+  const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
+    useDropdownInternal();
 
   if (session) {
     return (
@@ -48,7 +52,7 @@ const Header = () => {
             priority
             className="rounded-full border w-9 py-2 px-2"
           />
-          <Link href='/internal/profile' className="flex items-center gap-2">
+          <Link href="/internal/profile" className="flex items-center gap-2">
             {user?.image ? (
               <Image
                 src={user?.image as string}
@@ -59,17 +63,17 @@ const Header = () => {
                 priority
               />
             ) : (
-              <RxAvatar size={25} style={{ color: 'gray' }} />
+              <RxAvatar size={25} style={{ color: "gray" }} />
             )}
             <h2 className="text-sm">
-              {user?.firstname}
+              {user?.firstname &&
+                user?.firstname.charAt(0).toUpperCase() +
+                  user?.firstname.slice(1).toLowerCase()}
             </h2>
           </Link>
-          <MdOutlineKeyboardArrowDown
-            size={22}
-            style={{ color: "gray" }}
-            onClick={handleDropdown}
-          />
+          <span ref={dropdownTriggerRef} onClick={handleDropdown}>
+            <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
+          </span>
         </div>
 
         {dropdown && (
