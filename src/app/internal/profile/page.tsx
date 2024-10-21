@@ -99,14 +99,15 @@ export default function Profile() {
     <div className="container mx-auto p-4">
       <ToastContainer />
       <h1 className="pb-5 text-xl text-[#0C513F] font-semibold">My Profile</h1>
-      <div className="flex flex-col items-center md:flex-row md:items-start gap-6">
-        <div className="profile-image md:w-1/3 flex flex-col items-center py-24 bg-white rounded-lg shadow-lg relative">
+      <div className="flex flex-col items-center  md:flex-row md:items-start gap-6">
+        <div className="profile-image h-96 md:w-1/3 flex flex-col items-center  p-24 bg-white rounded-lg shadow-lg relative">
           <div className="relative group">
             <Image
               src={imageFile || formData.profileImage}
               alt=""
-              className="rounded-full w-32 h-32 object-cover"   width={100} 
-              height={100} 
+              className="rounded-full w-32 h-32 object-cover"
+              width={100}
+              height={100}
             />
             {!imageFile && formData.profileImage === "/default-avatar.png" && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full">
@@ -127,18 +128,19 @@ export default function Profile() {
               accept="image/*"
               onChange={handleImageChange}
               className="hidden"
+              placeholder="Your Name"
             />
           </div>
           <p className="mt-4 font-semibold text-xl">{`${formData.firstname} ${formData.lastname}`}</p>
         </div>
 
         <div className="personal-info md:w-2/3 bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl text-[#0C513F] font-semibold mb-4">
+          <h2 className="text-xl text-[#0C513F] font-semibold mb-4 input-width">
             Personal Information
           </h2>
           <div className="space-y-4">
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex gap-4 profile-detail">
+              <div className="w-1/2 input-width">
                 <label
                   htmlFor="firstname"
                   className="block text-sm font-medium text-gray-700"
@@ -156,7 +158,7 @@ export default function Profile() {
                   } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-1/2 input-width ">
                 <label
                   htmlFor="lastname"
                   className="block text-sm font-medium text-gray-700"
@@ -176,8 +178,8 @@ export default function Profile() {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex gap-4 profile-detail">
+              <div className="w-1/2 input-width">
                 <label
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
@@ -195,7 +197,7 @@ export default function Profile() {
                   } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-1/2 input-width">
                 <label
                   htmlFor="tsa_id"
                   className="block text-sm font-medium text-gray-700"
@@ -215,7 +217,7 @@ export default function Profile() {
               </div>
             </div>
 
-            <div>
+            <div className="input-width">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
@@ -238,21 +240,60 @@ export default function Profile() {
           {editing ? (
             <button
               onClick={handleSubmit}
-              className="mt-6 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              className="mt-6 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 input-width"
             >
               Save Changes
             </button>
           ) : (
             <button
               onClick={() => setEditing(true)}
-              className="mt-6 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              className="mt-6 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 input-width"
             >
               Edit Profile
             </button>
           )}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .profile-image, .personal-info {
+            padding: ;
+            box-shadow: none;
+            background-color: transparent;
+          }
+
+    .profile-image{ 
+    margin-left: -170px;
+    padding-top:0px;
+    padding-bottom:0px;
+      height: 120px;
+
+    display: flex;
+  flex-direction: row;
+  gap:20px
+  
+    }
+    .personal-info{margin-left: -170px;
+    }
+
+          .profile-info-container {
+            background-color: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          }
+
+                  .profile-detail{display: flex;
+  flex-direction: column;}
+  .input-width{
+  width:100%;
+  margin-left:83px;
+  margin-right:100px}
+        }
+
+
+      `}</style>
     </div>
   );
 }
-``;
