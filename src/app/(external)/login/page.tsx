@@ -115,14 +115,14 @@ const Login: React.FC = () => {
                 <hr />
                 <p className="pt-5">or Log In with</p>
                 <div className="flex gap-5 justify-center pt-2 border-none">
-                  <button type="button" onClick={handleGoogleSignIn}>
+                  <Button type="submit" onClick={handleGoogleSignIn}>
                     <Image
                       src={Google}
                       alt="Google Icon"
                       width={26}
                       height={26}
                     />
-                  </button>
+                  </Button>
 
                   <Image
                     src={TechStudio}
