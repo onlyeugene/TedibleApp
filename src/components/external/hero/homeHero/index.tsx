@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Middle Section - Display Image */}
-      <div className="2xl:w-[62rem] xl:w-[80rem] sm:w-[67rem] border bg-white rounded-full px-[1rem] sm:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
+      <div className="2xl:w-[73rem] xl:w-[81rem] sm:w-[83rem] border bg-white rounded-full px-[1rem] sm:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
         <Image
           src={hoveredItem || defaultImage.src}
           alt="Default"
