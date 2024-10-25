@@ -30,7 +30,7 @@ const Dashboard = () => {
   }, [banners.length]);
 
   return (
-    <div className="w-full sm:px-10 px-3 overflow-hidden">
+    <div className="w-full sm:px-10 px-3 ">
       <div className="sm:relative">
         <Image
           src={banners[currentBannerIndex]}

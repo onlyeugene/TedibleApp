@@ -100,6 +100,7 @@ const Login: React.FC = () => {
               <Button
                 className={`w-full rounded-md py-2 ${loading ? 'cursor-not-allowed bg-gray-300 border-gray-300' : 'bg-tertiary border-tertiary'}`}
                 disabled={loading}
+                type="submit"
               >
                 {loading ? "Logging In..." : "Log In"}
               </Button>
@@ -115,7 +116,7 @@ const Login: React.FC = () => {
                 <hr />
                 <p className="pt-5">or Log In with</p>
                 <div className="flex gap-5 justify-center pt-2 border-none">
-                  <Button type="submit" onClick={handleGoogleSignIn}>
+                  <Button onClick={handleGoogleSignIn} className="border-none">
                     <Image
                       src={Google}
                       alt="Google Icon"
