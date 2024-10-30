@@ -2,16 +2,15 @@ import { connectMongoDb } from "@/lib/mongodb";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
 
-// Typescript interface for the Response object
 interface Params {
   id: string;
 }
 
 // GET user by ID
-export async function GET(req: Request, { params }: { params: Params }) {
+export async function GET(req: Request & { params: Params }) {
   await connectMongoDb();
 
-  const { id } = params;
+  const { id } = req.params; // Adjusted access to `params`
 
   try {
     const user = await User.findById(id);
@@ -30,10 +29,10 @@ export async function GET(req: Request, { params }: { params: Params }) {
   }
 }
 
-//EDIT user by ID
-export async function PUT(req: Request, { params }: { params: Params }) {
+// EDIT user by ID
+export async function PUT(req: Request & { params: Params }) {
   await connectMongoDb();
-  const { id } = params;
+  const { id } = req.params; // Adjusted access to `params`
   const body = await req.json();
 
   try {
@@ -58,20 +57,19 @@ export async function PUT(req: Request, { params }: { params: Params }) {
 }
 
 // DELETE user by ID
-
-export async function DELETE(req: Request, { params }: { params: Params }) {
+export async function DELETE(req: Request & { params: Params }) {
   await connectMongoDb();
 
   try {
-    const user = await User.findByIdAndDelete(params.id);
+    const user = await User.findByIdAndDelete(req.params.id); // Adjusted access to `params`
     if (!user) {
       return NextResponse.json(
-        { message: `User with id ${params.id} not found` },
+        { message: `User with id ${req.params.id} not found` },
         { status: 404 }
       );
     }
     return NextResponse.json(
-      { message: `User with id ${params.id} deleted successfully` },
+      { message: `User with id ${req.params.id} deleted successfully` },
       {
         status: 200,
       }
