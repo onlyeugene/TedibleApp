@@ -40,13 +40,11 @@ export const authOptions: NextAuthOptions = {
           scope: "openid profile email",
         },
       },
-      profile: async (profile) => {
+      async profile(profile) {
         await connectMongoDb();
 
-        // Check if user exists
         const user = await User.findOne({ email: profile.email });
         if (!user) {
-          // If user doesn't exist, create a new user
           const newUser = await User.create({
             id: profile.sub,
             firstname: profile.given_name,
@@ -54,10 +52,10 @@ export const authOptions: NextAuthOptions = {
             email: profile.email,
             image: profile.picture,
           });
-          return newUser; // Return the newly created user
+          return newUser;
         }
 
-        return user; // Return existing user
+        return user;
       },
     }),
     CredentialsProvider({
@@ -66,25 +64,18 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials) => {
+      async authorize(credentials) {
         if (!credentials?.email || !credentials.password) return null;
 
         try {
-          // Connect to MongoDB
           await connectMongoDb();
 
-          // Find user by email
           const user = await User.findOne({ email: credentials.email });
           if (!user) return null;
 
-          // Compare password
-          const passwordsMatch = await bcrypt.compare(
-            credentials.password,
-            user.password
-          );
+          const passwordsMatch = await bcrypt.compare(credentials.password, user.password);
           if (!passwordsMatch) return null;
 
-          // Return user object for NextAuth
           return {
             id: user._id,
             email: user.email,
@@ -102,18 +93,10 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user, session, trigger }) {
-      if (trigger === "update" && session?.firstname) {
-        token.firstname = session.firstname;
-      }
-      if (trigger === "update" && session?.lastname) {
-        token.lastname = session.lastname;
-      }
-      if (trigger === "update" && session?.phone) {
-        token.phone = session.phone;
-      }
-      if (trigger === "update" && session?.image) {
-        token.image = session.image;
-      }
+      if (trigger === "update" && session?.firstname) token.firstname = session.firstname;
+      if (trigger === "update" && session?.lastname) token.lastname = session.lastname;
+      if (trigger === "update" && session?.phone) token.phone = session.phone;
+      if (trigger === "update" && session?.image) token.image = session.image;
 
       if (user) {
         token.id = user.id;
@@ -122,19 +105,17 @@ export const authOptions: NextAuthOptions = {
         token.phone = user.phone;
         token.image = user.image;
       }
-      await User.updateOne(
-        { _id: token.id },
-        {
-          firstname: token.firstname,
-          lastname: token.lastname,
-          phone: token.phone,
-          image: token.image,
-        }
-      );
+
+      await User.updateOne({ _id: token.id }, {
+        firstname: token.firstname,
+        lastname: token.lastname,
+        phone: token.phone,
+        image: token.image,
+      });
+
       return token;
     },
     async session({ session, token }) {
-      // console.log("session callback", { session, token,});
       return {
         ...session,
         user: {
