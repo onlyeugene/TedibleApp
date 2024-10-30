@@ -32,12 +32,12 @@ const Page: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
         <div className="p-[1.5rem]">
           <Image src={stars} alt="Five-star rating" width={100} height={20} />
           <div className="text-[.5rem] lg:text-[1.5rem] mt-2">
-            <p className="z-20 text-red-900 font-bold">{name}</p>
-            <p className="text-gray-600">{restaurant}</p>
+            <p className="z-20 text-black font-bold text-sm md:text-base">{name}</p>
+            <p className="text-gray-600 text-xs md:text-sm">{restaurant}</p>
           </div>
 
           <div className="flex justify-between items-center mt-4">
-            <p className="text-[0.839rem] lg:text-1.3rem font-semibold text-orange-500">{price}</p>
+            <p className="text-lg lg:text-2xl font-semibold text-orange-500">N{price}</p>
             <Image src={plus} alt="Add to cart icon" className="w-4 md:w-6" width={24} height={24} />
           </div>
         </div>

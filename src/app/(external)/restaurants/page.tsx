@@ -1,11 +1,15 @@
 import Image from "next/image";
-
+import menu1 from "@/assets/home/specialmenu/menu 1.svg";
+import menu2 from "@/assets/home/specialmenu/menu 2.svg";
+import menu3 from "@/assets/home/specialmenu/menu 3.svg";
+import menu4 from "@/assets/home/specialmenu/menu 4.svg";
 import space from "@/assets/home/sliderImages/space.svg";
 import kfc from "@/assets/home/sliderImages/kfc.svg";
 import chicken from "@/assets/home/sliderImages/chicken.svg";
 import awoof from "@/assets/home/sliderImages/awoof.svg";
 import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
 import RestaurantHero from "@/components/external/hero/categoryHero";
+import Page from "@/components/cards/menucard";
 export const metadata ={
   title: "Restaurants",
   description: "View all restaurants here and select to a restuatrant to make your order",
@@ -49,35 +53,31 @@ const Vendors = [
 const food = [
   {
     id: 1,
-    itemImage: '',
-    price: 2500,
-    itemName: 'Spicy food',
-    rating: 5,
-    vendor:'Spice Route'
+    image: menu1,
+    price: "2500",
+    name: 'Spicy food',
+    restaurant:'Spice Route'
   },
   {
     id: 2,
-    itemImage: '',
-    price: 3000,
-    itemName: 'Chicken & chips',
-    rating: 4,
-    vendor:'Kenturkey Fried Chicken'
+    image: menu2,
+    price: "3000",
+    name: 'Chicken & chips',
+    restaurant:'Kenturkey Fried Chicken'
   },
   {
     id: 3,
-    itemImage: '',
-    price: 2000,
-    itemName: 'Beef',
-    rating: 5,
-    vendor:'Chicken Republic'
+    image: menu3,
+    price: "2000",
+    name: 'Beef',
+    restaurant:'Chicken Republic'
   },
   {
     id: 4,
-    itemImage: '',
-    price: 1500,
-    itemName: 'Vegetable',
-    rating: 4,
-    vendor:'Awoof Brekete'
+    image: menu4,
+    price: "1500",
+    name: 'Vegetable',
+    restaurant:'Awoof Brekete'
   },
 ]
 
@@ -86,7 +86,7 @@ const food = [
 const Restaurant = () => {
   
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden ">
       <RestaurantHero />
       <div className="px-10 py-7 w-full">
         <h1 className="text-[#073126] text-[28.3px] font-semibold">Category</h1>
@@ -117,19 +117,49 @@ const Restaurant = () => {
         {/* RESTAURANTS AND THEIR FOODS  */}
 
 
+      <div className=" space-y-7">
       <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Spice Route</h1>
       </div>
+      <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+          {food.map((item) => (
+        <Page key={item.id} {...item}  />
+      ))}
       
+      </div>
+      </div>
+      
+      <div className="space-y-7">
       <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Kenturkey fried chicken</h1>
       </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+          {food.map((item) => (
+        <Page key={item.id} {...item}  />
+      ))}
+      
+      </div>
+      </div>
+      <div className="space-y-7">
       <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Chicken Republic</h1>
       </div>
-      <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+          {food.map((item) => (
+        <Page key={item.id} {...item} />
+      ))}
+      </div>
+      </div>
+     <div className="space-y-7">
+     <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Awoof Brekete</h1>
       </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+          {food.map((item) => (
+        <Page key={item.id} {...item} />
+      ))}
+      </div>
+     </div>
       </div>
     </div>
   );
