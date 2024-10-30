@@ -40,7 +40,7 @@ const AboutUs = () => {
     },
   ];
   return (
-    <section className="w-full">
+    <section className="">
       <div className="bg-[#F7FAFC] py-[3rem]">
         <div className="text-center py-[2rem]">
           <h1 className="md:text-[50px] py-[2rem] text-[29px] font-medium">
@@ -48,7 +48,7 @@ const AboutUs = () => {
           </h1>
         </div>
 
-        <div className='flex gap-[2rem] sm:w-full w-full overflow-x-scroll no-scrollbar'>
+        <div className='flex gap-[2rem] container w-11/12 overflow-x-scroll no-scrollbar'>
           {Users.map((user) => (
             <div
               key={user.id}
@@ -76,7 +76,7 @@ const AboutUs = () => {
         
       </div>
 
-      <div className="md:py-[5rem] py-[2rem] md:px-[5rem] px-[2rem]">
+      <div className="container py-10 w-11/12">
         <h1 className="md:text-[50px] py-[2rem] text-[29px] font-medium text-center">
           Meet The Team
         </h1>

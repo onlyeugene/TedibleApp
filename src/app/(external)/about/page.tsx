@@ -85,7 +85,7 @@ const benefits: Benefit[] = [
 
 const AboutHero = () => {
   return (
-    <section className="w-full">
+    <section className="">
       <header className="aboutHero bg-center text-center text-[#ffffff] py-[4rem]">
         <h1 className="text-[50px]">About Us</h1>
         <p className="text-[24px]">
@@ -93,7 +93,7 @@ const AboutHero = () => {
         </p>
       </header>
 
-      <div className="md:px-10 px-[2rem]">
+      <div className="container w-11/12">
         <div className="w-full md:flex grid py-[5rem] gap-[2rem] items-center justify-center">
           <div className="grid grid-cols-2 w-full">
             {images.map((image, index) => (

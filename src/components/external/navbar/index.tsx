@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <div id="top" className="flex items-center justify-between sm:px-10 px-5 py-3 w-full relative">
+    <div id="top" className="flex items-center justify-between  py-3  relative container w-11/12">
       <Link href={"/"}>
         <Image
           src={logo}

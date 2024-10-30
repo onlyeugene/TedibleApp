@@ -120,6 +120,7 @@ export const authOptions: NextAuthOptions = {
         token.firstname = user.firstname;
         token.lastname = user.lastname;
         token.phone = user.phone;
+        token.image = user.image;
       }
       await User.updateOne(
         { _id: token.id },
@@ -146,4 +147,7 @@ export const authOptions: NextAuthOptions = {
       };
     },
   },
+  pages: {
+    error: '',
+  }
 };

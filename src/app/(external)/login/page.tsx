@@ -50,7 +50,7 @@ const Login: React.FC = () => {
   return (
     <div className="signUp text-white bg-cover w-full bg-center h-screen flex flex-col justify-center items-center">
       <ToastContainer />
-      <div className="items-center flex flex-col">
+      <div className="items-center flex flex-col container">
         <h1 className="text-[32px] font-medium pb-10">Log In</h1>
         <div className="">
           <div className="flex justify-between text-sm gap-20">

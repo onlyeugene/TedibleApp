@@ -7,6 +7,7 @@ import locate from "@/assets/home/contact/locate.svg";
 import map from "@/assets/home/contact/map.svg";
 import Image from "next/image";
 import Link from "next/link";
+import MapComponent from "@/components/map";
 
 export const metadata ={
   title: "Contact Us",
@@ -90,6 +91,9 @@ const Contact: React.FC = () => {
             mail="contact@tedible.com"
           />
         </div>
+      </div>
+      <div className="pb-20">
+        <MapComponent />
       </div>
     </div>
   );
