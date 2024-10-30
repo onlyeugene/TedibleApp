@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import menu1 from "@/assets/home/specialmenu/menu 1.svg";
 import menu2 from "@/assets/home/specialmenu/menu 2.svg";
 import menu3 from "@/assets/home/specialmenu/menu 3.svg";
@@ -8,9 +8,6 @@ import menu6 from "@/assets/home/specialmenu/menu 6.svg";
 import menu7 from "@/assets/home/specialmenu/menu 7.svg";
 import menu8 from "@/assets/home/specialmenu/menu 8.svg";
 import Page from "@/components/cards/menucard/index";
-import Image from "next/image";
-import stars from "@/assets/home/specialmenu/five stars.svg";
-import plus from "@/assets/home/specialmenu/plus icon.svg";
 
 const SpecialMenu: React.FC = () => {
   return (
