@@ -38,7 +38,7 @@ const SpecialMenu: React.FC = () => {
 
   return (
     <div>
-      <div className="w-full py-4">
+      <div className="w-full py-4 px-20">
         <div className="text-center">
           <h1 className="sm:text-[50px] text-[29px] text text-center font-medium">Special Menu</h1>
           <p className="sm:text-lg text-center text-sm">
@@ -88,7 +88,7 @@ const SpecialMenu: React.FC = () => {
             </div>
           ))}
         </div> */}
-        <p onClick={handleSeeMore} className="seemorecart">
+        <p onClick={handleSeeMore} className="text-end">
           {showMore ? "Show Less" : "See More"}
         </p>
       </div>
