@@ -22,11 +22,11 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
   // Render the full internal layout once the spinner delay is over and session exists
   if (session) {
     return (
-      <div className='flex'>
+      <div className='flex w-full'>
         <Sidebar />
         <div className='w-full h-full'>
           <Header />
-          <div className='sm:bg-[#EDF5FA] bg-white sm:py-7 py-3 h-[calc(100vh-53px)] flex justify-between'>
+          <div className='w-full sm:bg-[#EDF5FA] bg-white sm:py-7 py-3 h-full flex justify-between'>
             {children}
             <CartPreview />
           </div>

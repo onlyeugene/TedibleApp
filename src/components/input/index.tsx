@@ -7,9 +7,10 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // onChange handler
   className?: string;       // Optional className for custom styles
   required?: boolean
+  disabled?: boolean
 }
 
-const Input: React.FC<InputProps> = ({ type = 'text', value, placeholder, onChange, className, required }) => {
+const Input: React.FC<InputProps> = ({ type = 'text', value, placeholder, onChange, className, required, disabled }) => {
   return (
     <input
       type={type}
@@ -17,6 +18,7 @@ const Input: React.FC<InputProps> = ({ type = 'text', value, placeholder, onChan
       placeholder={placeholder}
       onChange={onChange}
       required={required}
+      disabled={disabled}
       className={`border outline-none text-black ${className}`} // Add default styles + optional className
     />
   );

@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
 import vendorImage from '@/assets/home/featuresImages/vendor.png';
+import Button from '../buttons';
 
 const InfoPage: React.FC = () => {
   return (
-    <section className='flex sm:flex-row flex-col gap-10 px-10 py-5 justify-center items-center w-full mx-auto container'>
+    <section className='flex sm:flex-row flex-col gap-10 px- py-5 justify-center items-center w-full mx-auto container'>
       <div className='flex flex-col gap-[.5rem]'>
         <h1 className='md:text-[80px] text-[45px] font-light md:leading-[5.5rem] leading-[3rem]'>
           BECOME <br /> A VENDOR
@@ -25,9 +26,9 @@ const InfoPage: React.FC = () => {
         ))}
 
         <div className='pt-[1.5rem]'>
-          <button className='border bg-[#FF7834] text-white rounded-xl py-[1rem] px-[2rem]'>
+          <Button className='border bg-[#FF7834] text-white rounded-xl py-[1rem] px-[2rem]'>
             Become a Vendor
-          </button>
+          </Button>
         </div>
       </div>
 

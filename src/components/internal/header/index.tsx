@@ -61,7 +61,7 @@ const Header = () => {
               <Image src={logo} alt="Logo" width={100} priority />
             </Link>
           </div>
-          <div className="flex items-center gap-2 w-1/2 justify-end">
+          <div className="flex items-center gap-2 justify-end">
             <Image
               src={notification}
               alt="notification icon"
@@ -96,7 +96,7 @@ const Header = () => {
             <span
               ref={dropdownTriggerRef}
               onClick={handleDropdown}
-              className="sm:block hidden"
+              className="sm:block hidden "
             >
               <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
             </span>
@@ -129,7 +129,7 @@ const Header = () => {
 
         {modal && (
           <div
-            className="absolute top-0 left-0 w-full h-screen bg-[#00000048] bg-opacity-50 flex justify-center items-center"
+            className="absolute top-0 left-0 w-full h-screen bg-[#00000048] bg-opacity-50 flex justify-center items-center z-10"
             onClick={handleOpenModal}
           >
             <div

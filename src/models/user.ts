@@ -20,6 +20,9 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  phone:{
+    type:Number,
+  },
   provider: {
     type: String,
   },
@@ -27,5 +30,5 @@ const userSchema = new Schema({
   timestamps: true,
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+const User = mongoose.models.Users || mongoose.model("Users", userSchema);
 export default User;
