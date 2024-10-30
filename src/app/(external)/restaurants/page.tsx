@@ -6,13 +6,12 @@ import chicken from "@/assets/home/sliderImages/chicken.svg";
 import awoof from "@/assets/home/sliderImages/awoof.svg";
 import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
 import RestaurantHero from "@/components/external/hero/categoryHero";
-
 export const metadata ={
   title: "Restaurants",
   description: "View all restaurants here and select to a restuatrant to make your order",
 }
 
-
+const products = []
 
 const Vendors = [
   {
@@ -47,14 +46,52 @@ const Vendors = [
   },
 ];
 
+const food = [
+  {
+    id: 1,
+    itemImage: '',
+    price: 2500,
+    itemName: 'Spicy food',
+    rating: 5,
+    vendor:'Spice Route'
+  },
+  {
+    id: 2,
+    itemImage: '',
+    price: 3000,
+    itemName: 'Chicken & chips',
+    rating: 4,
+    vendor:'Kenturkey Fried Chicken'
+  },
+  {
+    id: 3,
+    itemImage: '',
+    price: 2000,
+    itemName: 'Beef',
+    rating: 5,
+    vendor:'Chicken Republic'
+  },
+  {
+    id: 4,
+    itemImage: '',
+    price: 1500,
+    itemName: 'Vegetable',
+    rating: 4,
+    vendor:'Awoof Brekete'
+  },
+]
+
+// const displayedProducts= [{id: 1, itemImage: '', price: 4000, itemName: 'spicy food'}]
+
 const Restaurant = () => {
+  
   return (
     <div className="w-full overflow-hidden">
       <RestaurantHero />
       <div className="px-10 py-7 w-full">
         <h1 className="text-[#073126] text-[28.3px] font-semibold">Category</h1>
        <div className="w-full">
-       <div className="flex gap-5 justify-between items-center text-center pt-4 sm:w-full w-[28rem] overflow-scroll">
+       <div className="flex gap-5 justify-between items-center text-center pt-4 sm:w-full w-[28rem] overflow-x-scroll">
           {Vendors.map((item) => (
             <div 
               key={item.id} 
@@ -83,6 +120,7 @@ const Restaurant = () => {
       <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Spice Route</h1>
       </div>
+      
       <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Kenturkey fried chicken</h1>
       </div>

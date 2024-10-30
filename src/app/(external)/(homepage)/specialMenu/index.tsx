@@ -1,28 +1,29 @@
 'use client'
 
-
-import React, {useState } from "react";
+import React, {useState,useEffect } from "react";
 // import axiosInstance from "../../../utils/axiosInstance";
+import Image from 'next/image'
 
 
-// interface Product {
-//   id: number;
-//   itemName: string;
-//   itemImage: string;
-//   price: number;
-// }
+interface Product {
+  id: number;
+  itemName: string;
+  itemImage: string;
+  price: number;
+}
+
 
 const SpecialMenu: React.FC = () => {
-  // const [products, setProducts] = useState<Product[]>([]);
-  // const [error, setError] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [showMore, setShowMore] = useState(false);
 
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
-  //       // const response = await axiosInstance.get("/api/product");
-  //       // const productData: Product[] = response.data;
-  //       // setProducts(productData);
+  //       const response = await axiosInstance.get("/api/product");
+  //       const productData: Product[] = response.data;
+  //       setProducts(productData);
   //     } catch (error) {
   //       setError("Oops! Something went wrong, please refresh.");
   //     }
@@ -34,7 +35,7 @@ const SpecialMenu: React.FC = () => {
     setShowMore((prevShowMore) => !prevShowMore);
   };
 
-  // const displayedProducts = showMore ? products : products.slice(0, 4);
+  const displayedProducts = showMore ? products : products.slice(0, 4);
 
   return (
     <div>
@@ -46,7 +47,7 @@ const SpecialMenu: React.FC = () => {
             buds <br className="sm:block hidden"/> with unique and seasonal <br className="sm:hidden block"/> dishes
           </p>
         </div>
-        {/* <div className="categoryproducts">
+        <div className="categoryproducts">
           {displayedProducts.map((product) => (
             <div key={product.id}>
               <div className="firstproduct">
@@ -87,7 +88,7 @@ const SpecialMenu: React.FC = () => {
               )}
             </div>
           ))}
-        </div> */}
+        </div>
         <p onClick={handleSeeMore} className="seemorecart">
           {showMore ? "Show Less" : "See More"}
         </p>
