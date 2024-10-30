@@ -15,8 +15,6 @@ export const metadata ={
   description: "View all restaurants here and select to a restuatrant to make your order",
 }
 
-const products = []
-
 const Vendors = [
   {
     id: 1,
