@@ -14,7 +14,7 @@ interface PageProps {
 // Use the PageProps interface as the type for the component props
 const Page: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3.198rem]">
+    
       <div className=" -mt-1 relative bg-white shadow-[0px_0px_12px_8px_rgba(0,0,0,0.03)] rounded-xl">
         {/* Image Section */}
         <div>
@@ -42,7 +42,6 @@ const Page: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
