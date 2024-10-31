@@ -21,7 +21,7 @@ const Page: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
           <Image
             src={image}
             alt="Food item"
-            className="w-full h-full rounded-t-xl"
+            className="w-full h-full"
             width={200}
             height={200}
             objectFit="cover"

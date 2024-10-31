@@ -11,7 +11,7 @@ import Page from "@/components/cards/menucard/index";
 
 const SpecialMenu: React.FC = () => {
   return (
-    <section className="relative py-4 container mx-auto px-5">
+    <section className="relative py-4 container w-11/12">
         <h1 className="sm:text-[50px] text-[29px] text font-medium text-center">
           Special Menu
         </h1>
@@ -26,49 +26,49 @@ const SpecialMenu: React.FC = () => {
             image={menu1}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu2}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu3}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu4}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu5}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu6}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu7}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
           <Page
             image={menu8}
             name="Chicken & Chips"
             restaurant="Macdonalds"
-            price="N2500"
+            price="2500"
           />
         </div>
     </section>
