@@ -40,11 +40,11 @@ const Hero: React.FC = () => {
 
   return (
     <div className="w-full bg-[#073126] ">
-      <div className='w-11/12 container text-white sm:flex sm:flex-row flex flex-col-reverse justify-center items-center sm:px-10 px-[3rem] py-[2rem] gap-[1rem]'>
+      <div className='w-11/12 container text-white sm:flex sm:flex-row flex flex-col-reverse justify-center items-center  py-[2rem] gap-[1rem]'>
     
     {/* Left Section - Heading and Button */}    
       <div className="flex flex-col gap-[1.5rem] sm:justify-start justify-center sm:items-start items-center sm:leading-[2rem] leading-[1.5rem] w-full">
-        <h1 className="sm:text-[60px] text-[40px] font-bold">MEAL TIME</h1>
+        <h1 className="sm:text-[3.75rem] md:text-[2rem] xl:text-[2.5rem] font-bold">MEAL TIME</h1>
         <h2 className="sm:text-[35px] text-[20px] font-semibold sm:font-light sm:text-start text-center">
           FUEL YOUR <br className='sm:hidden block'/> STUDY
         </h2>
