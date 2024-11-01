@@ -74,7 +74,7 @@ const menu = [
 // Page Rendering
 const SpecialMenu: React.FC = () => {
   return (
-    <section className="relative my-[3.25rem] container w-11/12">
+    <section className="relative mt-[.5rem] mb-[3.25rem] lg:my-[3.25rem] container w-11/12">
       <div className="grid place-content-center pb-[60px]">
         <h1 className="sm:text-[50px] text-[29px] text font-medium text-center">
           Special Menu
@@ -85,16 +85,20 @@ const SpecialMenu: React.FC = () => {
         </h5>
       </div>
 
-      {/* Menu Card */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3.198rem] gap-y-[100px]">
-        {menu.map((item) => (
-          <Page key={item.id} {...item} />
-        ))}
+      <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+        {/* Menu Card */}
+        <div className="flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px]">
+          {menu.map((item) => (
+            <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+            <Page  {...item} />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="flex justify-end">
         <Link href="/restaurants">
-          <p className="mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
             See more
             <span>
               <Image src={arrowright} alt="arrow right" />
