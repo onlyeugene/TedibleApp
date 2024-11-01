@@ -5,7 +5,7 @@ import Button from '../buttons';
 
 const InfoPage: React.FC = () => {
   return (
-    <section className='flex sm:flex-row flex-col gap-10 px- py-5 justify-center items-center w-full mx-auto container'>
+    <section className='flex sm:flex-row flex-col gap-10 py-5 justify-center items-center w-11/12 container'>
       <div className='flex flex-col gap-[.5rem]'>
         <h1 className='md:text-[80px] text-[45px] font-light md:leading-[5.5rem] leading-[3rem]'>
           BECOME <br /> A VENDOR
