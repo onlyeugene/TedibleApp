@@ -9,6 +9,8 @@ import chicken from "@/assets/home/sliderImages/chicken.svg";
 import awoof from "@/assets/home/sliderImages/awoof.svg";
 import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
 import RestaurantHero from "@/components/external/hero/categoryHero";
+import Link from "next/link";
+import arrowright from "@/assets/home/specialmenu/arrowright.svg";
 import Page from "@/components/cards/menucard";
 export const metadata ={
   title: "Restaurants",
@@ -89,7 +91,7 @@ const Restaurant = () => {
       <div className="px-10 py-7 w-full">
         <h1 className="text-[#073126] text-[28.3px] font-semibold">Category</h1>
        <div className="w-full">
-       <div className="flex gap-5 justify-between items-center text-center pt-4 sm:w-full w-[28rem] overflow-x-scroll">
+       <div className="flex gap-5 justify-between items-center text-center pt-4 sm:w-full w-[28rem] scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
           {Vendors.map((item) => (
             <div 
               key={item.id} 
@@ -115,47 +117,107 @@ const Restaurant = () => {
         {/* RESTAURANTS AND THEIR FOODS  */}
 
 
-      <div className=" space-y-7">
-      <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
+      <div className=" ">
+      <div className="w-full border mt-10 mb-3 lg:mb-16 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Spice Route</h1>
       </div>
-      <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+      <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+      <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
           {food.map((item) => (
-        <Page key={item.id} {...item}  />
+        <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+          <Page  {...item}  />
+        </div>
       ))}
-      
+      </div>
+      </div>
+      <div className="flex justify-end">
+        <Link href="/restaurants">
+          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+            See more
+            <span>
+              <Image src={arrowright} alt="arrow right" />
+            </span>
+          </p>
+        </Link>
       </div>
       </div>
       
-      <div className="space-y-7">
-      <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
+      <div className="">
+      <div className="w-full border mt-10 mb-3 lg:mb-16 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Kenturkey fried chicken</h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+      <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+      <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
           {food.map((item) => (
-        <Page key={item.id} {...item}  />
+        <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+          <Page  {...item}  />
+        </div>
+        
       ))}
       
       </div>
       </div>
-      <div className="space-y-7">
-      <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
+      <div className="flex justify-end">
+        <Link href="/restaurants">
+          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+            See more
+            <span>
+              <Image src={arrowright} alt="arrow right" />
+            </span>
+          </p>
+        </Link>
+      </div>
+      </div>
+      <div className="">
+      <div className="w-full border mt-10 mb-3 lg:mb-16 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Chicken Republic</h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+      <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+      <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
           {food.map((item) => (
-        <Page key={item.id} {...item} />
+        <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+          <Page  {...item}  />
+        </div>
+        
       ))}
+      
       </div>
       </div>
-     <div className="space-y-7">
-     <div className="w-full border mt-10 px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
+      <div className="flex justify-end">
+        <Link href="/restaurants">
+          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+            See more
+            <span>
+              <Image src={arrowright} alt="arrow right" />
+            </span>
+          </p>
+        </Link>
+      </div>
+      </div>
+     <div className="">
+     <div className="w-full border mt-10 mb-3 lg:mb-16  px-3 rounded-md sm:py-4 py-1 bg-[#073126]">
         <h1 className="text-primary sm:text-[32px] text-base font-light">Awoof Brekete</h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[3.198rem] ">
+      <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+      <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
           {food.map((item) => (
-        <Page key={item.id} {...item} />
+        <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+          <Page  {...item}  />
+        </div>
+        
       ))}
+      
+      </div>
+      </div>
+      <div className="flex justify-end">
+        <Link href="/restaurants">
+          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+            See more
+            <span>
+              <Image src={arrowright} alt="arrow right" />
+            </span>
+          </p>
+        </Link>
       </div>
      </div>
       </div>
