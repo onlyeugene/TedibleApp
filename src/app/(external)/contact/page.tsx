@@ -16,7 +16,7 @@ export const metadata ={
 
 const Contact: React.FC = () => {
   return (
-    <div className="w-full flex flex-col justify-center px-10">
+    <div className="w-full flex flex-col justify-center px-10 container w-11/12">
       <div className="mb-8 flex flex-col sm:items-start sm:justify-start items-center justify-center">
         <h1 className="sm:text-[32px] text-[29px] font-medium">Write us directly</h1>
         <p className="sm:text-base text-sm text-center sm:text-start">

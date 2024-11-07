@@ -1,12 +1,15 @@
 import InternalLayout from "./internal-layout";
 
-
 export const metadata = {
-  title: 'Tedible',
-  description: 'Internal Page for Tedible.',
+  title: "Tedible",
+  description: "Internal Page for Tedible.",
 };
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return <InternalLayout>{children}</InternalLayout>;
 };
 

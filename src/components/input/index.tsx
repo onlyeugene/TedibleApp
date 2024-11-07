@@ -1,16 +1,24 @@
-import React from 'react';
+import React from "react";
 
 interface InputProps {
-  type?: string;            // Type of input (e.g., text, password, email)
-  value?: string;           // Value of the input field
-  placeholder?: string;     // Placeholder text
+  type?: string; // Type of input (e.g., text, password, email)
+  value?: string; // Value of the input field
+  placeholder?: string; // Placeholder text
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // onChange handler
-  className?: string;       // Optional className for custom styles
-  required?: boolean
-  disabled?: boolean
+  className?: string; // Optional className for custom styles
+  required?: boolean;
+  disabled?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ type = 'text', value, placeholder, onChange, className, required, disabled }) => {
+const Input: React.FC<InputProps> = ({
+  type = "text",
+  value,
+  placeholder,
+  onChange,
+  className,
+  required,
+  disabled,
+}) => {
   return (
     <input
       type={type}

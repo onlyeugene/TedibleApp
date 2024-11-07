@@ -84,8 +84,9 @@ const food = [
 const Restaurant = () => {
   
   return (
-    <div className="w-full overflow-hidden ">
+    <div className="w-full">
       <RestaurantHero />
+      <div className="overflow-hidden container w-11/12">
       <div className="px-10 py-7 w-full">
         <h1 className="text-[#073126] text-[28.3px] font-semibold">Category</h1>
        <div className="w-full">
@@ -159,6 +160,7 @@ const Restaurant = () => {
       </div>
      </div>
       </div>
+    </div>
     </div>
   );
 };

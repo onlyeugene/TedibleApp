@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
@@ -8,14 +8,20 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset"; // Corrected type to string for HTML button types
 }
 
-const Button: React.FC<ButtonProps> = ({ children, className, onClick, disabled, type = "button" }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  className,
+  onClick,
+  disabled,
+  type = "button",
+}) => {
   const baseStyles = "border text-sm"; // Base button styles
 
   return (
-    <button 
-      className={`${baseStyles} ${className}`} 
-      onClick={onClick} 
-      disabled={disabled} 
+    <button
+      className={`${baseStyles} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
       type={type} // Corrected the type prop
     >
       {children}
