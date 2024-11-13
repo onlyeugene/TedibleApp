@@ -9,8 +9,6 @@ import banner4 from "@/assets/internal/dashboard/banner4.svg";
 // import MenuCard from '../menu/MenuCard';
 import Image from "next/image";
 import { Restaurant_Links, Top_Order } from "@/lib/consts/top-order";
-import Button from "@/components/buttons";
-import favorite from "@/assets/internal/dashboard/favorite.svg";
 import star from "@/assets/internal/dashboard/star.svg";
 import MenuCard from "@/components/cards/menucard";
 
