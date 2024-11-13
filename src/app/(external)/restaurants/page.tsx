@@ -12,6 +12,7 @@ import RestaurantHero from "@/components/external/hero/categoryHero";
 import Link from "next/link";
 import arrowright from "@/assets/home/specialmenu/arrowright.svg";
 import Page from "@/components/cards/menucard";
+// import 
 export const metadata ={
   title: "Restaurants",
   description: "View all restaurants here and select to a restuatrant to make your order",
