@@ -72,7 +72,7 @@ const Dashboard = () => {
                   src={restaurant.image}
                   alt="Restaurant image"
                   className={`rounded-t-xl`}
-                  onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
+                  // onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
 
                 />
               </div>
