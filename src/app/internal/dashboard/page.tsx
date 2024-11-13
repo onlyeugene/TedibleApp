@@ -15,7 +15,7 @@ import MenuCard from "@/components/cards/menucard";
 // ICONS
 import { IoIosBicycle } from "react-icons/io";
 import { CiClock1 } from "react-icons/ci";
-import {  useRouter } from "next/navigation";
+// import {  useRouter } from "next/navigation";
 
 const Dashboard = () => {
   const banners = [banner, banner1, banner2, banner3, banner4]; // Add more banners if needed
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   // const pathname = usePathname()
 
-  const router = useRouter()
+  // const router = useRouter()
 
   useEffect(() => {
     const interval = setInterval(() => {
