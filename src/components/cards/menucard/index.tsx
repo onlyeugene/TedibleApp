@@ -21,7 +21,7 @@ interface PageProps {
 // Use the PageProps interface as the type for the component props
 const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
   const router = useRouter(); // Define router
-  const { session, user } = useUserSession();
+  const { session} = useUserSession();
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
   // Toggle fill state on click
