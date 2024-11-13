@@ -1,19 +1,19 @@
 'use client'
 
-import Section from "@/components/external/hero/homeHero";
 import React from "react";
 import SpecialMenu from "./specialMenu";
 import Slider from "@/components/ui/slider";
 import Features from "./features";
 import InfoPage from "@/components/vendor-info";
 import { useSession } from "next-auth/react";
+import Hero from "@/components/external/hero/homeHero";
 
 const HomePageLayout: React.FC = () => {
   const { data: session } = useSession();
 
   return (
     <>
-      <Section />
+      <Hero/>
       <SpecialMenu />
       <Slider />
       <Features />

@@ -16,10 +16,15 @@ import star from "@/assets/internal/dashboard/star.svg";
 // ICONS
 import { IoIosBicycle } from "react-icons/io";
 import { CiClock1 } from "react-icons/ci";
+import {  useRouter } from "next/navigation";
 
 const Dashboard = () => {
   const banners = [banner, banner1, banner2, banner3, banner4]; // Add more banners if needed
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+
+  // const pathname = usePathname()
+
+  const router = useRouter()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,7 +69,9 @@ const Dashboard = () => {
                 <Image
                   src={restaurant.image}
                   alt="Restaurant image"
-                  className="rounded-t-xl"
+                  className={`rounded-t-xl`}
+                  onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
+
                 />
               </div>
               <div className="px-3 py-3 sm:bg-white  rounded-b-xl sm:w-full w-[12rem]">

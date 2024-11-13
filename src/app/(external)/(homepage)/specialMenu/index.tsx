@@ -89,8 +89,11 @@ const SpecialMenu: React.FC = () => {
         {/* Menu Card */}
         <div className="flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px]">
           {menu.map((item) => (
-            <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
-            <Page  {...item} />
+            <div
+              key={item.id}
+              className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto"
+            >
+              <Page {...item} />
             </div>
           ))}
         </div>
