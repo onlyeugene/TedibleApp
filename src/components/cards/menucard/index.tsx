@@ -1,7 +1,14 @@
-import React from "react";
+// MAKE SURE A LOGGED OUT USER CANNOT FAVOURITE A CARD
+// THE FAVORITE ICON BECOMES FILLED WITH THE TERTIARY COLOR WHEN CLICKED
+// THE FAVOURITES PAGE IS POPULATED WITH THE REATAURANTS THAT HAVE BEEN FAVOURITED
+"use client";
+import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 import stars from "@/assets/home/specialmenu/five stars.svg";
-import plus from "@/assets/home/specialmenu/plus icon.svg";
+import Button from "@/components/buttons";
 import Image from "next/image";
+import { useUserSession } from "@/session/useUserSession";
+
 
 // Define the props interface for the component
 interface PageProps {
@@ -12,40 +19,69 @@ interface PageProps {
 }
 
 // Use the PageProps interface as the type for the component props
-const Page: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
+const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
+  const router = useRouter(); // Define router
+  const { session} = useUserSession();
+  const [isFilled, setIsFilled] = useState<boolean>(false);
+
+  // Toggle fill state on click
+  const handleClick = (): void => {
+    if(session)
+     { setIsFilled(!isFilled);}
+    else{
+      router.push('/login');
+    }
+  };
   return (
-    <div className="flex flex-col gap-[15px] lg:gap-[21px] max-w-[27.727rem] bg-white shadow-[0px_4px_38px_0px_rgba(0,0,0,0.25)] rounded-[2.188rem]">
+    <div className="flex flex-col gap-[15px] lg:gap-[21px] bg-white border-primary shadow-xl rounded-[2.188rem] relative">
       {/* Image Section */}
       <div>
         <Image
           src={image}
-          alt="Food item"
-          className="w-[27.727rem] lg:-mt-8 transition-transform duration-300 ease-in-out transform cursor-pointer"
-          height={200}
+          alt="item image"
+          priority
+          className="rounded-[2.188rem] rounded-b-[7rem] w-full"
         />
+        <svg
+          onClick={handleClick}
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`cursor-pointer transition-colors duration-300 absolute top-4 right-3
+            ${isFilled ? 'fill-red-500' : 'fill-none stroke-gray-500'}`}
+        >
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
       </div>
 
       {/* Content Section */}
       <div className="px-[.8rem] lg:px-[1.3rem] pb-[1rem] lg:pb-[1.5rem]">
-        <Image src={stars} alt="Five-star rating" className=""/>
-        <div className="text-[.5rem] lg:text-[1.5rem] mt-2">
-          <p className="z-20 text-black text-[0.8rem] md:text-sm lg:text-[16px] 2xl:text-lg font-semibold">
+        <Image src={stars} alt="Five-star rating" className="" priority />
+        <div className="text-[.5rem] lg:text-[1.5rem] w-full">
+          <p className="text-black text-[0.8rem] md:text-sm lg:text-base 2xl:text-lg font-semibold min-w-[60ch]">
             {name}
           </p>
-          <p className="text-black text-xs lg:text-sm 2xl:text-base font-light">
+          <p className="text-black text-xs lg:text-sm 2xl:text-base font-light min-w-[60ch]">
             {restaurant}
           </p>
         </div>
 
         <div className="flex justify-between items-center">
           <p className="text-[0.839rem] lg:text-[1.3rem] font-semibold text-tertiary pt-2">
-            N{price}
+            &#8358;{price}
           </p>
-          <button className="bg-tertiary p-[.3rem] lg:p-[.625rem] rounded-full hover:bg-orange-400"><Image src={plus} alt="Add to Cart icon" className="w-4 lg:w-7"/></button>
+          <Button className="text-white text-xl border bg-tertiary font-bold border-tertiary w-8 h-8 flex items-center justify-center rounded-full">
+            &#43;
+          </Button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default MenuCard;
