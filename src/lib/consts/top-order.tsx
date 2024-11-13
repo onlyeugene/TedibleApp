@@ -14,56 +14,56 @@ import food4 from '@/assets/internal/dashboard/image4.svg'
 export const Top_Order =[
     {
         id: 1,
-        title: 'Chicken & Chips',
+        name: 'Chicken & Chips',
         restaurant:`Muna Bee's Kitchen`,
         price: '2500',
         image: item
     },
     {
         id: 2,
-        title: 'Wings & Sauce',
+        name: 'Wings & Sauce',
         restaurant:`Chicken Republic`,
         price: '3000',
         image: item2
     },
     {
         id: 3,
-        title: 'Full Chicken',
+        name: 'Full Chicken',
         restaurant:`The Place`,
         price: '4300',
         image: item3
     },
     {
         id: 4,
-        title: 'Smoked Chicken',
+        name: 'Smoked Chicken',
         restaurant:`KFC`,
         price: '4000',
         image: item4
     },
     {
         id: 5,
-        title: 'Chicken & Chips',
+        name: 'Chicken & Chips',
         restaurant:`Spicy Kitchen`,
         price: '5000',
         image: item5
     },
     {
         id: 6,
-        title: 'Sugar Rush',
+        name: 'Sugar Rush',
         restaurant:`Muna Bee's Kitchen`,
         price: '2300',
         image: item6
     },
     {
         id: 7,
-        title: 'Vegan Salad',
+        name: 'Vegan Salad',
         restaurant:`Spicy Kitchen`,
         price: '3300',
         image: item7
     },
     {
         id: 8,
-        title: 'Omelet',
+        name: 'Omelet',
         restaurant:`KFC`,
         price: '1500',
         image: item8

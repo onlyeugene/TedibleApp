@@ -9,14 +9,13 @@ import banner4 from "@/assets/internal/dashboard/banner4.svg";
 // import MenuCard from '../menu/MenuCard';
 import Image from "next/image";
 import { Restaurant_Links, Top_Order } from "@/lib/consts/top-order";
-import Button from "@/components/buttons";
-import favorite from "@/assets/internal/dashboard/favorite.svg";
 import star from "@/assets/internal/dashboard/star.svg";
+import MenuCard from "@/components/cards/menucard";
 
 // ICONS
 import { IoIosBicycle } from "react-icons/io";
 import { CiClock1 } from "react-icons/ci";
-import {  useRouter } from "next/navigation";
+// import {  useRouter } from "next/navigation";
 
 const Dashboard = () => {
   const banners = [banner, banner1, banner2, banner3, banner4]; // Add more banners if needed
@@ -24,7 +23,7 @@ const Dashboard = () => {
 
   // const pathname = usePathname()
 
-  const router = useRouter()
+  // const router = useRouter()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,13 +63,16 @@ const Dashboard = () => {
         </div>
         <div className="flex gap-3 text-secondary lg:w-full overflow-scroll sm:w-[37rem]">
           {Restaurant_Links.map((restaurant) => (
-            <div key={restaurant.id} className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md">
+            <div
+              key={restaurant.id}
+              className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md"
+            >
               <div>
                 <Image
                   src={restaurant.image}
                   alt="Restaurant image"
                   className={`rounded-t-xl`}
-                  onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
+                  // onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
 
                 />
               </div>
@@ -111,45 +113,15 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
-      <div className="w-full text-secondary mt-10">
+      <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
         <h1 className="text-2xl font-semibold">Top Order</h1>
-        <div className="sm:grid sm:grid-cols-4  gap-5 mt-4 overflow-scroll flex">
+        <div className="lg:grid lg:grid-cols-4 mt-4 flex gap-[1.188rem] lg:gap-y-[100px]">
           {Top_Order.map((item) => (
             <div
               key={item.id}
-              className="border bg-primary sm:border-primary shadow-xl rounded-3xl relative"
+              className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto"
             >
-              <Image
-                src={item.image}
-                alt="item image"
-                priority
-                className="rounded-[2rem] rounded-b-[7rem]"
-              />
-              <Image
-                src={favorite}
-                alt="favorite icon"
-                priority
-                className="absolute top-4 right-3"
-              />
-              <div className="px-4 pt-4 sm:w-full  w-[10rem]">
-                <Image src={star} alt="rating" priority />
-                <div className="w-full">
-                  <h2 className="sm:text-sm text-xs font-semibold">
-                    {item.title}
-                  </h2>
-                </div>
-                <div className="w-full">
-                  <p className="text-[10.29px] font-light">{item.restaurant}</p>
-                </div>
-                <div className="flex justify-between items-center h-10">
-                  <span className="text-tertiary sm:text-lg text-[13.42px] font-semibold">
-                    &#8358;{item.price}
-                  </span>
-                  <Button className="text-white border bg-tertiary font-bold border-tertiary w-5 h-5 flex items-center justify-center rounded-full">
-                    &#43;
-                  </Button>
-                </div>
-              </div>
+              <MenuCard {...item} />
             </div>
           ))}
         </div>
