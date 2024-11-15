@@ -11,8 +11,8 @@ import sweetsensation from "@/assets/home/sliderImages/sweetsensation.svg";
 import RestaurantHero from "@/components/external/hero/categoryHero";
 import Link from "next/link";
 import arrowright from "@/assets/home/specialmenu/arrowright.svg";
-import Page from "@/components/cards/menucard";
-// import 
+import MenuCard from "@/components/cards/menucard/index";
+import { Top_Order } from "@/lib/consts/top-order";
 export const metadata ={
   title: "Restaurants",
   description: "View all restaurants here and select to a restuatrant to make your order",
@@ -51,36 +51,36 @@ const Vendors = [
   },
 ];
 
-const food = [
-  {
-    id: 1,
-    image: menu1,
-    price: "2500",
-    name: 'Spicy food',
-    restaurant:'Spice Route'
-  },
-  {
-    id: 2,
-    image: menu2,
-    price: "3000",
-    name: 'Chicken & chips',
-    restaurant:'Kenturkey Fried Chicken'
-  },
-  {
-    id: 3,
-    image: menu3,
-    price: "2000",
-    name: 'Beef',
-    restaurant:'Chicken Republic'
-  },
-  {
-    id: 4,
-    image: menu4,
-    price: "1500",
-    name: 'Vegetable',
-    restaurant:'Awoof Brekete'
-  },
-]
+// const food = [
+//   {
+//     id: 1,
+//     image: menu1,
+//     price: "2500",
+//     name: 'Spicy food',
+//     restaurant:'Spice Route'
+//   },
+//   {
+//     id: 2,
+//     image: menu2,
+//     price: "3000",
+//     name: 'Chicken & chips',
+//     restaurant:'Kenturkey Fried Chicken'
+//   },
+//   {
+//     id: 3,
+//     image: menu3,
+//     price: "2000",
+//     name: 'Beef',
+//     restaurant:'Chicken Republic'
+//   },
+//   {
+//     id: 4,
+//     image: menu4,
+//     price: "1500",
+//     name: 'Vegetable',
+//     restaurant:'Awoof Brekete'
+//   },
+// ]
 
 // const displayedProducts= [{id: 1, itemImage: '', price: 4000, itemName: 'spicy food'}]
 
@@ -125,9 +125,9 @@ const Restaurant = () => {
       </div>
       <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
       <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
-          {food.map((item) => (
+          {Top_Order.map((item) => (
         <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
-          <Page  {...item}  />
+          <MenuCard  {...item}  />
         </div>
       ))}
       </div>
@@ -150,9 +150,9 @@ const Restaurant = () => {
       </div>
       <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
       <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
-          {food.map((item) => (
+          {Top_Order.map((item) => (
         <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
-          <Page  {...item}  />
+          <MenuCard  {...item}  />
         </div>
         
       ))}
@@ -176,9 +176,9 @@ const Restaurant = () => {
       </div>
       <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
       <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
-          {food.map((item) => (
+          {Top_Order.map((item) => (
         <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
-          <Page  {...item}  />
+          <MenuCard  {...item}  />
         </div>
         
       ))}
@@ -187,12 +187,12 @@ const Restaurant = () => {
       </div>
       <div className="flex justify-end">
         <Link href="/restaurants">
-          <p className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
+          <button className="mt-[10px] lg:mt-[31px] flex items-center underline text-tertiary font-light text-[.938rem] lg:text-[1.5rem] 2xl:text-[2.5rem]">
             See more
             <span>
               <Image src={arrowright} alt="arrow right" />
             </span>
-          </p>
+          </button>
         </Link>
       </div>
       </div>
@@ -202,9 +202,9 @@ const Restaurant = () => {
       </div>
       <div className="scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
       <div className=" flex items-center lg:grid lg:grid-cols-4 gap-[1.188rem] lg:gap-[3.198rem] lg:gap-y-[100px] ">
-          {food.map((item) => (
+          {Top_Order.map((item) => (
         <div key={item.id} className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
-          <Page  {...item}  />
+          <MenuCard  {...item}  />
         </div>
         
       ))}
