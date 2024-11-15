@@ -1,8 +1,8 @@
 import Image from "next/image";
-import menu1 from "@/assets/home/specialmenu/menu 1.svg";
-import menu2 from "@/assets/home/specialmenu/menu 2.svg";
-import menu3 from "@/assets/home/specialmenu/menu 3.svg";
-import menu4 from "@/assets/home/specialmenu/menu 4.svg";
+// import menu1 from "@/assets/home/specialmenu/menu 1.svg";
+// import menu2 from "@/assets/home/specialmenu/menu 2.svg";
+// import menu3 from "@/assets/home/specialmenu/menu 3.svg";
+// import menu4 from "@/assets/home/specialmenu/menu 4.svg";
 import space from "@/assets/home/sliderImages/space.svg";
 import kfc from "@/assets/home/sliderImages/kfc.svg";
 import chicken from "@/assets/home/sliderImages/chicken.svg";
