@@ -5,7 +5,6 @@ import Link from "next/link";
 import MenuCard from "@/components/cards/menucard/index";
 import { Top_Order } from "@/lib/consts/top-order";
 
-// Page Rendering
 const SpecialMenu: React.FC = () => {
   return (
     <section className="mt-[.5rem] mb-[3.25rem] lg:my-[3.25rem] container w-11/12">

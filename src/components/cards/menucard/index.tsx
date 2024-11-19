@@ -2,13 +2,12 @@
 // THE FAVORITE ICON BECOMES FILLED WITH THE TERTIARY COLOR WHEN CLICKED
 // THE FAVOURITES PAGE IS POPULATED WITH THE REATAURANTS THAT HAVE BEEN FAVOURITED
 "use client";
-import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import stars from "@/assets/home/specialmenu/five stars.svg";
 import Button from "@/components/buttons";
 import Image from "next/image";
 import { useUserSession } from "@/session/useUserSession";
-
 
 // Define the props interface for the component
 interface PageProps {
@@ -21,15 +20,15 @@ interface PageProps {
 // Use the PageProps interface as the type for the component props
 const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
   const router = useRouter(); // Define router
-  const { session} = useUserSession();
+  const { session } = useUserSession();
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
   // Toggle fill state on click
   const handleClick = (): void => {
-    if(session)
-     { setIsFilled(!isFilled);}
-    else{
-      router.push('/login');
+    if (session) {
+      setIsFilled(!isFilled);
+    } else {
+      router.push("/login");
     }
   };
   return (
@@ -53,7 +52,7 @@ const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           className={`cursor-pointer transition-colors duration-300 absolute top-4 right-3
-            ${isFilled ? 'fill-red-500' : 'fill-none stroke-gray-500'}`}
+            ${isFilled ? "fill-red-500" : "fill-none stroke-gray-500"}`}
         >
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
         </svg>
