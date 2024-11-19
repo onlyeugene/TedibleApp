@@ -7,6 +7,7 @@ import locate from "@/assets/home/contact/locate.svg";
 import map from "@/assets/home/contact/map.svg";
 import Image from "next/image";
 import Link from "next/link";
+import ContactHero from "@/components/external/hero/contactHero";
 // import MapComponent from "@/components/map";
 
 export const metadata ={
@@ -16,8 +17,9 @@ export const metadata ={
 
 const Contact: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center px-10 container w-11/12">
-      <div className="mb-8 flex flex-col sm:items-start sm:justify-start items-center justify-center">
+    <div className="flex flex-col justify-center px-10 container w-11/12 ">
+      <ContactHero/>
+      <div className="mb-8 flex flex-col sm:items-start sm:justify-start items-center justify-center pt-10">
         <h1 className="sm:text-[32px] text-[29px] font-medium">Write us directly</h1>
         <p className="sm:text-base text-sm text-center sm:text-start">
           Whether you need information, want to book a <br className="sm:hidden block"/> reservation, or just

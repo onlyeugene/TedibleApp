@@ -59,13 +59,13 @@ const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
       </div>
 
       {/* Content Section */}
-      <div className="px-[.8rem] lg:px-[1.3rem] pb-[1rem] lg:pb-[1.5rem]">
+      <div className="px-[.8rem] lg:px-[1rem] pb-[1rem]  ">
         <Image src={stars} alt="Five-star rating" className="" priority />
         <div className="text-[.5rem] lg:text-[1.5rem] w-full">
-          <p className="text-black text-[0.8rem] md:text-sm lg:text-base 2xl:text-lg font-semibold min-w-[60ch]">
+          <p className="text-black text-[0.8rem] md:text-sm lg:text-base 2xl:text-lg font-semibold ">
             {name}
           </p>
-          <p className="text-black text-xs lg:text-sm 2xl:text-base font-light min-w-[60ch]">
+          <p className="text-black text-xs lg:text-sm 2xl:text-base font-light ">
             {restaurant}
           </p>
         </div>
