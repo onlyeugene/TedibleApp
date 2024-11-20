@@ -6,10 +6,6 @@ import item5 from '@/assets/internal/dashboard/item5.svg'
 import item6 from '@/assets/internal/dashboard/item6.svg'
 import item7 from '@/assets/internal/dashboard/item7.svg'
 import item8 from '@/assets/internal/dashboard/item8.svg'
-import food1 from '@/assets/internal/dashboard/image1.svg'
-import food2 from '@/assets/internal/dashboard/image2.svg'
-import food3 from '@/assets/internal/dashboard/image3.svg'
-import food4 from '@/assets/internal/dashboard/image4.svg'
 import kfc from '@/assets/internal/dashboard/kfc.svg'
 import munabees from '@/assets/internal/dashboard/munabees.svg'
 import spicykitchen from '@/assets/internal/dashboard/spicykitchen.svg'
@@ -205,7 +201,7 @@ export const Restaurant_Links = [
         reviews: 1350,
         rating: '5.0',
         image: theplace,
-        categoryId: 6
+        categoryId: 7
     },
     {
         id: 9,
@@ -216,6 +212,6 @@ export const Restaurant_Links = [
         reviews: 1350,
         rating: '5.0',
         image: rufusandbee,
-        categoryId: 6
+        categoryId: 8
     },
 ]
