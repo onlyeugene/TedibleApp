@@ -6,10 +6,12 @@ import item5 from '@/assets/internal/dashboard/item5.svg'
 import item6 from '@/assets/internal/dashboard/item6.svg'
 import item7 from '@/assets/internal/dashboard/item7.svg'
 import item8 from '@/assets/internal/dashboard/item8.svg'
-import food1 from '@/assets/internal/dashboard/image1.svg'
-import food2 from '@/assets/internal/dashboard/image2.svg'
-import food3 from '@/assets/internal/dashboard/image3.svg'
-import food4 from '@/assets/internal/dashboard/image4.svg'
+import kfc from '@/assets/internal/dashboard/kfc.svg'
+import munabees from '@/assets/internal/dashboard/munabees.svg'
+import spicykitchen from '@/assets/internal/dashboard/spicykitchen.svg'
+import theplace from '@/assets/internal/dashboard/theplace.svg'
+import chickenrepublic from '@/assets/internal/dashboard/chickenrepublic.svg'
+import rufusandbee from '@/assets/internal/dashboard/rufus&bee.svg'
 import chicken from '@/assets/internal/restaurant/Frame 1000004926.svg'
 import seafood from '@/assets/internal/restaurant/Frame 1000004927.svg'
 import rice from '@/assets/internal/restaurant/Frame 1000004928.svg'
@@ -121,7 +123,7 @@ export const Restaurant_Links = [
         preorderUntil: '8:00pm',
         reviews: 1350,
         rating: '5.0',
-        image: food1,
+        image: munabees,
         categoryId: 2
     },
     {
@@ -132,7 +134,7 @@ export const Restaurant_Links = [
         preorderUntil: '8:00pm',
         reviews: 1350,
         rating: '5.0',
-        image: food2,
+        image: spicykitchen,
         categoryId: 3
     },
     {
@@ -143,7 +145,7 @@ export const Restaurant_Links = [
         preorderUntil: '8:00pm',
         reviews: 1350,
         rating: '5.0',
-        image: food3,
+        image: chickenrepublic,
         categoryId: 1
     },
     {
@@ -154,7 +156,7 @@ export const Restaurant_Links = [
         preorderUntil: '8:00pm',
         reviews: 1350,
         rating: '5.0',
-        image: food4,
+        image: rufusandbee,
         categoryId: 5
     },
     {
@@ -165,7 +167,51 @@ export const Restaurant_Links = [
         preorderUntil: '8:00pm',
         reviews: 1350,
         rating: '5.0',
-        image: food4,
+        image: theplace,
         categoryId: 4
+    },
+    {
+        id: 6,
+        name: `KFC`,
+        status: 'Vendor is Open',
+        deliveryTime: '20-25 Minutes',
+        preorderUntil: '8:00pm',
+        reviews: 1350,
+        rating: '5.0',
+        image: kfc,
+        categoryId: 5
+    },
+    {
+        id: 7,
+        name: `Ile Amala`,
+        status: 'Vendor is Open',
+        deliveryTime: '20-25 Minutes',
+        preorderUntil: '8:00pm',
+        reviews: 1350,
+        rating: '5.0',
+        image: theplace,
+        categoryId: 6
+    },
+    {
+        id: 8,
+        name: `Swallow Station`,
+        status: 'Vendor is Open',
+        deliveryTime: '20-25 Minutes',
+        preorderUntil: '8:00pm',
+        reviews: 1350,
+        rating: '5.0',
+        image: theplace,
+        categoryId: 7
+    },
+    {
+        id: 9,
+        name: `Ify's Kitchen`,
+        status: 'Vendor is Open',
+        deliveryTime: '20-25 Minutes',
+        preorderUntil: '8:00pm',
+        reviews: 1350,
+        rating: '5.0',
+        image: rufusandbee,
+        categoryId: 8
     },
 ]
