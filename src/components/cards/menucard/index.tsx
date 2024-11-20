@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useUserSession } from "@/session/useUserSession";
 
 // Define the props interface for the component
-interface PageProps {
+interface Favorite {
   id: number;
   image: string;
   name: string;
@@ -19,14 +19,14 @@ interface PageProps {
 }
 
 // Use the PageProps interface as the type for the component props
-const MenuCard: React.FC<PageProps> = ({ id,image, name, restaurant, price }) => {
+const MenuCard: React.FC<Favorite> = ({ id,image, name, restaurant, price }) => {
   const router = useRouter(); // Define router
   const { session } = useUserSession();
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
   useEffect(() => {
     const favoritess = JSON.parse(localStorage.getItem("favoritess") || "[]");
-    const isFavorite = favoritess.some((fav: any) => fav.id === id);
+    const isFavorite = favoritess.some((fav: Favorite) => fav.id === id);
     setIsFilled(isFavorite);
   }, [id]);
 
@@ -45,8 +45,8 @@ const MenuCard: React.FC<PageProps> = ({ id,image, name, restaurant, price }) =>
       favoritess.push({ id, image, name, restaurant, price});
     } else {
       // Remove from favorites
-      const updatedFavorites = favoritess.filter((fav: any) => fav.id !== id);
-      localStorage.setItem("favoritess", JSON.stringify(updatedFavorites));
+      const updatedFavoritess = favoritess.filter((fav: Favorite) => fav.id !== id);
+      localStorage.setItem("favoritess", JSON.stringify(updatedFavoritess));
       return;
     }
 

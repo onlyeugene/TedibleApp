@@ -9,7 +9,7 @@ import { CiClock1 } from "react-icons/ci";
 import star from "@/assets/internal/dashboard/star.svg";
 import { useUserSession } from "@/session/useUserSession";
 
-interface PageProps {
+interface Favorite {
   id: number;
   image: string;
   name: string;
@@ -20,7 +20,7 @@ interface PageProps {
   rating: string;
 }
 
-const RestaurantCard: React.FC<PageProps> = ({
+const RestaurantCard: React.FC<Favorite> = ({
   id,
   image,
   name,
@@ -37,8 +37,8 @@ const RestaurantCard: React.FC<PageProps> = ({
 
   // Initialize filled state based on localStorage
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-    const isFavorite = favorites.some((fav: any) => fav.id === id);
+    const favorites: Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const isFavorite = favorites.some((fav: Favorite) => fav.id === id);
     setIsFilled(isFavorite);
   }, [id]);
 
@@ -50,14 +50,14 @@ const RestaurantCard: React.FC<PageProps> = ({
     }
 
     setIsFilled(!isFilled);
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const favorites:Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
 
     if (!isFilled) {
       // Add to favorites
       favorites.push({ id, image, name, status, rating, deliveryTime, preorderUntil, reviews });
     } else {
       // Remove from favorites
-      const updatedFavorites = favorites.filter((fav: any) => fav.id !== id);
+      const updatedFavorites = favorites.filter((fav: Favorite) => fav.id !== id);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       return;
     }
