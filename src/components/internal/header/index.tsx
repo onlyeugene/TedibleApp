@@ -36,7 +36,7 @@ const Header = () => {
 
   if (session) {
     return (
-      <div className="py-2 flex gap-2 sm:gap-0 flex-col-reverse sm:flex-row justify-between sm:items-center px-3 w-full">
+      <div className="py-2 flex gap-2 sm:gap-0 flex-col-reverse lg:flex-row justify-between sm:items-center px-3 w-full">
         <div className="w-full relative ">
           <FiSearch
             style={{ color: "gray" }}
@@ -47,12 +47,12 @@ const Header = () => {
             className="py-2 w-full rounded-md px-7 text-sm"
           />
         </div>
-        <div className="flex items-center gap-2 sm:w-1/2 sm:justify-end justify-between">
+        <div className="flex items-center gap-2 w-full lg:w-1/2 lg:justify-end justify-between">
           <div
-            className="sm:hidden flex items-center gap-3"
+            className="lg:hidden flex items-center gap-3"
             onClick={handleSidebarToggleMobile}
           >
-            <ul className="flex flex-col gap-1 cursor-pointer sm:hidden">
+            <ul className="flex flex-col gap-1 cursor-pointer lg:hidden">
               <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
               <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
               <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
@@ -96,7 +96,7 @@ const Header = () => {
             <span
               ref={dropdownTriggerRef}
               onClick={handleDropdown}
-              className="sm:block hidden "
+              className="lg:block hidden "
             >
               <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
             </span>

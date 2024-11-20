@@ -8,7 +8,7 @@ import logo from '@/assets/navbar/logo.svg'
 const Sidebar = () => {
   const path = usePathname()
   return (
-    <div className='max-h-full z-50 sticky w-60 bg-secondary text-primary p-4 shadow-lg sm:block hidden'>
+    <div className='max-h-full w-60 bg-secondary text-primary p-4 shadow-lg lg:block hidden'>
       <div className='mb-8'>
         <Image src={logo} alt='' width={100} height={100} />
       </div>
