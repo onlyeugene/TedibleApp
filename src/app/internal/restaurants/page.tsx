@@ -4,6 +4,9 @@ import RestuarantCard from "@/components/cards/restuarantcard";
 import MenuCard from "@/components/cards/menucard";
 import CategoryCard from "@/components/internal/categorycard";
 import { Restaurant_Links, Top_Order, Category } from "@/lib/consts/top-order";
+import MenuIcon from '@/assets/internal/restaurant/Vector.svg'
+import Image from "next/image";
+import MobileCategoryCard from "@/components/internal/mobilecategory";
 
 const Restaurants = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -29,21 +32,25 @@ const Restaurants = () => {
     <div className="px-3 lg:px-6">
       {/* Dropdown */}
       <div className="flex items-center justify-start mb-4">
+        <Image
+        src={MenuIcon}
+        alt="menu icon"
+        />
         <select
           value={view}
           onChange={(e) => setView(e.target.value as "restaurant" | "food")}
-          className="px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none"
+          className="ml-4 px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none"
         >
           <option value="restaurant">Restaurants</option>
           <option value="food">Food</option>
         </select>
         <p className="ml-4 text-secondaryLight font-semibold text-xl">
-          {view === "restaurant" ? "All Restaurants" : "All Foods"}
+          {view === "restaurant" ? "All Restaurants" : "All Food items"}
         </p>
       </div>
 
       {/* Categories */}
-      <div className="flex gap-7">
+      <div className="hidden lg:flex gap-7">
         {Category.map((category) => (
           <div
             key={category.id}
@@ -54,6 +61,21 @@ const Restaurants = () => {
           </div>
         ))}
       </div>
+      {/* Categories */}
+      <div className="w-full scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
+      <div className="flex lg:hidden gap-2 ">
+        {Category.map((category) => (
+          <div
+            key={category.id}
+            className={`cursor-pointer`}
+            onClick={() => setSelectedCategoryId(category.id)}
+          >
+            <MobileCategoryCard {...category} />
+          </div>
+        ))}
+      </div>
+      </div>
+      
 
       {/* Dynamic Content Based on Dropdown Selection */}
       {view === "restaurant" ? (
