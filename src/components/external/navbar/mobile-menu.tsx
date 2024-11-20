@@ -23,13 +23,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     <>
       {/* Background overlay */}
       <div
-        className={`fixed inset-0 bg-black opacity-50 z-10 sm:hidden block`}
+        className={`fixed inset-0 bg-black opacity-50 z-10 md:hidden block`}
         onClick={toggleDropdown}
       />
 
       {/* Mobile Navigation Menu */}
       <ul
-        className={`fixed left-0 top-0 h-full w-80 px-10 py-20 flex flex-col gap-7 bg-white z-20 sm:hidden ${
+        className={`fixed left-0 top-0 h-full w-80 px-10 py-20 flex flex-col gap-7 bg-white z-20 md:hidden ${
           closing ? "animate-fadeOutRight" : "animate-fadeInLeft"
         }`}
       >

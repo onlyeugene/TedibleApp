@@ -88,9 +88,9 @@ const Header = () => {
                 <RxAvatar size={25} style={{ color: "gray" }} />
               )}
               <h2 className="text-sm sm:block hidden">
-                {user?.firstname &&
-                  user?.firstname.charAt(0).toUpperCase() +
-                    user?.firstname.slice(1).toLowerCase()}
+                {user?.firstName &&
+                  user?.firstName.charAt(0).toUpperCase() +
+                    user?.firstName.slice(1).toLowerCase()}
               </h2>
             </Link>
             <span

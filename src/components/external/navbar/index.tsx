@@ -9,13 +9,11 @@ import MenuToggle from "./menu-toggle";
 import MobileMenu from "./mobile-menu";
 import DesktopMenu from "./desktop-menu";
 
-
 const Navbar: React.FC = () => {
   const [dropdown, setDropdown] = useState(false);
   const [closing, setClosing] = useState(false);
   const path = usePathname();
 
-  
   function toggleDropdown() {
     if (dropdown) {
       // Start closing animation
@@ -40,23 +38,35 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <div id="top" className="w-11/12 container flex items-center justify-between py-3 relative">
-      <Link href={"/"}>
-        <Image
-          src={logo}
-          alt="Logo"
-          width={120}
-          height={100}
-          className={path === "/" ? "border-red" : ""}
-        />
-      </Link>
+    <div
+      id="top"
+      className="w-full bg-white fixed py-3 z-20 shadow-sm border-b"
+    >
+      <div className="flex container justify-between items-center w-11/12">
+        <Link href={"/"}>
+          <Image
+            src={logo}
+            alt="Logo"
+            width={120}
+            height={100}
+            className={path === "/" ? "border-red" : ""}
+            priority
+          />
+        </Link>
 
-      <DesktopMenu path={path} />
-      <div onClick={toggleDropdown} className="sm:hidden block">
-        <MenuToggle />
+        <DesktopMenu path={path} />
+        <div onClick={toggleDropdown} className="md:hidden block">
+          <MenuToggle />
+        </div>
+
+        {dropdown && (
+          <MobileMenu
+            toggleDropdown={toggleDropdown}
+            path={path}
+            closing={closing}
+          />
+        )}
       </div>
-
-      {dropdown && <MobileMenu toggleDropdown={toggleDropdown} path={path} closing={closing} />}
     </div>
   );
 };

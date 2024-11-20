@@ -10,94 +10,100 @@ import Link from "next/link";
 import ContactHero from "@/components/external/hero/contactHero";
 // import MapComponent from "@/components/map";
 
-export const metadata ={
+export const metadata = {
   title: "Contact Us",
-  description: "Have any complaints or suggestions or something else? You can contact us to let us know about them",
-}
+  description:
+    "Have any complaints or suggestions or something else? You can contact us to let us know about them",
+};
 
 const Contact: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center px-10 container w-11/12 ">
-      <ContactHero/>
-      <div className="mb-8 flex flex-col sm:items-start sm:justify-start items-center justify-center pt-10">
-        <h1 className="sm:text-[32px] text-[29px] font-medium">Write us directly</h1>
-        <p className="sm:text-base text-sm text-center sm:text-start">
-          Whether you need information, want to book a <br className="sm:hidden block"/> reservation, or just
-          share your feedback, <br /> we&apos;re here for you.
-        </p>
-      </div>
-      <div className="flex sm:flex-row flex-col-reverse w-full gap-8">
-        {/* Contact Form */}
-        <form className="border rounded-md my-10 w-full flex flex-col gap-4 px-3 border-t-[#FF7834] border-t-[4px] py-5 bg-[#F3F8FB] sm:text-base text-sm">
-          <div>
-            <label htmlFor="full-name">Full Name</label>
-            <Input
-              className="w-full py-1 rounded-md px-2"
-              type="text"
-              placeholder="Full Name"
-              // id="full-name"
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <Input
-              className="w-full py-1 rounded-md px-2"
-              type="email"
-              placeholder="example@example.com"
-              // id="email"
-            />
-          </div>
-          <div>
-            <label htmlFor="subject">Subject</label>
-            <Input
-              className="w-full py-1 rounded-md px-2"
-              type="text"
-              placeholder="Subject Title"
-              // id="subject"
-            />
-          </div>
-          <div>
-            <label htmlFor="message">Message</label>
-            <textarea
-              className="w-full py-2 px-2 border rounded-md outline-none h-40"
-              id="message"
-              placeholder="Type your message, inquiries, or questions here"
-            />
-          </div>
-          <Button className="w-full bg-[#FF7834] font-bold text-[17px] py-3 text-white rounded-md">
-            Send Message
-          </Button>
-        </form>
-
-        {/* Contact Details */}
-        <div className="w-full flex flex-col gap-10 justify-center">
-          <ContactDetail
-            imageSrc={locate}
-            icon={map}
-            heading="Our Head Quarters"
-            description="Find us on Google Map"
-            address={["1 Ogunlesi Street, Off Awoyokun", "Onipanu, Lagos."]}
-          />
-          <hr className="border-dashed border-[1px] border-gray-700" />
-          <ContactDetail
-            imageSrc={call}
-            heading="Our Phone"
-            description="+234 7034857699"
-            phone="+234 7034855669"
-          />
-          <hr className="border-dashed border-[1px] border-gray-700" />
-          <ContactDetail
-            imageSrc={text}
-            heading="Our Email"
-            description="contact@tedible.com"
-            mail="contact@tedible.com"
-          />
+    <>
+      {" "}
+      <ContactHero />
+      <div className="flex flex-col justify-center px-10 container w-11/12 ">
+        <div className="mb-8 flex flex-col sm:items-start sm:justify-start items-center justify-center pt-10">
+          <h1 className="sm:text-[32px] text-[29px] font-medium">
+            Write us directly
+          </h1>
+          <p className="sm:text-base text-sm text-center sm:text-start">
+            Whether you need information, want to book a reservation, or just share your
+            feedback, <br className="md:block hidden"/> we&apos;re here for you.
+          </p>
         </div>
-      </div>
-      {/* <div className="pb-20">
+        <div className="flex sm:flex-row flex-col-reverse w-full gap-8">
+          {/* Contact Form */}
+          <form className="border rounded-md my-10 w-full flex flex-col gap-4 px-3 border-t-[#FF7834] border-t-[4px] py-5 bg-[#F3F8FB] sm:text-base text-sm">
+            <div>
+              <label htmlFor="full-name">Full Name</label>
+              <Input
+                className="w-full py-1 rounded-md px-2"
+                type="text"
+                placeholder="Full Name"
+                // id="full-name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <Input
+                className="w-full py-1 rounded-md px-2"
+                type="email"
+                placeholder="example@example.com"
+                // id="email"
+              />
+            </div>
+            <div>
+              <label htmlFor="subject">Subject</label>
+              <Input
+                className="w-full py-1 rounded-md px-2"
+                type="text"
+                placeholder="Subject Title"
+                // id="subject"
+              />
+            </div>
+            <div>
+              <label htmlFor="message">Message</label>
+              <textarea
+                className="w-full py-2 px-2 border rounded-md outline-none h-40"
+                id="message"
+                placeholder="Type your message, inquiries, or questions here"
+              />
+            </div>
+            <Button className="w-full bg-[#FF7834] font-bold text-[17px] py-3 text-white rounded-md">
+              Send Message
+            </Button>
+          </form>
+
+          {/* Contact Details */}
+          <div className="w-full flex flex-col gap-10 justify-center">
+            <ContactDetail
+              imageSrc={locate}
+              icon={map}
+              heading="Our Head Quarters"
+              description="Find us on Google Map"
+              address={["1 Ogunlesi Street, Off Awoyokun", "Onipanu, Lagos."]}
+            />
+            <hr className="border-dashed border-[1px] border-gray-700" />
+            <ContactDetail
+              imageSrc={call}
+              heading="Our Phone"
+              description="+234 7034857699"
+              phone="+234 7034855669"
+            />
+            <hr className="border-dashed border-[1px] border-gray-700" />
+            <ContactDetail
+              imageSrc={text}
+              heading="Our Email"
+              description="contact@tedible.com"
+              mail="contact@tedible.com"
+            />
+          </div>
+        </div>
+        {/* <div className="pb-20">
         <MapComponent />
       </div> */}
-    </div>
+      </div>
+    </>
   );
 };
 

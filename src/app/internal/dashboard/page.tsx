@@ -15,6 +15,7 @@ import MenuCard from "@/components/cards/menucard";
 // ICONS
 import { IoIosBicycle } from "react-icons/io";
 import { CiClock1 } from "react-icons/ci";
+import { useRouter } from "next/navigation";
 // import {  useRouter } from "next/navigation";
 
 const Dashboard = () => {
@@ -23,7 +24,7 @@ const Dashboard = () => {
 
   // const pathname = usePathname()
 
-  // const router = useRouter()
+  const router = useRouter()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +33,11 @@ const Dashboard = () => {
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [banners.length]);
+
+  // If you want to sort and slice Top_Order items by rating
+  const sortedTopOrders = [...Top_Order]
+    .sort((a, b) => Number(b.price) - Number(a.price))
+    .slice(0, 4);
 
   return (
     <div className="w-full sm:px-10 px-3 ">
@@ -72,7 +78,7 @@ const Dashboard = () => {
                   src={restaurant.image}
                   alt="Restaurant image"
                   className={`rounded-t-xl`}
-                  // onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
+                  onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
 
                 />
               </div>
@@ -116,7 +122,7 @@ const Dashboard = () => {
       <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
         <h1 className="text-2xl font-semibold">Top Order</h1>
         <div className="lg:grid lg:grid-cols-4 mt-4 flex gap-[1.188rem] lg:gap-y-[100px]">
-          {Top_Order.map((item) => (
+          {sortedTopOrders.map((item) => (
             <div
               key={item.id}
               className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto"
