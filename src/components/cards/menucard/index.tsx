@@ -11,6 +11,7 @@ import { useUserSession } from "@/session/useUserSession";
 
 // Define the props interface for the component
 interface PageProps {
+  id: number;
   image: string;
   name: string;
   restaurant: string;
@@ -18,18 +19,38 @@ interface PageProps {
 }
 
 // Use the PageProps interface as the type for the component props
-const MenuCard: React.FC<PageProps> = ({ image, name, restaurant, price }) => {
+const MenuCard: React.FC<PageProps> = ({ id,image, name, restaurant, price }) => {
   const router = useRouter(); // Define router
   const { session } = useUserSession();
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
+  useEffect(() => {
+    const favoritess = JSON.parse(localStorage.getItem("favoritess") || "[]");
+    const isFavorite = favoritess.some((fav: any) => fav.id === id);
+    setIsFilled(isFavorite);
+  }, [id]);
+
   // Toggle fill state on click
   const handleClick = (): void => {
-    if (session) {
-      setIsFilled(!isFilled);
-    } else {
+    if (!session) {
       router.push("/login");
+      return;
     }
+
+    setIsFilled(!isFilled);
+    const favoritess = JSON.parse(localStorage.getItem("favoritess") || "[]");
+
+    if (!isFilled) {
+      // Add to favorites
+      favoritess.push({ id, image, name, restaurant, price});
+    } else {
+      // Remove from favorites
+      const updatedFavorites = favoritess.filter((fav: any) => fav.id !== id);
+      localStorage.setItem("favoritess", JSON.stringify(updatedFavorites));
+      return;
+    }
+
+    localStorage.setItem("favoritess", JSON.stringify(favoritess));
   };
   return (
     <div className="flex flex-col gap-[15px] lg:gap-[21px] bg-white border-primary shadow-xl rounded-[2.188rem] relative">
