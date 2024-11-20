@@ -1,0 +1,46 @@
+.logosSlide {
+  white-space: nowrap;
+  animation: slide 35s infinite linear;
+  /* display: inline-block; */
+  padding-right: 2rem; /* Optional: Padding for smooth restart */
+}
+
+.logos {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.logos::before,
+.logos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 5rem;
+  height: 100%;
+  z-index: 2;
+}
+
+.logos::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #0b3026);
+}
+
+.logos::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #0b3026);
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: Pause animation on hover */
+.logos-slide:hover {
+  animation-play-state: paused;
+}
