@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Header from "@/components/internal/header";
-import CartPreview from "@/components/internal/cart";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/internal/sidebar/app-sidebar";
 import LoadingSpinner from "@/components/ui/spinner";
