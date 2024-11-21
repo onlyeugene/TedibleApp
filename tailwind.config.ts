@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
   	extend: {
   		container: {
-  			center: 'true'
+  			center: true
   		},
   		colors: {
   			background: 'var(--background)',
