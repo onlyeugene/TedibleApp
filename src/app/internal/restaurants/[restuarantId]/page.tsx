@@ -1,21 +1,21 @@
 
-interface RestaurantPageIdProps {
-    params: {
-        restuarantId: string
-    }
-}
+// interface RestaurantPageIdProps {
+//     params: {
+//         restuarantId: string
+//     }
+// }
 
-const RestaurantPageId = async ({params}: RestaurantPageIdProps) => {
-  const { restuarantId } = await params;
+// const RestaurantPageId = async ({params}: RestaurantPageIdProps) => {
+//   const { restuarantId } = await params;
 
 
 
-  return (
-    <div>
-     {restuarantId}
-     h1
-    </div>
-  )
-}
+//   return (
+//     <div>
+//      {restuarantId}
+//      h1
+//     </div>
+//   )
+// }
 
-export default RestaurantPageId
+// export default RestaurantPageId
