@@ -9,13 +9,15 @@ import banner4 from "@/assets/internal/dashboard/banner4.svg";
 // import MenuCard from '../menu/MenuCard';
 import Image from "next/image";
 import { Restaurant_Links, Top_Order } from "@/lib/consts/top-order";
-import star from "@/assets/internal/dashboard/star.svg";
+// import star from "@/assets/internal/dashboard/star.svg";
 import MenuCard from "@/components/cards/menucard";
 
 // ICONS
-import { IoIosBicycle } from "react-icons/io";
-import { CiClock1 } from "react-icons/ci";
-import { useRouter } from "next/navigation";
+// import { IoIosBicycle } from "react-icons/io";
+// import { CiClock1 } from "react-icons/ci";
+// import { useRouter } from "next/navigation";
+import RestaurantCard from "@/components/cards/restuarantcard";
+import CartPreview from "@/components/internal/cart";
 // import {  useRouter } from "next/navigation";
 
 const Dashboard = () => {
@@ -24,7 +26,7 @@ const Dashboard = () => {
 
   // const pathname = usePathname()
 
-  const router = useRouter()
+  // const router = useRouter()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,9 +40,18 @@ const Dashboard = () => {
   const sortedTopOrders = [...Top_Order]
     .sort((a, b) => Number(b.price) - Number(a.price))
     .slice(0, 4);
+  const sortedRestaurants = [...Restaurant_Links]
+    .sort((a, b) => Number(b.rating) - Number(a.rating))
+    .slice(0, 4);
+
+  const sortedBestOffers = [...Top_Order]
+    .sort((a, b) => Number(b.price) - Number(a.price))
+    .slice(0, 4);
+
 
   return (
-    <div className="w-full sm:px-10 px-3 ">
+    <div className="flex w-full bg-[#EDF5FA]">
+      <div className="w-full  sm:px-10 px-3">
       <div className="sm:relative">
         <Image
           src={banners[currentBannerIndex]}
@@ -67,61 +78,15 @@ const Dashboard = () => {
             {/* <Image src={arrowside} alt="Arrow side" className="sm:w-2 w-1.5" /> */}
           </div>
         </div>
-        <div className="flex gap-3 text-secondary lg:w-full overflow-scroll sm:w-[37rem]">
-          {Restaurant_Links.map((restaurant) => (
-            <div
-              key={restaurant.id}
-              className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md"
-            >
-              <div>
-                <Image
-                  src={restaurant.image}
-                  alt="Restaurant image"
-                  className={`rounded-t-xl`}
-                  onClick={() =>router.push(`/internal/restaurants/${restaurant.id}`)}
-
-                />
-              </div>
-              <div className="px-3 py-3 sm:bg-white  rounded-b-xl sm:w-full w-[12rem]">
-                <h2 className="text-[9.55px]">{restaurant.status}</h2>
-                <div>
-                  <h1 className="sm:text-[17.02px] font-semibold text-sm">
-                    {restaurant.name}
-                  </h1>
-                </div>
-                <div className="flex  gap-2 items-center pt-5">
-                  <div className="bg-secondary text-primary flex flex-col rounded-md px-[3px] py-[2px]">
-                    <h1 className="sm:text-[15.39px] text-xs text-center">
-                      {restaurant.rating}
-                    </h1>
-                    <Image src={star} alt="rating" priority className="w-7" />
-                    <h2 className="sm:text-[5.28px] text-[4.16px]">
-                      {restaurant.reviews} reviews
-                    </h2>
-                  </div>
-                  <div>
-                    <div className="flex gap-1 items-center">
-                      <IoIosBicycle />
-                      <h3 className="sm:text-[8px] text-[6.7px]">
-                        Delivery in {restaurant.deliveryTime}
-                      </h3>
-                    </div>
-                    <div className="flex gap-1 items-center">
-                      <CiClock1 />
-                      <h4 className="sm:text-[8px] text-[6.7px]">
-                        Preorder Until {restaurant.preorderUntil}
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+          {sortedRestaurants.map((items) => (
+            <RestaurantCard key={items.id} {...items} />
           ))}
         </div>
       </div>
       <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
         <h1 className="text-2xl font-semibold">Top Order</h1>
-        <div className="lg:grid lg:grid-cols-4 mt-4 flex gap-[1.188rem] lg:gap-y-[100px]">
+        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
           {sortedTopOrders.map((item) => (
             <div
               key={item.id}
@@ -132,6 +97,23 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
+      <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
+        <h1 className="text-2xl font-semibold">Best Offers</h1>
+        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+          {sortedBestOffers.map((item) => (
+            <div
+              key={item.id}
+              className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto"
+            >
+              <MenuCard {...item} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div className="w-1/2">
+      <CartPreview />
+    </div>
     </div>
   );
 };
