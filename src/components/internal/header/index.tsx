@@ -11,9 +11,16 @@ import { FiSearch } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 
 import { useModal } from "@/hooks/useModal";
-import { useDropdownInternal } from "@/hooks/useDropdown";
+// import { useDropdownInternal } from "@/hooks/useDropdown";
 import { signOut } from "next-auth/react";
 import { useUserSession } from "@/session/useUserSession";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 type FoodItem = {
   name: string;
@@ -23,16 +30,37 @@ type FoodItem = {
 };
 
 const foodItems: FoodItem[] = [
-  { name: "Chicken Burger", restaurant: "Muna Bees Kitchen", type: "Restaurant", image: "/images/burger.png" },
-  { name: "Chicken Burger", restaurant: "MacDonalds", type: "Food", image: "/images/burger.png" },
-  { name: "Chicken Burger", restaurant: "Burgeat", type: "Restaurant", image: "/images/burger.png" },
-  { name: "Chicken Burger", restaurant: "Meaty Treats", type: "Food", image: "/images/burger.png" },
+  {
+    name: "Chicken Burger",
+    restaurant: "Muna Bees Kitchen",
+    type: "Restaurant",
+    image: "/images/burger.png",
+  },
+  {
+    name: "Chicken Burger",
+    restaurant: "MacDonalds",
+    type: "Food",
+    image: "/images/burger.png",
+  },
+  {
+    name: "Chicken Burger",
+    restaurant: "Burgeat",
+    type: "Restaurant",
+    image: "/images/burger.png",
+  },
+  {
+    name: "Chicken Burger",
+    restaurant: "Meaty Treats",
+    type: "Food",
+    image: "/images/burger.png",
+  },
 ];
 
 const Header = () => {
   const { user } = useUserSession();
   const { modal, handleOpenModal } = useModal();
-  const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } = useDropdownInternal();
+  // const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
+  //   useDropdownInternal();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState<FoodItem[]>([]);
@@ -132,121 +160,112 @@ const Header = () => {
           </div>
         )}
       </div>
-        <div className="flex items-center gap-2 md:w-1/2 md:justify-end justify-between">
-          <div
-            className="md:hidden flex items-center gap-3"
-            onClick={handleSidebarToggleMobile}
-          >
-            <ul className="flex flex-col gap-1 cursor-pointer md:hidden">
-              <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
-              <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
-              <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
-            </ul>
-            <Link href="/internal/dashboard">
-              <Image src={logo} alt="Logo" width={100} priority />
-            </Link>
-          </div>
-          <div className="flex items-center gap-2 justify-end w-full">
-            <Image
-              src={notification}
-              alt="notification icon"
-              priority
-              className="rounded-full border w-9 py-2 px-2"
-            />
-            <Image
-              src={cart}
-              alt="cart icon"
-              priority
-              className="rounded-full border w-9 py-2 px-2"
-            />
-            <Link href="/internal/profile" className="flex items-center gap-2">
-              {user?.image ? (
-                <Image
-                  src={user?.image as string}
-                  alt="user image"
-                  width={33}
-                  height={33}
-                  className="rounded-full"
-                  priority
-                />
-              ) : (
-                <RxAvatar size={25} style={{ color: "gray" }} />
-              )}
-              <h2 className="text-sm sm:block hidden">
-                {user?.firstName &&
-                  user?.firstName.charAt(0).toUpperCase() +
-                    user?.firstName.slice(1).toLowerCase()}
-              </h2>
-            </Link>
-            <span
-              ref={dropdownTriggerRef}
-              onClick={handleDropdown}
-              className="md:block hidden "
-            >
-              <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
-            </span>
-          </div>
+      <div className="flex items-center gap-2 md:w-1/2 md:justify-end justify-between">
+        <div
+          className="md:hidden flex items-center gap-3"
+          onClick={handleSidebarToggleMobile}
+        >
+          <ul className="flex flex-col gap-1 cursor-pointer md:hidden">
+            <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
+            <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
+            <li className="w-6 h-[3px] bg-tertiary border-tertiary rounded-full border"></li>
+          </ul>
+          <Link href="/internal/dashboard">
+            <Image src={logo} alt="Logo" width={100} priority />
+          </Link>
         </div>
+        <div className="flex items-center gap-2 justify-end w-full">
+          <Image
+            src={notification}
+            alt="notification icon"
+            priority
+            className="rounded-full border w-9 py-2 px-2"
+          />
+          <Image
+            src={cart}
+            alt="cart icon"
+            priority
+            className="rounded-full border w-9 py-2 px-2"
+          />
+          <Link href="/internal/profile" className="flex items-center gap-2">
+            {user?.image ? (
+              <Image
+                src={user?.image as string}
+                alt="user image"
+                width={33}
+                height={33}
+                className="rounded-full"
+                priority
+              />
+            ) : (
+              <RxAvatar size={25} style={{ color: "gray" }} />
+            )}
+            <h2 className="text-sm sm:block hidden">
+              {user?.firstName &&
+                user?.firstName.charAt(0).toUpperCase() +
+                  user?.firstName.slice(1).toLowerCase()}
+            </h2>
+          </Link>
 
-        {dropdown && (
-          <ul
-            ref={dropdownRef}
-            className="absolute border bg-white w-[8rem] right-4 top-11 shadow-md py-2 rounded-md text-center text-xs"
+          <DropdownMenu>
+            <DropdownMenuTrigger className="md:block hidden">
+              <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent className="flex flex-col items-center w-[10rem]">
+              
+              <DropdownMenuItem asChild className="py-1 px-7 focus:bg-tertiary focus:rounded-md focus:text-primary cursor-pointer">
+                <Link href="/internal/settings">Settings</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="w-full"/>
+              <DropdownMenuItem asChild className="py-1 px-7 focus:bg-tertiary focus:rounded-md focus:text-primary cursor-pointer">
+                <Link href="/">Go to Website</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="w-full"/>
+              <DropdownMenuItem onClick={handleOpenModal} className="py-1 px-7 focus:bg-tertiary focus:rounded-md focus:text-primary cursor-pointer">
+                Log Out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+
+      
+      {modal && (
+        <div
+          className="absolute top-0 left-0 w-full h-screen bg-[#00000048] bg-opacity-50 flex justify-center items-center z-10"
+          onClick={handleOpenModal}
+        >
+          <div
+            className="bg-primary py-10 px-20 rounded-lg flex flex-col justify-center items-center gap-3"
+            onClick={(e) => e.stopPropagation()}
           >
-            <li className="pb-1" onClick={handleDropdown}>
-              <Link href="/internal/settings">Settings</Link>
-            </li>
-            <hr />
-            <li className="py-2" onClick={handleDropdown}>
-              <Link href="/">Go to Website</Link>
-            </li>
-            <hr />
-            <li className="pt-1" onClick={handleDropdown}>
+            <Image src={prompt} alt="prompt icon" width={100} height={100} />
+            <h1 className="text-[22px]">Are you leaving?</h1>
+            <p className="text-sm font-light">
+              Are you sure you want to log out?
+            </p>
+
+            <div className="flex gap-10">
               <Button
-                className="border-none hover:border hover:rounded-sm hover:text-primary hover:bg-tertiary hover:py-[1pxpx] hover:px-6 py-[.5px] px-6 place-items-end text-xs"
+                className="py-2 px-6 rounded-md border-tertiary"
                 onClick={handleOpenModal}
               >
-                Log Out
+                Cancel
               </Button>
-            </li>
-          </ul>
-        )}
-
-        {modal && (
-          <div
-            className="absolute top-0 left-0 w-full h-screen bg-[#00000048] bg-opacity-50 flex justify-center items-center z-10"
-            onClick={handleOpenModal}
-          >
-            <div
-              className="bg-primary py-10 px-20 rounded-lg flex flex-col justify-center items-center gap-3"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image src={prompt} alt="prompt icon" width={100} height={100} />
-              <h1 className="text-[22px]">Are you leaving?</h1>
-              <p className="text-sm font-light">
-                Are you sure you want to log out?
-              </p>
-
-              <div className="flex gap-10">
-                <Button
-                  className="py-2 px-6 rounded-md border-tertiary"
-                  onClick={handleOpenModal}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  className="py-2 px-9 rounded-md bg-tertiary text-primary border-tertiary"
-                  onClick={() => signOut()}
-                >
-                  Yes
-                </Button>
-              </div>
+              <Button
+                className="py-2 px-9 rounded-md bg-tertiary text-primary border-tertiary"
+                onClick={() => signOut()}
+              >
+                Yes
+              </Button>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* SIDEBAR MOBILE  */}
-        {/* {sidebarMobile && (
+      {/* SIDEBAR MOBILE  */}
+      {/* {sidebarMobile && (
   <div className='h-screen w-60 bg-secondary text-primary p-4 shadow-lg sm:hidden block absolute top-0' onClick={handleSidebarToggleMobile}>
   <div className='mb-8'>
     <Image src={logo} alt='' width={100} height={100} />
@@ -270,10 +289,8 @@ const Header = () => {
   </nav>
 </div>
 )} */}
-      </div>
-    );
-  }
-
-
+    </div>
+  );
+};
 
 export default Header;

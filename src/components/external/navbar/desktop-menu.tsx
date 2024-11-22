@@ -7,7 +7,14 @@ import Image from "next/image";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 import { useUserSession } from "@/session/useUserSession";
-import { useDropdownExternal } from "@/hooks/useDropdown";
+// import { useDropdownExternal } from "@/hooks/useDropdown";
+import {
+  DropdownMenu,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface DesktopMenuProps {
   path: string;
@@ -15,8 +22,8 @@ interface DesktopMenuProps {
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
   const { session, user } = useUserSession();
-  const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
-    useDropdownExternal();
+  // const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
+  //   useDropdownExternal();
 
   const links = [
     { href: "/", label: "Home" },
@@ -38,61 +45,61 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
       </ul>
 
       <div className="relative">
-      {session ? (
-        <div className="sm:flex gap-4 items-center hidden">
-          {user?.image ? (
-            <Image
-              src={user.image as string}
-              alt="user image"
-              width={25}
-              height={25}
-              className="rounded-full"
-              priority
-            />
-          ) : (
-            <RxAvatar size={25} style={{ color: "gray" }} />
-          )}
-          <p className="text-sm">{user?.firstName}</p>
-          <span ref={dropdownTriggerRef} onClick={handleDropdown}>
-            <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
-          </span>
-        </div>
-      ) : (
-        <div className="md:flex items-center gap-5 hidden">
-          <Link href="/login">
-            <Button className="border-[#FF7834] py-2 px-6 rounded-md text-[#FF7834]">
-              Login
-            </Button>
-          </Link>
-          <Link href="/register">
-            <Button className="bg-[#FF7834] py-2 px-6 rounded-md border-[#FF7834] text-white">
-              Register
-            </Button>
-          </Link>
-        </div>
-      )}
-      {session && dropdown && (
-        <ul
-          ref={dropdownRef}
-          className="absolute md:block hidden border bg-white w-[8rem]  right-4 top-11 shadow-md py-2 rounded-md text-center text-xs"
-        >
-          <li className="py-2" onClick={handleDropdown}>
-            <Link href="/internal/dashboard" className="px-3 py-1 hover:text-white hover:bg-tertiary hover:rounded-md">Go to Dashboard</Link>
-          </li>
-          <hr />
-          <li className="pt-1" onClick={handleDropdown}>
-            <Button
-              className="border-none hover:border hover:rounded-sm hover:text-primary hover:bg-tertiary hover:py-[1pxpx] hover:px-6 py-[.5px] px-6 place-items-end text-xs"
-              onClick={() => signOut()}
-            >
-              Log Out
-            </Button>
-          </li>
-          </ul>
+        {session ? (
+          <div className="sm:flex gap-4 items-center hidden">
+            {user?.image ? (
+              <Image
+                src={user.image as string}
+                alt="user image"
+                width={25}
+                height={25}
+                className="rounded-full"
+                priority
+              />
+            ) : (
+              <RxAvatar size={25} style={{ color: "gray" }} />
+            )}
+            <p className="text-sm">{user?.firstName}</p>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="md:block hidden">
+                <MdOutlineKeyboardArrowDown
+                  size={22}
+                  style={{ color: "gray" }}
+                />
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent className="flex flex-col items-center w-[12rem]">
+                <DropdownMenuItem
+                  asChild
+                  className="py-1 px-7 focus:bg-tertiary focus:rounded-md focus:text-primary cursor-pointer"
+                >
+                  <Link href="/internal/dashboard">Go to Dashboard</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="w-full" />
+                <DropdownMenuItem
+                  asChild
+                  className="py-1 px-7 hover:bg-tertiary hover:rounded-md hover:text-primary cursor-pointer"
+                >
+                  <Button className="border-none" onClick={() => signOut()}>Log Out</Button>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        ) : (
+          <div className="md:flex items-center gap-5 hidden">
+            <Link href="/auth/login">
+              <Button className="border-[#FF7834] py-2 px-6 rounded-md text-[#FF7834]">
+                Login
+              </Button>
+            </Link>
+            <Link href="/auth/register">
+              <Button className="bg-[#FF7834] py-2 px-6 rounded-md border-[#FF7834] text-white">
+                Register
+              </Button>
+            </Link>
+          </div>
         )}
       </div>
-
-      
     </>
   );
 };

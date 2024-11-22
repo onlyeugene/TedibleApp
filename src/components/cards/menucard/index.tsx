@@ -33,7 +33,7 @@ const MenuCard: React.FC<Favorite> = ({ id,image, name, restaurant, price }) => 
   // Toggle fill state on click
   const handleClick = (): void => {
     if (!session) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
 
