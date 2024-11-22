@@ -37,7 +37,7 @@ const RestaurantCard: React.FC<Favorite> = ({
 
   // Initialize filled state based on localStorage
   useEffect(() => {
-    const favorites: Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const favorites: Favorite[] = JSON.parse(localStorage.getItem("favoriteRestaurant") || "[]");
     const isFavorite = favorites.some((fav: Favorite) => fav.id === id);
     setIsFilled(isFavorite);
   }, [id]);
@@ -50,7 +50,7 @@ const RestaurantCard: React.FC<Favorite> = ({
     }
 
     setIsFilled(!isFilled);
-    const favorites:Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const favorites:Favorite[] = JSON.parse(localStorage.getItem("favoriteRestaurant") || "[]");
 
     if (!isFilled) {
       // Add to favorites
@@ -58,11 +58,11 @@ const RestaurantCard: React.FC<Favorite> = ({
     } else {
       // Remove from favorites
       const updatedFavorites = favorites.filter((fav: Favorite) => fav.id !== id);
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      localStorage.setItem("favoriteRestaurant", JSON.stringify(updatedFavorites));
       return;
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("favoriteRestaurant", JSON.stringify(favorites));
   };
 
   return (

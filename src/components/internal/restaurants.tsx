@@ -4,7 +4,7 @@ import RestuarantCard from "@/components/cards/restuarantcard";
 import MenuCard from "@/components/cards/menucard";
 import { Restaurant_Links, Top_Order, Category } from "@/lib/consts/top-order";
 import CategoryCard from "@/components/internal/category-card";
-import CartPreview from "./cart";
+// import CartPreview from "./cart";
 
 const RestaurantsPage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -27,7 +27,7 @@ const RestaurantsPage = () => {
       : Top_Order;
 
   return (
-    <div className="flex w-full">
+    // <div className="flex w-full">
         <div className="px-3 lg:px-6 w-full">
       {/* Dropdown */}
       <div className="flex items-center justify-start mb-4">
@@ -76,11 +76,12 @@ const RestaurantsPage = () => {
         </div>
       )}
     </div>
-    <div className="w-[20rem]">
-        <CartPreview /> 
-    </div>
-    </div>
   );
 };
 
 export default RestaurantsPage;
+
+{/* <div className="w-[20rem]">
+    <CartPreview /> 
+</div> */}
+{/* </div> */}

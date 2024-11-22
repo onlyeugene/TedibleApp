@@ -8,6 +8,7 @@ import Header from "@/components/internal/header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/internal/sidebar/app-sidebar";
 import LoadingSpinner from "@/components/ui/spinner";
+import CartPreview from "@/components/internal/cart";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
   const { status, data: session } = useSession();
@@ -44,8 +45,12 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full fixed top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
           <Header />
         </div>
-        <div className="bg-[#EDF5FA] w-full py-20">
+        <div className="bg-[#EDF5FA] flex w-full px-24 py-20">
           {children}
+
+          <div className=" bg-[#EDF5FA]">
+            <CartPreview />
+          </div>
         </div>
       </main>
     </SidebarProvider>

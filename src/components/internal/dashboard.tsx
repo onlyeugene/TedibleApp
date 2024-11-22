@@ -17,7 +17,7 @@ import MenuCard from "@/components/cards/menucard";
 // import { CiClock1 } from "react-icons/ci";
 // import { useRouter } from "next/navigation";
 import RestaurantCard from "@/components/cards/restuarantcard";
-import CartPreview from "@/components/internal/cart";
+// import CartPreview from "@/components/internal/cart";
 // import {  useRouter } from "next/navigation";
 
 const DashboardPage = () => {
@@ -50,7 +50,6 @@ const DashboardPage = () => {
 
 
   return (
-    <div className="flex w-full bg-[#EDF5FA]">
       <div className="w-full px-4">
       <div className="sm:relative">
         <Image
@@ -110,10 +109,6 @@ const DashboardPage = () => {
           ))}
         </div>
       </div>
-    </div>
-    <div className="w-[20rem]">
-      <CartPreview />
-    </div>
     </div>
   );
 };
