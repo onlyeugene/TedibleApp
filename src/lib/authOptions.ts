@@ -116,8 +116,9 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-      signIn: '/login',
-      error: '/login',
+      signIn: '/auth/login',
+      error: '/auth/error',
+      signOut: '/auth/login'
   },
 };
 export { authOptions as GET, authOptions as POST };

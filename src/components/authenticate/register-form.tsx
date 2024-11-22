@@ -66,7 +66,7 @@ const RegisterForm: React.FC = () => {
 
       if (response.data) {
         toast.success("Registration successful");
-        router.replace("/login");
+        router.replace("/auth/login");
       }
     } catch (error: unknown) {
       setError("An error occurred while registering");
@@ -90,7 +90,7 @@ const RegisterForm: React.FC = () => {
             headerLabel="User Sign Up"
             content={<p className=" text-white">Already have an account ?</p>}
             backButtonLabel="Log in"
-            backButtonHref="/login"
+            backButtonHref="/auth/login"
             showSocial
           >
             <FormProvider {...form}>

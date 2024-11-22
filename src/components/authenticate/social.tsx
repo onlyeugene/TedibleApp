@@ -12,7 +12,7 @@ export const Social = () => {
 
   return (
     <div className="flex items-center justify-center w-full flex-col">
-      <h1>{pathname === "/register" ? "Or Sign up with" : "Or Log in with"}</h1>
+      <h1>{pathname === "/auth/register" ? "Or Sign up with" : "Or Log in with"}</h1>
       <div>
       <Button variant="link" onClick={() => signIn("google")}>
         <Image src={Google} alt="Google Icon" className="h-6 w-6" />

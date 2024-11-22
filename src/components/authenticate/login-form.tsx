@@ -23,6 +23,7 @@ import FormError from "./form-error";
 import FormSuccess from "./form-success";
 import { signIn } from "next-auth/react";
 
+
 const LoginForm: React.FC = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -56,20 +57,23 @@ const LoginForm: React.FC = () => {
       });
 
       if (result?.error) {
+        setError(result.error || "Login failed"); 
         toast.error(result.error || "Login failed");
         return;
       }
 
       setSuccess("Login successful");
       toast.success("Login successful");
+      
+      // Immediately route to loader page
+      // router.push("/loading");
       router.replace("/internal/dashboard");
+
     } catch (error) {
       setError("Something went wrong");
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
-      setError("");
-      setSuccess("");
     }
   };
 
@@ -83,7 +87,7 @@ const LoginForm: React.FC = () => {
               <p className=" text-white">Don&apos;t have an account ?</p>
             }
             backButtonLabel="Sign Up"
-            backButtonHref="/register"
+            backButtonHref="/auth/register"
             showSocial
           >
             <div className="flex justify-between text-sm md:gap-20 gap-10 text-nowrap w-full pb-6">
@@ -174,7 +178,7 @@ const LoginForm: React.FC = () => {
                 />
                 <Link
                   href="/forgot-password"
-                  className="text-tertiary italic text-sm"
+                  className="text-tertiary italic text-sm mt-2"
                 >
                   Forgot password?
                 </Link>

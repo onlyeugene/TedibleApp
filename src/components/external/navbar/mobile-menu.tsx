@@ -129,12 +129,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </li>
 
             <div className="flex flex-col items-center gap-5">
-              <Link href={"/login"} onClick={toggleDropdown}>
+              <Link href={"/auth/login"} onClick={toggleDropdown}>
                 <Button className="border-[#FF7834] py-1 px-[6.5rem] rounded-sm text-[#FF7834]">
                   Login
                 </Button>
               </Link>
-              <Link href={"/register"} onClick={toggleDropdown}>
+              <Link href={"/auth/register"} onClick={toggleDropdown}>
                 <Button className="bg-[#FF7834] py-1 px-[6rem] rounded-sm border-[#FF7834] text-white">
                   Register
                 </Button>

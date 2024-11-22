@@ -18,7 +18,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
   // Use useEffect to handle navigation
   React.useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/login");
+      router.push("/auth/login");
     }
   }, [status, router]);
 
