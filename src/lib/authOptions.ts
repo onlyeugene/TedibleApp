@@ -70,7 +70,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/api/users/login",
+            "https://tedible-backend-1.onrender.com/api/auth/login",
             credentials,
             {
               headers: { "Content-Type": "application/json" },
