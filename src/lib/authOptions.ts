@@ -14,7 +14,7 @@ declare module "next-auth" {
       firstName: string;  // Changed from firstname
       lastName: string;   // Changed from lastname
       email: string;
-      avatar: string;
+      image: string;
       phone?: number;
     };
   }
@@ -23,7 +23,7 @@ declare module "next-auth" {
     firstName?: string;   // Changed from firstname
     lastName?: string;    // Changed from lastname
     phone?: number;
-    avatar?: string;
+    image?: string;
   }
 }
 
@@ -107,7 +107,7 @@ export const authOptions: NextAuthOptions = {
         firstName: string;
         lastName: string;
         email: string;
-        avatar: string;
+        image: string;
         phone?: number;
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
