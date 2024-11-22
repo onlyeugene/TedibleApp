@@ -15,7 +15,9 @@ export default function ExternalLayout({
   return (
     <>
       <Navbar />
+      <div className="md:pt-12 pt-10">
       {children}
+      </div>
       {showFooter && <Footer />}
     </>
   );

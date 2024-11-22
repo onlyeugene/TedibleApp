@@ -27,7 +27,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
 
   return (
     <>
-      <ul className="sm:flex items-center md:gap-10 gap-1 hidden">
+      <ul className="md:flex items-center md:gap-10 gap-1 hidden">
         {links.map(({ href, label }) => (
           <li key={href}>
             <Link href={href} className={path === href ? "text-[#FF7834]" : ""}>
@@ -37,6 +37,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
         ))}
       </ul>
 
+      <div className="relative">
       {session ? (
         <div className="sm:flex gap-4 items-center hidden">
           {user?.image ? (
@@ -51,13 +52,13 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
           ) : (
             <RxAvatar size={25} style={{ color: "gray" }} />
           )}
-          <p className="text-sm">{user?.firstname}</p>
+          <p className="text-sm">{user?.firstName}</p>
           <span ref={dropdownTriggerRef} onClick={handleDropdown}>
             <MdOutlineKeyboardArrowDown size={22} style={{ color: "gray" }} />
           </span>
         </div>
       ) : (
-        <div className="sm:flex items-center gap-5 hidden">
+        <div className="md:flex items-center gap-5 hidden">
           <Link href="/login">
             <Button className="border-[#FF7834] py-2 px-6 rounded-md text-[#FF7834]">
               Login
@@ -70,14 +71,13 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
           </Link>
         </div>
       )}
-
       {session && dropdown && (
         <ul
           ref={dropdownRef}
-          className="absolute border bg-white w-[8rem] right-4 top-11 shadow-md py-2 rounded-md text-center text-xs"
+          className="absolute md:block hidden border bg-white w-[8rem]  right-4 top-11 shadow-md py-2 rounded-md text-center text-xs"
         >
           <li className="py-2" onClick={handleDropdown}>
-            <Link href="/internal/dashboard">Go to Dashboard</Link>
+            <Link href="/internal/dashboard" className="px-3 py-1 hover:text-white hover:bg-tertiary hover:rounded-md">Go to Dashboard</Link>
           </li>
           <hr />
           <li className="pt-1" onClick={handleDropdown}>
@@ -88,8 +88,11 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
               Log Out
             </Button>
           </li>
-        </ul>
-      )}
+          </ul>
+        )}
+      </div>
+
+      
     </>
   );
 };
