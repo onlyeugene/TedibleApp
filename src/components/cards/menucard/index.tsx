@@ -25,8 +25,8 @@ const MenuCard: React.FC<Favorite> = ({ id,image, name, restaurant, price }) => 
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
   useEffect(() => {
-    const favoritess = JSON.parse(localStorage.getItem("favoritess") || "[]");
-    const isFavorite = favoritess.some((fav: Favorite) => fav.id === id);
+    const favoriteMenu = JSON.parse(localStorage.getItem("favoriteFood") || "[]");
+    const isFavorite = favoriteMenu.some((fav: Favorite) => fav.id === id);
     setIsFilled(isFavorite);
   }, [id]);
 
@@ -38,19 +38,19 @@ const MenuCard: React.FC<Favorite> = ({ id,image, name, restaurant, price }) => 
     }
 
     setIsFilled(!isFilled);
-    const favoritess = JSON.parse(localStorage.getItem("favoritess") || "[]");
+    const favoriteMenu = JSON.parse(localStorage.getItem("favoriteFood") || "[]");
 
     if (!isFilled) {
       // Add to favorites
-      favoritess.push({ id, image, name, restaurant, price});
+      favoriteMenu.push({ id, image, name, restaurant, price});
     } else {
       // Remove from favorites
-      const updatedFavoritess = favoritess.filter((fav: Favorite) => fav.id !== id);
-      localStorage.setItem("favoritess", JSON.stringify(updatedFavoritess));
+      const updatedFavoriteMenu = favoriteMenu.filter((fav: Favorite) => fav.id !== id);
+      localStorage.setItem("favoriteFood", JSON.stringify(updatedFavoriteMenu));
       return;
     }
 
-    localStorage.setItem("favoritess", JSON.stringify(favoritess));
+    localStorage.setItem("favoriteFood", JSON.stringify(favoriteMenu));
   };
   return (
     <div className="flex flex-col gap-[15px] lg:gap-[21px] bg-white border-primary shadow-xl rounded-[2.188rem] relative">
