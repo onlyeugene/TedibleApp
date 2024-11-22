@@ -113,7 +113,7 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
-      {/* <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
+      <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
         <h1 className="text-2xl font-semibold">Top Order</h1>
         <div className="lg:grid lg:grid-cols-4 mt-4 flex gap-[1.188rem] lg:gap-y-[100px]">
           {Top_Order.map((item) => (
@@ -125,7 +125,7 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
