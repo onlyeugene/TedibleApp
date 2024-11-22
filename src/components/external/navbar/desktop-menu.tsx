@@ -7,7 +7,7 @@ import Image from "next/image";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 import { useUserSession } from "@/session/useUserSession";
-import { useDropdownExternal } from "@/hooks/useDropdown";
+// import { useDropdownExternal } from "@/hooks/useDropdown";
 import {
   DropdownMenu,
   DropdownMenuSeparator,
@@ -22,8 +22,8 @@ interface DesktopMenuProps {
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ path }) => {
   const { session, user } = useUserSession();
-  const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
-    useDropdownExternal();
+  // const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
+  //   useDropdownExternal();
 
   const links = [
     { href: "/", label: "Home" },

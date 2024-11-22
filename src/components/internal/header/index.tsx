@@ -11,7 +11,7 @@ import { FiSearch } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 
 import { useModal } from "@/hooks/useModal";
-import { useDropdownInternal } from "@/hooks/useDropdown";
+// import { useDropdownInternal } from "@/hooks/useDropdown";
 import { signOut } from "next-auth/react";
 import { useUserSession } from "@/session/useUserSession";
 import {
@@ -59,8 +59,8 @@ const foodItems: FoodItem[] = [
 const Header = () => {
   const { user } = useUserSession();
   const { modal, handleOpenModal } = useModal();
-  const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
-    useDropdownInternal();
+  // const { dropdown, handleDropdown, dropdownRef, dropdownTriggerRef } =
+  //   useDropdownInternal();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState<FoodItem[]>([]);
