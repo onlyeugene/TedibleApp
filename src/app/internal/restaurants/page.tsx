@@ -7,16 +7,25 @@ import { Restaurant_Links, Top_Order, Category } from "@/lib/consts/top-order";
 import MenuIcon from '@/assets/internal/restaurant/Vector.svg'
 import Image from "next/image";
 import MobileCategoryCard from "@/components/internal/mobilecategory";
+import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 
 const Restaurants = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const [view, setView] = useState<"restaurant" | "food">("restaurant");
+  const [isOpen, setIsOpen] = useState(false);
 
   // Reset selectedCategoryId whenever the view changes
   useEffect(() => {
     setSelectedCategoryId(null); // Reset category selection on view change
   }, [view]);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
+  const handleSelect = (value: "restaurant" | "food") => {
+    setView(value);
+    setIsOpen(false);
+  };
   // Show all items initially or filter based on the selected category
   const filteredRestaurants =
     selectedCategoryId !== null
@@ -29,21 +38,39 @@ const Restaurants = () => {
       : Top_Order;
 
   return (
-    <div className="px-3 lg:px-6">
+    <div className="px-3 lg:px-6 w-full">
       {/* Dropdown */}
-      <div className="flex items-center justify-start mb-4">
+      <div className="hidden lg:flex items-center justify-start mb-4">
         <Image
         src={MenuIcon}
         alt="menu icon"
         />
-        <select
-          value={view}
-          onChange={(e) => setView(e.target.value as "restaurant" | "food")}
-          className="ml-4 px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none"
-        >
-          <option value="restaurant">Restaurants</option>
-          <option value="food">Food</option>
-        </select>
+        <div className="relative inline-block text-left">
+      <button
+        onClick={toggleDropdown}
+        className="ml-4 px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none flex items-center w-52 justify-between"
+      >
+        {view === "restaurant" ? "Restaurant" : "Food Item"}
+        <span className="ml-2">{isOpen ? <SlArrowUp /> : <SlArrowDown />}</span>
+      </button>
+      
+      {isOpen && (
+        <ul className="absolute ml-4 left-0  w-full bg-white border  rounded shadow-lg">
+          <li
+            onClick={() => handleSelect("restaurant")}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b"
+          >
+            Restaurants
+          </li>
+          <li
+            onClick={() => handleSelect("food")}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            Food
+          </li>
+        </ul>
+      )}
+    </div>
         <p className="ml-4 text-secondaryLight font-semibold text-xl">
           {view === "restaurant" ? "All Restaurants" : "All Food items"}
         </p>
@@ -62,24 +89,26 @@ const Restaurants = () => {
         ))}
       </div>
       {/* Categories */}
-      <div className="w-full scrollbar-hide overflow-x-auto lg:overflow-x-visible scrollbar-y-[red-200]">
-      <div className="flex lg:hidden gap-2 ">
-        {Category.map((category) => (
-          <div
-            key={category.id}
-            className={`cursor-pointer`}
-            onClick={() => setSelectedCategoryId(category.id)}
-          >
-            <MobileCategoryCard {...category} />
-          </div>
-        ))}
+<div className=" lg:hidden ">
+<p className="text-secondaryLight font-semibold mb-3">Restaurant</p>
+  <div className="flex  gap-2 lg:hidden scrollbar-hide   overflow-x-auto md:max-w-[420px]">
+  
+    {Category.map((category) => (
+      <div
+        key={category.id}
+        className="cursor-pointer "
+        onClick={() => setSelectedCategoryId(category.id)}
+      >
+        <MobileCategoryCard {...category} />
       </div>
-      </div>
+    ))}
+  </div>
+</div>
       
 
       {/* Dynamic Content Based on Dropdown Selection */}
       {view === "restaurant" ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 py-6 gap-5 text-secondary lg:w-full overflow-scroll sm:w-[37rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 py-6 gap-5 text-secondary lg:w-full overflow-scroll ">
           {filteredRestaurants.map((restaurant) => (
             <div className="" key={restaurant.id}>
               <RestuarantCard {...restaurant} />

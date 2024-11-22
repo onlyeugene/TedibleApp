@@ -19,7 +19,7 @@ interface PageProps {
   const RestuarantCard: React.FC<PageProps> = ({ image, name,status,rating, deliveryTime, preorderUntil, reviews  }) => {
     return(
         <div 
-        className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md"
+        className="w-full min-w-[340px] md:min-w-[150px] lg:min-w-[160px] sm:border-none border rounded-2xl shadow-md"
       >
         <div>
           <Image
