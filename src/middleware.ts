@@ -10,8 +10,22 @@ import {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Check if the user is authenticated
-  const isAuthenticated = !!request.cookies.get("next-auth.session-token");
+  // Check for both production and development cookies
+  const sessionToken = 
+    request.cookies.get("next-auth.session-token")?.value ||
+    request.cookies.get("__Secure-next-auth.session-token")?.value ||
+    request.cookies.get("next-auth.callback-url")?.value;
+    
+  const isAuthenticated = !!sessionToken;
+
+  // Add some debugging in production
+  if (process.env.NODE_ENV === "production") {
+    console.log({
+      pathname,
+      isAuthenticated,
+      sessionToken: !!sessionToken,
+    });
+  }
 
   // Check if the requested path is an auth route
   const isAuthRoute = authRoutes.includes(pathname);

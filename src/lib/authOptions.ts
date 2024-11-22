@@ -14,7 +14,7 @@ declare module "next-auth" {
       firstName: string;  // Changed from firstname
       lastName: string;   // Changed from lastname
       email: string;
-      image: string;
+      avatar: string;
       phone?: number;
     };
   }
@@ -23,7 +23,7 @@ declare module "next-auth" {
     firstName?: string;   // Changed from firstname
     lastName?: string;    // Changed from lastname
     phone?: number;
-    image?: string;
+    avatar?: string;
   }
 }
 
@@ -107,7 +107,7 @@ export const authOptions: NextAuthOptions = {
         firstName: string;
         lastName: string;
         email: string;
-        image: string;
+        avatar: string;
         phone?: number;
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -119,6 +119,19 @@ export const authOptions: NextAuthOptions = {
       signIn: '/auth/login',
       error: '/auth/error',
       signOut: '/auth/login'
+  },
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === "production" 
+        ? "__Secure-next-auth.session-token"
+        : "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
   },
 };
 export { authOptions as GET, authOptions as POST };
