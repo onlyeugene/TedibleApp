@@ -4,7 +4,7 @@ import Button from '@/components/buttons'
 
 const CartPreview = () => {
   return (
-    <div className='bg-white border rounded-l-3xl py-4 px-7 h-[30rem] sm:flex hidden flex-col w-1/4'>
+    <div className='bg-white border rounded-l-3xl py-4 px-7 h-[30rem] lg:flex hidden flex-col fixed right-0 top-20 w-1/4'>
       <div>
         <h1 className='font-semibold'>My Cart Preview</h1>
       </div>

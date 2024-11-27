@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import React, { useState, useEffect } from "react";
 import RestuarantCard from "@/components/cards/restuarantcard";
@@ -124,8 +125,16 @@ const Restaurants = () => {
           ))}
         </div>
       )}
+=======
+import RestaurantsPage from "@/components/internal/restaurants";
+
+const Restaurants = () => {
+  return (
+    <div>
+      <RestaurantsPage />
+>>>>>>> 95f30ba5a0f4399cf8c2e790104eaf57d73128f8
     </div>
-  );
-};
+  )
+}
 
 export default Restaurants;

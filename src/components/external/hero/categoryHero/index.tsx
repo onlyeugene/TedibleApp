@@ -7,12 +7,12 @@ const RestaurantHero = () => {
   return (
     <div className="categoryHero bg-center w-full">
       <div className="py-20 flex flex-col items-center justify-center ">
-        <h1 className="sm:text-[50px] text-2xl pb-3 text-white">
+        <h1 className="md:text-[50px] text-2xl pb-3 text-white">
           {/* You can search for restaurants and varieties of food */}
           Restaurants
         </h1>
         <form className="w-full  flex flex-col justify-center items-center">
-          <div className="relative w-[30rem] sm:block hidden">
+          <div className="relative w-[40rem] md:block hidden">
             <Input
               type="search"
               placeholder="Search"
@@ -24,7 +24,7 @@ const RestaurantHero = () => {
             />
           </div>
 
-          <div className="sm:hidden block w-[17rem] relative">
+          <div className="md:hidden block w-11/12 relative">
             <Input
               type="search"
               placeholder="Search food"

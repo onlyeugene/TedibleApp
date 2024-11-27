@@ -23,13 +23,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     <>
       {/* Background overlay */}
       <div
-        className={`fixed inset-0 bg-black opacity-50 z-10 sm:hidden block`}
+        className={`fixed inset-0 bg-black opacity-50 z-10 md:hidden block`}
         onClick={toggleDropdown}
       />
 
       {/* Mobile Navigation Menu */}
       <ul
-        className={`fixed left-0 top-0 h-full w-80 px-10 py-20 flex flex-col gap-7 bg-white z-20 sm:hidden ${
+        className={`fixed left-0 top-0 h-full w-80 px-10 py-20 flex flex-col gap-7 bg-white z-20 md:hidden ${
           closing ? "animate-fadeOutRight" : "animate-fadeInLeft"
         }`}
       >
@@ -80,7 +80,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </li>
 
             <div className="flex flex-col gap-4 items-center">
-              <p>{session.user?.firstname} </p>
+              <p>{session.user?.firstName} </p>
               <Button
                 className="py-2 px-4 w-full rounded-md"
                 onClick={() => signOut()}
@@ -129,12 +129,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </li>
 
             <div className="flex flex-col items-center gap-5">
-              <Link href={"/login"} onClick={toggleDropdown}>
+              <Link href={"/auth/login"} onClick={toggleDropdown}>
                 <Button className="border-[#FF7834] py-1 px-[6.5rem] rounded-sm text-[#FF7834]">
                   Login
                 </Button>
               </Link>
-              <Link href={"/register"} onClick={toggleDropdown}>
+              <Link href={"/auth/register"} onClick={toggleDropdown}>
                 <Button className="bg-[#FF7834] py-1 px-[6rem] rounded-sm border-[#FF7834] text-white">
                   Register
                 </Button>
