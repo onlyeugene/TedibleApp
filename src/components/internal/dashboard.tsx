@@ -50,7 +50,7 @@ const DashboardPage = () => {
 
 
   return (
-      <div className="w-full md:w-[60rem] lg:w-[80rem] xl:w-[53rem] 2xl:w-[105rem] px-4 ">
+      <div className="w-full px-4 ">
       <div className="sm:relative">
         <Image
           src={banners[currentBannerIndex]}
@@ -122,3 +122,6 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
+
+// md:w-[60rem] lg:w-[80rem] xl:w-[53rem] 2xl:w-[105rem]

@@ -48,7 +48,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="md:flex block md:w-2/3 w-full md:px-10 md:py-20 py-36">
           {children}
 
-          <div className=" bg-[#EDF5FA]">
+          <div className="">
             <CartPreview />
           </div>
         </div>
