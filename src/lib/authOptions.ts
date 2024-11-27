@@ -70,7 +70,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/api/users/login",
+            "https://tedible-backend-1.onrender.com/api/auth/login",
             credentials,
             {
               headers: { "Content-Type": "application/json" },
@@ -119,6 +119,19 @@ export const authOptions: NextAuthOptions = {
       signIn: '/auth/login',
       error: '/auth/error',
       signOut: '/auth/login'
+  },
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === "production" 
+        ? "__Secure-next-auth.session-token"
+        : "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
   },
 };
 export { authOptions as GET, authOptions as POST };

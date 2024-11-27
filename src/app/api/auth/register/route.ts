@@ -5,11 +5,15 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const response = await axios.post("http://localhost:3001/api/users", body, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(
+      "https://tedible-backend-1.onrender.com/api/auth/register",
+      body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = response.data;
     return NextResponse.json(data);

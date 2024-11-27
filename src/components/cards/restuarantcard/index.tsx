@@ -66,12 +66,13 @@ const RestaurantCard: React.FC<Favorite> = ({
   };
 
   return (
-    <div className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md relative">
+    <div className="lg:min-w-[208.94px] sm:border-none border rounded-2xl shadow-md relative">
       <div>
         <Image
           src={image}
           alt="Restaurant image"
           className={`rounded-t-xl w-full object-cover`}
+          priority
         />
         {pathname === "/internal/restaurants" && (
           <svg

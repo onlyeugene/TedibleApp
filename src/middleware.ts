@@ -4,48 +4,42 @@ import {
   authPrefix,
   authRoutes,
   publicRoutes,
-  defaultRedirectPath,
 } from "./routes";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Check if the user is authenticated
-  const isAuthenticated = !!request.cookies.get("next-auth.session-token");
+  // Check for both production and development cookies
+  const sessionToken = 
+    request.cookies.get("next-auth.session-token")?.value ||
+    request.cookies.get("__Secure-next-auth.session-token")?.value ||
+    request.cookies.get("next-auth.callback-url")?.value;
+    
+  const isAuthenticated = !!sessionToken;
 
-  // Check if the requested path is an auth route
-  const isAuthRoute = authRoutes.includes(pathname);
-
-  // Check if the requested path is a public route
-  const isPublicRoute = publicRoutes.includes(pathname);
+  // Enhanced debugging for both production and development
+  console.log({
+    pathname,
+    isAuthenticated,
+    sessionToken: !!sessionToken,
+    isAuthRoute: authRoutes.includes(pathname),
+    isPublicRoute: publicRoutes.includes(pathname),
+    isAuthPrefix: pathname.startsWith(authPrefix),
+  });
 
   // Allow all requests to auth API routes (/api/auth/*)
   if (pathname.startsWith(authPrefix)) {
     return NextResponse.next();
   }
 
-  // Redirect authenticated users away from auth routes
-  if (isAuthenticated && isAuthRoute) {
-    return NextResponse.redirect(new URL(defaultRedirectPath, request.url));
+  // Redirect non-authenticated users to login for protected routes
+  if (!isAuthenticated && !publicRoutes.includes(pathname) && !authRoutes.includes(pathname) && !pathname.startsWith(authPrefix)) {
+    console.log('Redirecting to login page...');
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  // Allow authenticated users to access protected routes
-  if (isAuthenticated) {
-    return NextResponse.next();
-  }
+  return NextResponse.next();
 
-  // Allow public routes for everyone
-  if (isPublicRoute) {
-    return NextResponse.next();
-  }
-
-  // Allow auth routes for non-authenticated users
-  if (!isAuthenticated && isAuthRoute) {
-    return NextResponse.next();
-  }
-
-  // Redirect non-authenticated users to login
-  return NextResponse.redirect(new URL("/auth/login", request.url));
 }
 
 // Configure which routes to run middleware on

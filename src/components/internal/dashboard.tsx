@@ -50,13 +50,13 @@ const DashboardPage = () => {
 
 
   return (
-      <div className="w-full px-4">
+      <div className="px-4 ">
       <div className="sm:relative">
         <Image
           src={banners[currentBannerIndex]}
           alt="Banner"
           priority
-          className="w-full rounded-2xl sm:h-auto transition-opacity duration-1000"
+          className=" w-full h-auto rounded-2xl sm:h-auto transition-opacity duration-1000"
         />
         {/* {currentBannerIndex !== 0 && ( // Only display the button if the current banner is not banner2
             <button className="absolute bottom-10 border sm:w-40 sm:block hidden sm:h-14 left-0 mx-9 text-white border-[#FF7834] bg-[#FF7834] rounded-xl">
@@ -67,7 +67,7 @@ const DashboardPage = () => {
             <button className='uppercase'>Add to cart</button>
           )} */}
       </div>
-      <div className="w-full">
+      <div className="">
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Restaurant</h1>
           <div className="flex gap-2 items-center">
@@ -77,26 +77,34 @@ const DashboardPage = () => {
             {/* <Image src={arrowside} alt="Arrow side" className="sm:w-2 w-1.5" /> */}
           </div>
         </div>
-        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-3 text-secondary overflow-x-auto">
           {sortedRestaurants.map((items) => (
             <RestaurantCard key={items.id} {...items} />
           ))}
         </div>
       </div>
-      <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
-        <h1 className="text-2xl font-semibold">Top Order</h1>
-        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
-          {sortedTopOrders.map((item) => (
-            <div
-              key={item.id}
-              className="flex-none w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto"
-            >
-              <MenuCard {...item} />
-            </div>
+      <div className="">
+        <div className="flex items-center justify-between py-5 text-secondary">
+          <h1 className="sm:text-2xl text-xl font-semibold">Top Order</h1>
+        </div>
+        <div className="flex gap-8 text-secondary w-full overflow-x-auto">
+          {sortedTopOrders.map((items) => (
+            <MenuCard key={items.id} {...items} />
           ))}
         </div>
       </div>
-      <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
+      <div className="">
+        <div className="flex items-center justify-between py-5 text-secondary">
+          <h1 className="sm:text-2xl text-xl font-semibold">Best Offers</h1>
+        </div>
+        <div className="flex gap-8 text-secondary w-full overflow-x-auto">
+          {sortedBestOffers.map((items) => (
+            <MenuCard key={items.id} {...items} />
+          ))}
+        </div>
+      </div>
+    
+      {/* <div className="w-full text-secondary mt-10 scrollbar-hide overflow-x-auto lg:overflow-x-clip">
         <h1 className="text-2xl font-semibold">Best Offers</h1>
         <div className="flex gap-3 text-secondary w-full overflow-x-auto">
           {sortedBestOffers.map((item) => (
@@ -108,9 +116,12 @@ const DashboardPage = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default DashboardPage;
+
+
+// md:w-[60rem] lg:w-[80rem] xl:w-[53rem] 2xl:w-[105rem]
