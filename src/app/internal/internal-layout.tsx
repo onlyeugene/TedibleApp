@@ -45,7 +45,7 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full fixed top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
           <Header />
         </div>
-        <div className="md:flex block md:w-2/3 w-full md:px-10 md:py-20 py-36">
+        <div className="md:flex block xl:w-2/3 md:py-20 py-36">
           {children}
 
           <div className="">
