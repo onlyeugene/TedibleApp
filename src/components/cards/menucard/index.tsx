@@ -53,7 +53,7 @@ const MenuCard: React.FC<Favorite> = ({ id,image, name, restaurant, price }) => 
     localStorage.setItem("favoriteFood", JSON.stringify(favoriteMenu));
   };
   return (
-    <div className="flex flex-col gap-[15px] lg:gap-[21px] bg-white border-primary shadow-xl rounded-[2.188rem] relative">
+    <div className="min-w-[11rem] flex flex-col gap-[15px] lg:gap-[21px] bg-white border-primary shadow-xl rounded-[2.188rem] relative">
       {/* Image Section */}
       <div>
         <Image
