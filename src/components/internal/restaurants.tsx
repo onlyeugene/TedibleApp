@@ -69,7 +69,7 @@ const RestaurantsPage = () => {
       ) : (
         <div className="grid grid-cols-2 lg:grid-cols-4 py-6 gap-4 lg:gap-5">
           {filteredTopOrders.map((item) => (
-            <div key={item.id} className="w-full md:w-[calc(30%-0.594rem)] lg:w-auto">
+            <div key={item.id} className="">
               <MenuCard {...item} />
             </div>
           ))}
