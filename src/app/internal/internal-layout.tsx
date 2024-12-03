@@ -11,7 +11,7 @@ import LoadingSpinner from "@/components/ui/spinner";
 import CartPreview from "@/components/internal/cart";
 
 const InternalLayout = ({ children }: { children: React.ReactNode }) => {
-  const { status, data: session } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   // console.log(status, session);

@@ -1,15 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
-import call from "@/assets/internal/help/call.svg";
-import report from "@/assets/internal/help/report.svg";
-import response from "@/assets/internal/help/response.svg";
 import Contact from "./contact/page";
 import ReportIssues from "./report/page";
 import Response from "./response/page";
-import { MdLocalPhone } from "react-icons/md";
-import { VscReport } from "react-icons/vsc";
 
 const Help = () => {
   const [currentPage, setCurrentPage] = useState("contact");

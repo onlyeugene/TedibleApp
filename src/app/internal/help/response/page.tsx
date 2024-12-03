@@ -1,6 +1,44 @@
 import React from "react";
-import { response } from "@/lib/consts/Response";
 
+interface ResponseItem {
+  id: number;
+  title: string;
+  subject: string;
+  content: string;
+  response: string;
+}
+export const response: ResponseItem[] = [
+  {
+      id: 1,
+      title: 'Response for the 29th of October, 2025',
+      subject: ' Lorem ipsum dolor sit amet consectetur.',
+      content: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. ',
+      response: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. '
+  },
+  
+  {
+      id: 2,
+      title: 'Response for the 30th of November, 2025',
+      subject: ' Lorem ipsum dolor sit amet consectetur.',
+      content: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. ',
+      response: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. '
+  },
+  {
+      id: 3,
+      title: 'Response for the 31st of November, 2025',
+      subject: ' Lorem ipsum dolor sit amet consectetur.',
+      content: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. ',
+      response: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. '
+  },
+  {
+      id: 4,
+      title: 'Response for the 22nd of December, 2025',
+      subject: ' Lorem ipsum dolor sit amet consectetur.',
+      content: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. ',
+      response: 'Lorem ipsum dolor sit amet consectetur. Non tincidunt mollis varius felis neque egestas diam nibh vestibulum. Adipiscing aliquet tristique potenti senectus sit sit molestie vitae. '
+  },
+
+]
 const Response = () => {
   return (
     <>
@@ -16,14 +54,14 @@ const Response = () => {
               <div className="grid gap-[6px] ">
                 <div className="flex gap-2 items-center">
                   <div className="bg-tertiary w-2 h-2 rounded-full text-tertiary"></div>
-                  <h4 className="text-nowrap text-tertiary">{res.title}</h4>
+                  <h4 className="text-nowrap text-tertiary">{res?.title}</h4>
                 </div>
 
                 <p className="font-bold">
-                  Subject: <span className="font-normal">{res.subject}</span>
+                  Subject: <span className="font-normal">{res?.subject}</span>
                 </p>
 
-                <p className="max-w-[100ch]">{res.content}</p>
+                <p className="max-w-[100ch]">{res?.content}</p>
               </div>
 
               {/* Border */}
@@ -32,7 +70,7 @@ const Response = () => {
               {/* Admin Response */}
               <div>
                 <h5 className="font-bold">Admin Response</h5>
-                <p className="max-w-[100ch]">{res.response}</p>
+                <p className="max-w-[100ch]">{res?.response}</p>
               </div>
             </div>
           ))}
