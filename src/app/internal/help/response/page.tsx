@@ -7,7 +7,7 @@ interface ResponseItem {
   content: string;
   response: string;
 }
-export const response: ResponseItem[] = [
+const response: ResponseItem[] = [
   {
       id: 1,
       title: 'Response for the 29th of October, 2025',
