@@ -30,9 +30,9 @@ const Help = () => {
   return (
     <>
       {/* <h1 className="text-secondaryLight">Help</h1> */}
-      <div className="flex gap-8 pl-6 ">
+      <div className="flex flex-col lg:flex-row gap-8 pl-6 items-start">
         {/* Sidebar with links */}
-        <div className="w-full grid gap-6 bg-white rounded-[8px] text-secondary px-[28px] pt-[46px] pb-[264px]">
+        <div className="xl:max-w-[273px] 2xl:max-w-[400px] grid gap-6 bg-white rounded-[8px] text-secondary px-[28px] pt-[46px] pb-[264px]">
           <button
             onClick={() => setCurrentPage("contact")}
             className={`flex gap-4 items-center hover:rounded-[8px] px-4 py-[8px] ${
@@ -128,10 +128,8 @@ const Help = () => {
         </div>
 
         {/* Content area */}
-        <div className="bg-white rounded-[8px] p-8 w-full">
-          <div className="border border-[#CED4DA] rounded-[8px]">
-            {renderPage()}
-          </div>
+        <div className="bg-white rounded-[8px] p-8 ">
+            {renderPage()}  
         </div>
       </div>
     </>
