@@ -18,8 +18,9 @@ interface MobileFooterProps {
 
 const MobileFooter: React.FC<MobileFooterProps> = () => {
   return (
-    <section className="bg-secondary py-5 px-10 text-primary sm:hidden block">
-      <Image src={logo} alt="Logo" width={100} height={100} />
+    <section className="bg-secondary  text-primary lg:hidden block">
+     <div className="container w-11/12 py-10">
+     <Image src={logo} alt="Logo" width={100} height={100} />
       <div>
         <AccordionWithDash
           title={<h1 className="text-primary text-sm">CONTACT</h1>}
@@ -110,6 +111,7 @@ const MobileFooter: React.FC<MobileFooterProps> = () => {
             </ul>
         </div>
       </div>
+     </div>
     </section>
   );
 };
