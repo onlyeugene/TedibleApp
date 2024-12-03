@@ -20,7 +20,7 @@ const SpecialMenu: React.FC = () => {
       <div className="w-full scrollbar-hide overflow-x-auto lg:overflow-x-clip">
   <div className="flex lg:grid lg:grid-cols-4 gap-4 lg:gap-8">
     {Top_Order.map((item) => (
-      <div key={item.id} className="w-[50%] md:w-[calc(30%-0.594rem)] lg:w-auto">
+      <div key={item.id} className="">
         {/* Menu Card */}
         <MenuCard {...item}/>
       </div>

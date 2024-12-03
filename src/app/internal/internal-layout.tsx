@@ -42,17 +42,16 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider className="">
       <AppSidebar />
-      <main className=" flex flex-col w-full bg-[#EDF5FA]">
+      <main className="flex flex-col w-full bg-[#EDF5FA]">
         <div className="w-full fixed top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
           <Header />
         </div>
-        <div className="md:flex block md:w-2/3 w-full md:px-10 md:py-20 py-36">
-          {children}
-
-          <div className="">
+        <div className="md:flex block xl:w-[75%] md:py-20 py-36">
+          {children}   
+        </div>
+        <div className="">
             <CartPreview />
           </div>
-        </div>
       </main>
     </SidebarProvider>
   );
