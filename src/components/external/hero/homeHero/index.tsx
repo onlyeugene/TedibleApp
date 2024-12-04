@@ -40,17 +40,17 @@ const Hero: React.FC = () => {
 
   return (
     <div className="w-full bg-[#073126] ">
-      <div className='w-11/12 container text-white sm:flex sm:flex-row flex flex-col-reverse justify-center items-center  py-[2rem] gap-[1rem]'>
+      <div className='w-11/12 container text-white lg:flex lg:flex-row flex flex-col-reverse justify-center items-center  py-[2rem] gap-[1rem]'>
     
     {/* Left Section - Heading and Button */}    
-      <div className="flex flex-col gap-[1.5rem] sm:justify-start justify-center sm:items-start items-center sm:leading-[2rem] leading-[1.5rem] w-full">
+      <div className="flex flex-col gap-[1.5rem] lg:justify-start justify-center lg:items-start items-center lg:leading-[2rem] leading-[1.5rem] w-full">
         <h1 className="sm:text-[3.75rem] md:text-[2rem] xl:text-[2.5rem] font-bold">MEAL TIME</h1>
         <h2 className="sm:text-[35px] text-[20px] font-semibold sm:font-light sm:text-start text-center">
           FUEL YOUR <br className='sm:hidden block'/> STUDY
         </h2>
-        <p className="text-[#FEFEFF] text-sm sm:text-base font-normal leading-tight sm:text-start text-center">
-          Order delicious and nutritious meals, so <br className='block sm:hidden'/> <br className='sm:block hidden'/> you can relax, stay
-          focused and <br className='sm:block hidden'/> energized.
+        <p className="text-[#FEFEFF] text-sm lg:text-base font-normal leading-tight lg:text-start text-center">
+          Order delicious and nutritious meals, so <br className='block sm:hidden'/> <br className='lg:block hidden'/> you can relax, stay
+          focused and <br className='lg:block hidden'/> energized.
         </p>
         <div>
           <Button className="border rounded-sm sm:px-[2.5rem] items-start py-2 px-5 text-[18.7px] bg-[#FF7834] border-[#FF7834]">
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Middle Section - Display Image */}
-      <div className="2xl:w-[73rem] xl:w-[81rem] sm:w-[83rem] border bg-white rounded-full px-[1rem] sm:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
+      <div className="2xl:w-[73rem] xl:w-[81rem] lg:w-[83rem] border bg-white rounded-full px-[1rem] lg:h-[26rem] h-auto py-[1rem] my-[3rem] grid justify-center">
         <Image
           src={hoveredItem || defaultImage.src}
           alt="Default"
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Right Section - Food Items */}
-      <div className="w-full sm:grid gap-[1rem] justify-end items-center hidden">
+      <div className="w-full lg:grid gap-[1rem] justify-end items-center hidden">
         <div className="text-black relative">
           <div
             className="flex justify-center items-center border hover:border-[#FF7834] rounded-full bg-white px-[.2rem] pr-[5rem] py-[.2rem] transition duration-500 ease-in-out transform hover:scale-105"

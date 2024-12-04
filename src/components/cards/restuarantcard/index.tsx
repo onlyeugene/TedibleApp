@@ -37,7 +37,7 @@ const RestaurantCard: React.FC<Favorite> = ({
 
   // Initialize filled state based on localStorage
   useEffect(() => {
-    const favorites: Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const favorites: Favorite[] = JSON.parse(localStorage.getItem("favoriteRestaurant") || "[]");
     const isFavorite = favorites.some((fav: Favorite) => fav.id === id);
     setIsFilled(isFavorite);
   }, [id]);
@@ -45,12 +45,12 @@ const RestaurantCard: React.FC<Favorite> = ({
   // Toggle fill state on click
   const handleClick = (): void => {
     if (!session) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
 
     setIsFilled(!isFilled);
-    const favorites:Favorite[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const favorites:Favorite[] = JSON.parse(localStorage.getItem("favoriteRestaurant") || "[]");
 
     if (!isFilled) {
       // Add to favorites
@@ -58,20 +58,21 @@ const RestaurantCard: React.FC<Favorite> = ({
     } else {
       // Remove from favorites
       const updatedFavorites = favorites.filter((fav: Favorite) => fav.id !== id);
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      localStorage.setItem("favoriteRestaurant", JSON.stringify(updatedFavorites));
       return;
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("favoriteRestaurant", JSON.stringify(favorites));
   };
 
   return (
-    <div className="w-full sm:min-w-[190px] min-w-[160px] sm:border-none border rounded-2xl shadow-md relative">
+    <div className="lg:min-w-[208.94px] sm:border-none border rounded-2xl shadow-md relative">
       <div>
         <Image
           src={image}
           alt="Restaurant image"
           className={`rounded-t-xl w-full object-cover`}
+          priority
         />
         {pathname === "/internal/restaurants" && (
           <svg

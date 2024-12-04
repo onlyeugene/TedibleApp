@@ -16,43 +16,46 @@ html{
 }
 
 .aboutHero {
-  background-image: url('../assets/backgroundImages/aboutHero.png');
+  background-image: url('../assets/backgroundImages/aboutHero.png') !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .forgot {
-  background-image: url('../assets/home/register/password.png');
+  background-image: url('../assets/home/register/password.png') !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .privacy-bg{
-  background-image: url('../assets/backgroundImages/aboutHero.png');
+  background-image: url('../assets/backgroundImages/aboutHero.png') !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .categoryHero{
-  background-image: url('../assets/backgroundImages/contactHero.png');
+  background-image: url('../assets/backgroundImages/contactHero.png') !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .faqBg{
-  background-image: url('../assets/backgroundImages/faq.png');
+  background-image: url('../assets/backgroundImages/faq.png') important !important;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .notFound {
-  background-image: url('../assets/notfounds/Web\ 404\ page\ bg.jpg');
+  background-image: url('../assets/notfounds/Web\ 404\ page\ bg.jpg') !important;
   background-repeat: no-repeat;
 }
 
 .signUp{
-  background-image: url('../assets/home/register/signupBg.jpg');
+  background-image: url('../assets/home/register/signupBg.jpg') !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 /* globals.css */
 .scrollbar-hide::-webkit-scrollbar {
@@ -74,4 +77,45 @@ html{
 
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  @layer utilities {
+    .scrollbar-custom::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      margin: 12px 12px;
+    }
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background-color: hsla(0, 0%, 48%, 1);
+      border-radius: 6px;
+    }
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+      background-color: hsla(0, 0%, 48%, 1);
+    }
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+  }
 }

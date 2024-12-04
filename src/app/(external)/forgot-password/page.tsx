@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         </div>
       </form>
       <div className="flex justify-center items-center mt-5 text-[#FF7834]">
-        <Link href="/login" className="flex items-center justify-center gap-5">
+        <Link href="/auth/login" className="flex items-center justify-center gap-5">
           <FaArrowLeft />
           <p>Back to login</p>
         </Link>

@@ -24,8 +24,8 @@ export default function Dashboard() {
   const handleProfileUpdate = async () => {
     try {
       const updatedData = {
-        firstname: newName || session?.user?.firstname,
-        lastname: newLastName || session?.user?.lastname,
+        firstName: newName || session?.user?.firstName,
+        lastName: newLastName || session?.user?.lastName,
         phone: newPhone || session?.user?.phone,
         image: newImage || session?.user?.image,
       };
@@ -89,7 +89,7 @@ export default function Dashboard() {
             />
           </div>
           <h2 className="font-semibold sm:text-xl text-[16.85px]">
-            {session?.user?.firstname} {session?.user?.lastname}
+            {session?.user?.firstName} {session?.user?.lastName}
           </h2>
         </div>
 
@@ -109,7 +109,7 @@ export default function Dashboard() {
                   value={newName}
                   disabled={!editing} // Disable input if not editing
                   onChange={(e) => setNewName(e.target.value)}
-                  placeholder={session?.user?.firstname}
+                  placeholder={session?.user?.firstName}
                   className={`mt-1 px-2 py-2 block w-full border text-sm sm:text-xs ${
                     editing ? "border-gray-300" : "border-[#CED4DA] bg-gray-100"
                   } rounded-md shadow-sm focus:border-tertiary sm:text-sm`}
@@ -124,7 +124,7 @@ export default function Dashboard() {
                   value={newLastName}
                   disabled={!editing} // Disable input if not editing
                   onChange={(e) => setNewLastName(e.target.value)}
-                  placeholder={session?.user?.lastname}
+                  placeholder={session?.user?.lastName}
                   className={`mt-1 px-2 py-2 block w-full border text-sm sm:text-xs ${
                     editing ? "border-gray-300" : "border-[#CED4DA] bg-gray-100"
                   } rounded-md shadow-sm focus:border-tertiary sm:text-sm`}

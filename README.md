@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tedibles - Food Delivery Platform 🍽️
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Tedibles is a modern food delivery platform built with Next.js 13+, offering seamless food ordering experiences for customers and efficient management tools for restaurants.
 
+## 🚀 Features
+
+- 🔐 User Authentication & Authorization
+- 🏪 Restaurant Listings & Menu Management
+- 🛒 Real-time Order Tracking
+- 💳 Secure Payment Integration
+- 📱 Responsive Design
+- 🗺️ Location-based Services
+- ❤️ Favorites & Order History
+- 👤 User Profile Management
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 13+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Authentication:** NextAuth.js
+- **Database:** MongoDB
+- **Image Storage:** Cloudinary
+- **State Management:** React Hooks
+- **Maps Integration:** Google Maps API
+
+## 📁 Project Structure
+
+```
+├── actions/                # Server actions
+├── app/                    # Next.js app directory
+│   ├── (external)/        # Public routes
+│   ├── (internal)/        # Protected routes
+│   └── api/               # API routes
+├── components/            # Reusable components
+├── lib/                   # Utility functions
+├── models/               # Database models
+├── types/                # TypeScript types
+└── public/               # Static assets
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- MongoDB database
+- Cloudinary account
+- Google Maps API key
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/tedibles.git
+cd tedibles
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+4. Add your environment variables to `.env.local`:
+```env
+DATABASE_URL=your_mongodb_url
+NEXTAUTH_SECRET=your_secret
+CLOUDINARY_URL=your_cloudinary_url
+GOOGLE_MAPS_API_KEY=your_api_key
+```
+
+5. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔑 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Required environment variables:
 
-## Learn More
+- `DATABASE_URL`: MongoDB connection string
+- `NEXTAUTH_SECRET`: NextAuth.js secret
+- `NEXTAUTH_URL`: NextAuth.js URL
+- `CLOUDINARY_URL`: Cloudinary connection URL
+- `GOOGLE_MAPS_API_KEY`: Google Maps API key
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Key Features Implementation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Authentication
+- NextAuth.js integration
+- Protected routes
+- Role-based access control
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Restaurant Management
+- Menu creation and management
+- Order processing
+- Real-time updates
 
-## Deploy on Vercel
+### User Features
+- Profile management
+- Order history
+- Favorites system
+- Address management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 API Documentation
+
+API endpoints are documented using Swagger/OpenAPI. Access the documentation at `/api-docs` when running the development server.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## 👥 Team
+
+- [Your Name] - Lead Developer
+- [Team Member 1] - Frontend Developer
+- [Team Member 2] - Backend Developer
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- All contributors who have helped this project grow
+
+## 📞 Support
+
+For support, email support@tedibles.com or join our Slack channel.
+
+## 🔄 Status
+
+Project is: _in development_
