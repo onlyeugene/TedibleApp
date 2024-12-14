@@ -92,9 +92,9 @@ const OrderHistory: React.FC = () => {
     // Add specific logic for each action here
   };
 
-  const filteredOrders = orders.filter((order) =>
-    order.menu.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredOrders = orders.filter((order) =>
+  //   order.menu.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
 
   return (
