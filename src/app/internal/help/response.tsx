@@ -42,8 +42,8 @@ const response: ResponseItem[] = [
 const Response = () => {
   return (
     <>
-      <div className="scrollbar-custom h-[616px] overflow-y-scroll scrollbar-thumb-blue-500 scrollbar-track-gray-300">
-        <div className="w-full grid gap-[42px] ">
+      <div className="lg:scrollbar-custom lg:h-[616px] lg:overflow-y-scroll lg:scrollbar-thumb-blue-500 lg:scrollbar-track-gray-300">
+        <div className="text-[0.769rem] md:text-sm lg:text-base w-full grid gap-7 lg:gap-[42px] ">
         
           {response.map((res) => (
             <div
