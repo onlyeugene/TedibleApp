@@ -34,7 +34,8 @@ const InternalLayout = ({ children }: { children: React.ReactNode }) => {
 
   // Return null if unauthenticated (will redirect in effect)
   if (status === "unauthenticated") {
-    return null;
+    // router.push('/auth/login');
+    return null
   }
 
   // Render the layout if authenticated

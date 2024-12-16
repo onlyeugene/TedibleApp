@@ -16,6 +16,7 @@ declare module "next-auth" {
       email: string;
       image: string;
       phone?: number;
+      token?: string
     };
   }
 
@@ -83,7 +84,7 @@ export const authOptions: NextAuthOptions = {
               token: data.token,
             };
           }
-          return null;
+          return null
         } catch (error) {
           if (axios.isAxiosError(error)) {
             throw new Error(error.response?.data?.message || "Invalid credentials");
@@ -109,6 +110,7 @@ export const authOptions: NextAuthOptions = {
         email: string;
         image: string;
         phone?: number;
+        token?: string
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       // (session as unknown as { accessToken: any}).accessToken = token.accessToken;
