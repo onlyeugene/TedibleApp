@@ -15,6 +15,7 @@ export async function POST(request: Request) {
       }
     );
 
+
     const data = response.data;
     return NextResponse.json(data);
   } catch (error: unknown) {

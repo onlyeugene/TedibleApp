@@ -16,7 +16,7 @@ import MobileFooter from "./mobile-footer";
 const Footer = () => {
   return (
     <div>
-      <div className="bg-[#073126] py-5 sm:block hidden">
+      <div className="bg-[#073126] py-5 lg:block hidden">
         <div className="w-11/12 container">
           <Image src={logo} alt="tedible logo" height={180} width={180} />
 
