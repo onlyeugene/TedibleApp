@@ -42,7 +42,7 @@ const LoginForm: React.FC = () => {
     setShowEye(!showEye);
   }, [showEye, setShowEye]);
 
-  const [userType, setUserType] = useState<string>("student");
+  const [userType, setUserType] = useState<string>("user");
   const router = useRouter();
 
   const handleSubmit = async (values: z.infer<typeof loginSchema>) => {
@@ -93,9 +93,9 @@ const LoginForm: React.FC = () => {
             <div className="flex justify-between text-sm md:gap-20 gap-10 text-nowrap w-full pb-6">
               <div
                 className="flex items-center gap-1"
-                onClick={() => setUserType("student")}
+                onClick={() => setUserType("user")}
               >
-                {userType === "student" ? (
+                {userType === "user" ? (
                   <FaCheckCircle size={17} className="text-tertiary" />
                 ) : (
                   <FaRegCircle
@@ -183,8 +183,7 @@ const LoginForm: React.FC = () => {
                   Forgot password?
                 </Link>
 
-                {error && <FormError message={error} />}
-                {success && <FormSuccess message={success} />}
+                {error ? <FormError message={error} /> : success ? <FormSuccess message={success} /> : null}
                 <Button
                   className="w-full bg-gray-300 active:bg-tertiary disabled:bg-gray-300 mt-5 hover:bg-tertiary"
                   type="submit"

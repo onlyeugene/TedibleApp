@@ -87,7 +87,7 @@ const DashboardPage = () => {
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Top Order</h1>
         </div>
-        <div className="flex gap-8 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-4 text-secondary w-full overflow-x-auto">
           {sortedTopOrders.map((items) => (
             <MenuCard key={items.id} {...items} />
           ))}
@@ -97,7 +97,7 @@ const DashboardPage = () => {
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Best Offers</h1>
         </div>
-        <div className="flex gap-8 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-4 text-secondary w-full overflow-x-auto">
           {sortedBestOffers.map((items) => (
             <MenuCard key={items.id} {...items} />
           ))}
