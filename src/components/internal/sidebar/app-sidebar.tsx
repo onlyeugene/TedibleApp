@@ -19,7 +19,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="md:block hidden">
       <SidebarContent className='bg-secondary text-primary '>
-        <SidebarGroup>
+        <SidebarGroup className="px-0">
         <div className='mb-8 px-1 pt-5'>
             <Image src={logo} alt='' width={120} height={120} />
           </div>
@@ -30,7 +30,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title} className='flex items-center gap-4 px-4 py-3 rounded-md transition-all duration-200'>
                   <SidebarMenuButton asChild className="hover:text-primary hover:bg-[#e9e9e967] py-6 active:bg-[#e9e9e967] -webkit-tap-highlight-color-transparent">
                     <Link href={item.path} 
-                     className={`flex items-center gap-4 px-4 py-10 rounded-md transition-all duration-200 -webkit-tap-highlight-color-transparent ${
+                     className={`flex items-center gap-4 px-[14px] py-10 rounded-md transition-all duration-200 -webkit-tap-highlight-color-transparent ${
                         path === item.path
                           ? 'bg-tertiary text-primary shadow-md'
                           : 'hover:bg-[#e9e9e967] hover:text-primary active:bg-[#e9e9e967]'

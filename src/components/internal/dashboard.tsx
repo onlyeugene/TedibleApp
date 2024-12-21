@@ -50,7 +50,7 @@ const DashboardPage = () => {
 
 
   return (
-      <div className="w-full px-4 ">
+      <div className="px-4 ">
       <div className="sm:relative">
         <Image
           src={banners[currentBannerIndex]}
@@ -67,7 +67,7 @@ const DashboardPage = () => {
             <button className='uppercase'>Add to cart</button>
           )} */}
       </div>
-      <div className="w-full">
+      <div className="">
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Restaurant</h1>
           <div className="flex gap-2 items-center">
@@ -77,27 +77,27 @@ const DashboardPage = () => {
             {/* <Image src={arrowside} alt="Arrow side" className="sm:w-2 w-1.5" /> */}
           </div>
         </div>
-        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-3 text-secondary overflow-x-auto">
           {sortedRestaurants.map((items) => (
             <RestaurantCard key={items.id} {...items} />
           ))}
         </div>
       </div>
-      <div className="w-full">
+      <div className="">
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Top Order</h1>
         </div>
-        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-4 text-secondary w-full overflow-x-auto">
           {sortedTopOrders.map((items) => (
             <MenuCard key={items.id} {...items} />
           ))}
         </div>
       </div>
-      <div className="w-full">
+      <div className="">
         <div className="flex items-center justify-between py-5 text-secondary">
           <h1 className="sm:text-2xl text-xl font-semibold">Best Offers</h1>
         </div>
-        <div className="flex gap-3 text-secondary w-full overflow-x-auto">
+        <div className="flex gap-4 text-secondary w-full overflow-x-auto">
           {sortedBestOffers.map((items) => (
             <MenuCard key={items.id} {...items} />
           ))}

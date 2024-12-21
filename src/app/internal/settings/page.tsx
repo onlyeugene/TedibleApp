@@ -1,11 +1,10 @@
+import Settings from '@/components/internal/settings'
 import React from 'react'
 
-const Settings = () => {
+const SettingsPage = () => {
   return (
-    <div>
-      Settings
-    </div>
+    <Settings />
   )
 }
 
-export default Settings
+export default SettingsPage

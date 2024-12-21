@@ -68,9 +68,11 @@ const RegisterForm: React.FC = () => {
         toast.success("Registration successful");
         router.replace("/auth/login");
       }
-    } catch (error: unknown) {
-      setError("An error occurred while registering");
-      toast.error("Registration failed");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      const errorMessage = error?.response?.data?.message || 'Registration Error';
+      setError(errorMessage);
+      toast.error(errorMessage);
       setSuccess("");
     } finally {
       setLoading(false);
@@ -234,7 +236,7 @@ const RegisterForm: React.FC = () => {
                   className="w-full bg-gray-300 active:bg-tertiary disabled:bg-gray-300 mt-5 hover:bg-tertiary"
                   type="submit"
                 >
-                  Login
+                 {loading ? 'Signing Up...' : 'Sign Up'}
                 </Button>
               </form>
             </FormProvider>
