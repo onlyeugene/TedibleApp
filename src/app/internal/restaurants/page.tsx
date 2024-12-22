@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import RestuarantCard from "@/components/cards/restuarantcard";
 import MenuCard from "@/components/cards/menucard";
-import CategoryCard from "@/components/internal/categorycard";
+import CategoryCard from "@/components/internal/category-card";
 import { Restaurant_Links, Top_Order, Category } from "@/lib/consts/top-order";
-import MenuIcon from '@/assets/internal/restaurant/Vector.svg'
+import MenuIcon from "@/assets/internal/restaurant/Vector.svg";
 import Image from "next/image";
 import MobileCategoryCard from "@/components/internal/mobilecategory";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
@@ -15,10 +14,10 @@ const Restaurants = () => {
   const [view, setView] = useState<"restaurant" | "food">("restaurant");
   const [isOpen, setIsOpen] = useState(false);
 
-  // Reset selectedCategoryId whenever the view changes
   useEffect(() => {
     setSelectedCategoryId(null); // Reset category selection on view change
   }, [view]);
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -27,51 +26,58 @@ const Restaurants = () => {
     setView(value);
     setIsOpen(false);
   };
-  // Show all items initially or filter based on the selected category
-  const filteredRestaurants =
-    selectedCategoryId !== null
+
+  const filteredRestaurants = useMemo(() => {
+    return selectedCategoryId !== null
       ? Restaurant_Links.filter((restaurant) => restaurant.categoryId === selectedCategoryId)
       : Restaurant_Links;
+  }, [selectedCategoryId]);
 
-  const filteredTopOrders =
-    selectedCategoryId !== null
+  const filteredTopOrders = useMemo(() => {
+    return selectedCategoryId !== null
       ? Top_Order.filter((item) => item.categoryId === selectedCategoryId)
       : Top_Order;
+  }, [selectedCategoryId]);
 
   return (
     <div className="px-3 lg:px-6 w-full">
       {/* Dropdown */}
       <div className="hidden lg:flex items-center justify-start mb-4">
-        <Image
-        src={MenuIcon}
-        alt="menu icon"
-        />
+        <Image src={MenuIcon} alt="menu icon" />
         <div className="relative inline-block text-left">
-      <button
-        onClick={toggleDropdown}
-        className="ml-4 px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none flex items-center w-52 justify-between"
-      >
-        {view === "restaurant" ? "Restaurant" : "Food Item"}
-        <span className="ml-2">{isOpen ? <SlArrowUp /> : <SlArrowDown />}</span>
-      </button>
-      
-      {isOpen && (
-        <ul className="absolute ml-4 left-0  w-full bg-white border  rounded shadow-lg">
-          <li
-            onClick={() => handleSelect("restaurant")}
-            className="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b"
+          <button
+            onClick={toggleDropdown}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") toggleDropdown();
+            }}
+            aria-haspopup="listbox"
+            aria-expanded={isOpen}
+            className="ml-4 px-4 py-2 border border-black rounded text-gray-700 bg-transparent outline-none flex items-center w-52 justify-between"
           >
-            Restaurants
-          </li>
-          <li
-            onClick={() => handleSelect("food")}
-            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-          >
-            Food
-          </li>
-        </ul>
-      )}
-    </div>
+            {view === "restaurant" ? "Restaurant" : "Food Item"}
+            <span className="ml-2">{isOpen ? <SlArrowUp /> : <SlArrowDown />}</span>
+          </button>
+
+          {isOpen && (
+            <ul
+              className="absolute ml-4 left-0 w-full bg-white border rounded shadow-lg"
+              role="listbox"
+            >
+              <li
+                onClick={() => handleSelect("restaurant")}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer border-b"
+              >
+                Restaurants
+              </li>
+              <li
+                onClick={() => handleSelect("food")}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                Food
+              </li>
+            </ul>
+          )}
+        </div>
         <p className="ml-4 text-secondaryLight font-semibold text-xl">
           {view === "restaurant" ? "All Restaurants" : "All Food items"}
         </p>
@@ -82,36 +88,39 @@ const Restaurants = () => {
         {Category.map((category) => (
           <div
             key={category.id}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${
+              selectedCategoryId === category.id ? "bg-gray-200 border border-primary" : ""
+            }`}
             onClick={() => setSelectedCategoryId(category.id)}
           >
             <CategoryCard {...category} />
           </div>
         ))}
       </div>
-      {/* Categories */}
-<div className=" lg:hidden ">
-<p className="text-secondaryLight font-semibold mb-3">Restaurant</p>
-  <div className="flex  gap-2 lg:hidden scrollbar-hide   overflow-x-auto md:max-w-[420px]">
-  
-    {Category.map((category) => (
-      <div
-        key={category.id}
-        className="cursor-pointer "
-        onClick={() => setSelectedCategoryId(category.id)}
-      >
-        <MobileCategoryCard {...category} />
+
+      {/* Mobile Categories */}
+      <div className="lg:hidden">
+        <p className="text-secondaryLight font-semibold mb-3">Restaurant</p>
+        <div className="flex gap-2 scrollbar-hide overflow-x-auto md:max-w-[420px]">
+          {Category.map((category) => (
+            <div
+              key={category.id}
+              className={`cursor-pointer ${
+                selectedCategoryId === category.id ? "border border-primary" : ""
+              }`}
+              onClick={() => setSelectedCategoryId(category.id)}
+            >
+              <MobileCategoryCard {...category} />
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-      
 
       {/* Dynamic Content Based on Dropdown Selection */}
       {view === "restaurant" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 py-6 gap-5 text-secondary lg:w-full overflow-scroll ">
+        <div className="grid grid-cols-1 md:grid-cols-2 py-6 gap-5 text-secondary lg:w-full">
           {filteredRestaurants.map((restaurant) => (
-            <div className="" key={restaurant.id}>
+            <div key={restaurant.id}>
               <RestuarantCard {...restaurant} />
             </div>
           ))}
@@ -119,22 +128,14 @@ const Restaurants = () => {
       ) : (
         <div className="grid grid-cols-2 lg:grid-cols-4 py-6 gap-4 lg:gap-5">
           {filteredTopOrders.map((item) => (
-            <div key={item.id} className="w-full md:w-[calc(30%-0.594rem)] lg:w-auto">
+            <div key={item.id} className="w-full">
               <MenuCard {...item} />
             </div>
           ))}
         </div>
       )}
-=======
-import RestaurantsPage from "@/components/internal/restaurants";
-
-const Restaurants = () => {
-  return (
-    <div>
-      <RestaurantsPage />
->>>>>>> 95f30ba5a0f4399cf8c2e790104eaf57d73128f8
     </div>
-  )
-}
+  );
+};
 
 export default Restaurants;

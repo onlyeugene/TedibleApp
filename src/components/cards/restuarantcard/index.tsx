@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { IoIosBicycle } from "react-icons/io";
 import { CiClock1 } from "react-icons/ci";
 import star from "@/assets/internal/dashboard/star.svg";
