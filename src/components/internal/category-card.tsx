@@ -7,11 +7,11 @@ interface PageProps {
 }
 const CategoryCard: React.FC<PageProps> = ({image, name}) => {
   return (
-    <div>
+    <div className="hover:bg-secondaryLight rounded-xl">
       <Image
       src={image}
       alt="Category image"/>
-      <p className="text-center pt-2.5 text-lg font-poppins">{name}</p>
+      <p className="text-center pt-2.5 text-lg font-poppins hover:text-white">{name}</p>
     </div>
   )
 }
