@@ -27,7 +27,7 @@ const Help = () => {
         <h1 className="text-secondaryLight mb-6 text-xl lg:text-2xl font-semibold">Help</h1>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start">
           {/* Sidebar with links */}
-          <div className="w-full xl:max-w-[273px] 2xl:max-w-[400px] flex flex-row lg:flex-col gap-3 lg:gap-6 bg-white rounded-[8px] text-secondary p-[12.9px] lg:px-[28px] lg:pt-[46px] lg:pb-[264px]">
+          <div className="w-full xl:max-w-[213px] 2xl:max-w-[400px] flex flex-row lg:flex-col gap-3 lg:gap-6 bg-white rounded-[8px] text-secondary p-[12.9px] lg:px-[28px] lg:pt-[46px] lg:pb-[264px]">
             <button
               onClick={() => setCurrentPage("contact")}
               className={`flex-1 text-[0.769rem] md:text-sm lg:text-base flex flex-col lg:flex-row gap-2 lg:gap-4 items-center hover:rounded-[8px] lg:px-4 py-[8px] ${
